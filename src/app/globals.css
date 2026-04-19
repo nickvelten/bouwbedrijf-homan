@@ -4,11 +4,13 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ─── Tailwind v4 theme tokens ─────────────────────────────────────────── */
 @theme inline {
+  /* Colors (existing) */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
   --font-heading: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -39,6 +41,9 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  --color-warm: var(--warm);
+  --color-warm-foreground: var(--warm-foreground);
+
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -46,85 +51,222 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* Breakpoint ladder (mobile-first, min-width) ─ overrides Tailwind defaults */
+  --breakpoint-sm: 600px;   /* large phones / small tablets portrait */
+  --breakpoint-md: 905px;   /* tablets / small laptops */
+  --breakpoint-lg: 1240px;  /* desktops */
+  --breakpoint-xl: 1440px;  /* large desktops */
+
+  /* Fluid type scale (clamp 320px → 1440px) */
+  --text-fluid-xs:   clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --text-fluid-sm:   clamp(0.875rem, 0.825rem + 0.25vw, 1rem);
+  --text-fluid-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --text-fluid-md:   clamp(1.125rem, 1rem + 0.625vw, 1.375rem);
+  --text-fluid-lg:   clamp(1.375rem, 1.2rem + 0.875vw, 1.75rem);
+  --text-fluid-xl:   clamp(1.75rem, 1.5rem + 1.25vw, 2.5rem);
+  --text-fluid-2xl:  clamp(2.25rem, 1.75rem + 2.5vw, 3.5rem);
+  --text-fluid-3xl:  clamp(2.75rem, 2rem + 3.75vw, 5rem);
+
+  /* Fluid spacing scale */
+  --spacing-fluid-3xs: clamp(0.25rem, 0.25rem + 0vw, 0.25rem);
+  --spacing-fluid-2xs: clamp(0.5rem, 0.45rem + 0.25vw, 0.625rem);
+  --spacing-fluid-xs:  clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --spacing-fluid-s:   clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
+  --spacing-fluid-m:   clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --spacing-fluid-l:   clamp(2rem, 1.5rem + 2.5vw, 3rem);
+  --spacing-fluid-xl:  clamp(3rem, 2rem + 5vw, 5rem);
+  --spacing-fluid-2xl: clamp(4rem, 2.5rem + 7.5vw, 8rem);
 }
 
+/* ─── Color tokens (oklch) ─────────────────────────────────────────────── */
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --background: oklch(0.985 0.002 80);
+  --foreground: oklch(0.195 0.01 60);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
+  --card-foreground: oklch(0.195 0.01 60);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.195 0.01 60);
+  --primary: oklch(0.25 0.02 60);
+  --primary-foreground: oklch(0.98 0.005 80);
+  --secondary: oklch(0.95 0.01 80);
+  --secondary-foreground: oklch(0.25 0.02 60);
+  --muted: oklch(0.955 0.008 80);
+  --muted-foreground: oklch(0.42 0.01 60); /* darkened from 0.50 → 0.42 for AA on light bg */
+  --accent: oklch(0.52 0.22 27);
+  --accent-foreground: oklch(1 0 0);
+  --warm: oklch(0.52 0.22 27);
+  --warm-foreground: oklch(1 0 0);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --border: oklch(0.90 0.01 80);
+  --input: oklch(0.90 0.01 80);
+  --ring: oklch(0.52 0.22 27);
+  --chart-1: oklch(0.52 0.22 27);
+  --chart-2: oklch(0.65 0.12 80);
+  --chart-3: oklch(0.45 0.08 60);
+  --chart-4: oklch(0.75 0.06 80);
+  --chart-5: oklch(0.35 0.04 60);
+  --radius: 0.5rem;
+  --sidebar: oklch(0.985 0.002 80);
+  --sidebar-foreground: oklch(0.195 0.01 60);
+  --sidebar-primary: oklch(0.25 0.02 60);
+  --sidebar-primary-foreground: oklch(0.98 0.005 80);
+  --sidebar-accent: oklch(0.95 0.01 80);
+  --sidebar-accent-foreground: oklch(0.25 0.02 60);
+  --sidebar-border: oklch(0.90 0.01 80);
+  --sidebar-ring: oklch(0.52 0.22 27);
+
+  /* Layout primitives */
+  --tap: 44px;          /* WCAG 2.5.5 / iOS HIG minimum tap target */
+  --measure: 65ch;       /* readable line length cap */
+  --ease: cubic-bezier(0.2, 0, 0, 1);
 }
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
-}
-
+/* ─── Base layer ──────────────────────────────────────────────────────── */
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
+  }
+  html {
+    @apply font-sans scroll-smooth;
+    /* Stop iOS auto-resizing headings on rotation */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
   body {
     @apply bg-background text-foreground;
+    /* Allow long URLs / Dutch compound words to wrap on narrow viewports */
+    overflow-wrap: break-word;
   }
-  html {
-    @apply font-sans;
+
+  /* Visible, high-contrast focus ring on every focusable element ─ WCAG 2.4.7 */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: 4px;
   }
+  /* Suppress default focus on mouse-only interactions */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  /* All form controls inherit type sizing ─ avoids iOS zoom-on-focus when ≥ 16px */
+  input, select, textarea, button {
+    font: inherit;
+    color: inherit;
+  }
+  input, select, textarea {
+    font-size: max(16px, 1rem);
+  }
+
+  /* Reading measure on long-form text */
+  .prose p, .prose li {
+    max-width: var(--measure);
+  }
+
+  /* Skip link target ─ never trapped by sticky header */
+  :target {
+    scroll-margin-top: 5rem;
+  }
+}
+
+/* ─── Reduced-motion override (WCAG 2.3.3) ───────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  html { scroll-behavior: auto !important; }
+}
+
+/* ─── Skip-link utility ───────────────────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 100;
+  background: var(--background);
+  color: var(--foreground);
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.15);
+  border: 2px solid var(--ring);
+  transition: top 150ms var(--ease);
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* ─── Decorative utilities ────────────────────────────────────────────── */
+
+/* Noise texture overlay */
+.noise-texture::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+/* Angled section dividers */
+.angle-top {
+  clip-path: polygon(0 clamp(30px, 4vw, 60px), 100% 0, 100% 100%, 0 100%);
+  margin-top: calc(-1 * clamp(30px, 4vw, 60px));
+  padding-top: calc(clamp(30px, 4vw, 60px) + 1px);
+}
+
+.angle-bottom {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - clamp(30px, 4vw, 60px)), 0 100%);
+  margin-bottom: calc(-1 * clamp(30px, 4vw, 60px));
+  padding-bottom: clamp(30px, 4vw, 60px);
+}
+
+.angle-both {
+  clip-path: polygon(0 clamp(30px, 4vw, 60px), 100% 0, 100% calc(100% - clamp(30px, 4vw, 60px)), 0 100%);
+  margin-top: calc(-1 * clamp(30px, 4vw, 60px));
+  margin-bottom: calc(-1 * clamp(30px, 4vw, 60px));
+  padding-top: calc(clamp(30px, 4vw, 60px) + 1px);
+  padding-bottom: clamp(30px, 4vw, 60px);
+}
+
+/* Tap-target enforcement utility ─ WCAG 2.5.5 / 2.5.8 */
+.tap {
+  min-height: var(--tap);
+  min-width: var(--tap);
+}
+/* Pseudo-element hit-area expander for icon buttons that visually < 44px */
+.tap-expand {
+  position: relative;
+}
+.tap-expand::before {
+  content: "";
+  position: absolute;
+  inset: calc((var(--tap) - 100%) / -2);
+  min-height: var(--tap);
+  min-width: var(--tap);
+}
+
+/* Container query setup ─ component-level adaptation */
+.cq        { container-type: inline-size; }
+.cq-card   { container-type: inline-size; container-name: card; }
+.cq-grid   { container-type: inline-size; container-name: grid; }
+
+/* Hero crossfade — pure CSS, no JS animation library on the LCP path */
+@keyframes hero-fade-cycle {
+  0%, 8%, 92%, 100% { opacity: 0; }
+  20%, 80% { opacity: 1; }
+}
+.hero-fade {
+  opacity: 0;
+  animation-name: hero-fade-cycle;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
 }

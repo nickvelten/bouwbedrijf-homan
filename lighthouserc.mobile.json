@@ -1,0 +1,35 @@
+{
+  "ci": {
+    "collect": {
+      "url": [
+        "http://localhost:3000/",
+        "http://localhost:3000/diensten",
+        "http://localhost:3000/projecten",
+        "http://localhost:3000/over-ons",
+        "http://localhost:3000/werken-bij",
+        "http://localhost:3000/contact"
+      ],
+      "startServerCommand": "npm run start",
+      "startServerReadyPattern": "Ready in",
+      "numberOfRuns": 1,
+      "settings": {
+        "emulatedFormFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "chromeFlags": "--headless=new --no-sandbox --disable-dev-shm-usage --disable-gpu"
+      }
+    },
+    "assert": {
+      "assertions": {
+        "categories:performance": ["error", { "minScore": 0.85 }],
+        "categories:accessibility": ["error", { "minScore": 1.0 }],
+        "categories:best-practices": ["error", { "minScore": 1.0 }],
+        "categories:seo": ["error", { "minScore": 1.0 }],
+        "cumulative-layout-shift": ["error", { "maxNumericValue": 0.1 }]
+      }
+    },
+    "upload": {
+      "target": "filesystem",
+      "outputDir": ".lighthouseci-mobile"
+    }
+  }
+}
