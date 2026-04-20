@@ -17,6 +17,7 @@ const WHATSAPP = "31652488000";
 export function StickyCTA() {
   const pathname = usePathname();
   if (pathname === "/contact") return null;
+  if (pathname?.startsWith("/design-preview")) return null;
 
   return (
     <div

@@ -1,13 +1,47 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Geist, Fraunces, Instrument_Serif, JetBrains_Mono, Archivo_Black, Archivo } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { DeferredWidgets } from "@/components/deferred-widgets";
+import { ChromeGate } from "@/components/chrome-gate";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+});
+
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  display: "swap",
+  axes: ["opsz", "SOFT"],
+});
+
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  display: "swap",
+});
+
+const jetBrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const archivoBlack = Archivo_Black({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+});
+
+const archivo = Archivo({
+  variable: "--font-display-alt",
+  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -63,7 +97,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="nl" className={`${geistSans.variable} h-full antialiased`}>
+    <html lang="nl" className={`${geistSans.variable} ${fraunces.variable} ${instrumentSerif.variable} ${jetBrainsMono.variable} ${archivoBlack.variable} ${archivo.variable} h-full antialiased`}>
       <head>
         <script
           type="application/ld+json"
@@ -99,14 +133,26 @@ export default function RootLayout({
                     "Tuesday",
                     "Wednesday",
                     "Thursday",
+                    "Friday",
                   ],
                   opens: "08:30",
+                  closes: "12:30",
+                },
+                {
+                  "@type": "OpeningHoursSpecification",
+                  dayOfWeek: [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                  ],
+                  opens: "13:00",
                   closes: "17:00",
                 },
                 {
                   "@type": "OpeningHoursSpecification",
                   dayOfWeek: "Friday",
-                  opens: "08:30",
+                  opens: "13:00",
                   closes: "16:00",
                 },
               ],
@@ -128,16 +174,19 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col pb-[calc(env(safe-area-inset-bottom)+64px)] md:pb-0">
+      <body className="min-h-full flex flex-col">
         <a href="#main" className="skip-link">
           Spring naar hoofdinhoud
         </a>
-        <Header />
+        <ChromeGate>
+          <Header />
+        </ChromeGate>
         <main id="main" className="flex-1">
           {children}
         </main>
-        <Footer />
-        <DeferredWidgets />
+        <ChromeGate>
+          <Footer />
+        </ChromeGate>
       </body>
     </html>
   );

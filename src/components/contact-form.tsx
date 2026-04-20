@@ -67,7 +67,7 @@ export function ContactForm() {
               placeholder="Uw naam"
               required
               aria-required="true"
-              className="mt-1.5"
+              className="mt-2 h-14 rounded-full border-foreground/15 bg-background px-5 text-base focus-visible:border-foreground/30 focus-visible:ring-foreground/10"
             />
           </div>
           <div>
@@ -89,7 +89,7 @@ export function ContactForm() {
               placeholder="Uw telefoonnummer"
               required={isCallback}
               aria-required={isCallback}
-              className="mt-1.5"
+              className="mt-2 h-14 rounded-full border-foreground/15 bg-background px-5 text-base focus-visible:border-foreground/30 focus-visible:ring-foreground/10"
             />
           </div>
         </div>
@@ -107,7 +107,7 @@ export function ContactForm() {
             placeholder="uw@email.nl"
             required
             aria-required="true"
-            className="mt-1.5"
+            className="mt-2 h-14 rounded-full border-foreground/15 bg-background px-5 text-base focus-visible:border-foreground/30 focus-visible:ring-foreground/10"
           />
         </div>
         <div>
@@ -117,7 +117,7 @@ export function ContactForm() {
             name="onderwerp"
             autoComplete="off"
             placeholder="Waar gaat uw vraag over?"
-            className="mt-1.5"
+            className="mt-2 h-14 rounded-full border-foreground/15 bg-background px-5 text-base focus-visible:border-foreground/30 focus-visible:ring-foreground/10"
             value={selected ? choiceLabels[selected] : ""}
             onChange={() => setSelected(null)}
           />
@@ -136,10 +136,10 @@ export function ContactForm() {
                 ? "Vertel kort waar u over gebeld wilt worden en wanneer u beschikbaar bent..."
                 : "Vertel ons meer over uw project of vraag..."
             }
-            rows={5}
+            rows={6}
             required
             aria-required="true"
-            className="mt-1.5"
+            className="mt-2 min-h-[160px] rounded-3xl border-foreground/15 bg-background px-5 py-4 text-base focus-visible:border-foreground/30 focus-visible:ring-foreground/10"
           />
         </div>
 
@@ -152,9 +152,12 @@ export function ContactForm() {
 
         <button
           type="submit"
-          className="inline-flex min-h-[var(--tap)] items-center justify-center rounded-lg bg-gradient-to-r from-red-600 to-red-700 px-6 text-sm font-medium text-white transition-all hover:from-red-700 hover:to-red-800 shadow-lg shadow-red-600/25 sm:w-auto"
+          className="group inline-flex items-center gap-3 rounded-full bg-foreground py-3 pl-7 pr-3 text-base font-medium text-background transition-transform hover:-translate-y-0.5"
         >
-          {isCallback ? "Verstuur terugbelverzoek" : "Verstuur bericht"}
+          <span>{isCallback ? "Verstuur terugbelverzoek" : "Verstuur bericht"}</span>
+          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-white transition-transform group-hover:translate-x-0.5">
+            <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+          </span>
         </button>
       </form>
     </div>

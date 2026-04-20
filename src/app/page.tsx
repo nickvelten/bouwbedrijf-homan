@@ -1,612 +1,434 @@
 import Link from "next/link";
 import Image from "next/image";
-import {
-  Home,
-  Building2,
-  Hammer,
-  PaintBucket,
-  ArrowRight,
-  Phone,
-  Star,
-  Shield,
-  Users,
-  Clock,
-  ChevronDown,
-  MessageCircle,
-  Ruler,
-  FileCheck,
-  HardHat,
-  KeyRound,
-  ShieldCheck,
-} from "lucide-react";
-import { LinkButton } from "@/components/link-button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
-import { ChoiceCardsLinked } from "@/components/choice-helper";
-import {
-  FadeIn,
-  StaggerContainer,
-  StaggerItem,
-} from "@/components/animations-css";
-import { AnimatedCounter, KenBurnsHero } from "@/components/animations";
-import { AreaServed } from "@/components/area-served";
+import { ArrowUpRight, Plus } from "lucide-react";
+import { testimonials } from "@/data/testimonials";
+import { projects } from "@/data/projects";
+import { RecentWorkSlider } from "@/components/recent-work-slider";
+import { TestimonialsSlider } from "@/components/testimonials-slider";
 
 const services = [
   {
-    icon: Home,
+    tag: "01",
     title: "Woningbouw",
     description:
-      "Van standaardwoningen tot luxe villa's. Uw droomhuis met oog voor detail.",
+      "Van standaardwoning tot luxe villa. We bouwen uw droomhuis met oog voor detail en vakmanschap in elke hoek.",
     href: "/diensten#woningbouw",
     image: "/images/projecten/woningbouw/vijver.jpg",
   },
   {
-    icon: Building2,
+    tag: "02",
     title: "Utiliteitsbouw",
     description:
-      "Bedrijfspanden, kantoren en appartementencomplexen. Functioneel en representatief.",
+      "Bedrijfspanden, kantoren, appartementencomplexen. Functioneel en representatief — gebouwd om mee te groeien.",
     href: "/diensten#utiliteitsbouw",
     image: "/images/projecten/utiliteitsbouw/bedrijfspand-oostkraay.jpg",
   },
   {
-    icon: Hammer,
-    title: "Verbouw & Renovatie",
+    tag: "03",
+    title: "Verbouw & renovatie",
     description:
-      "Van kleine verbouwing tot complete renovatie. Wij maken er iets moois van.",
+      "Kleine verbouwing of complete renovatie. We bewaren het karakter van uw pand en geven het nieuw leven.",
     href: "/diensten#verbouw",
     image: "/images/projecten/utiliteitsbouw/restauratie-enter.jpg",
   },
   {
-    icon: PaintBucket,
+    tag: "04",
     title: "Onderhoud",
     description:
-      "Preventief en correctief onderhoud. Vakkundig en met oog voor detail.",
+      "Preventief en correctief onderhoud door eigen vakmensen. Zo blijft uw pand jarenlang als nieuw.",
     href: "/diensten#onderhoud",
     image: "/images/projecten/woningbouw/lemele.jpg",
   },
 ];
 
 const stats = [
-  { value: 45, suffix: "+", label: "Jaar ervaring" },
-  { value: 35, suffix: "", label: "Vakmensen" },
-  { value: 500, suffix: "+", label: "Projecten" },
-  { value: 100, suffix: "%", label: "Bouwgarant" },
+  { value: "40+", label: "Jaar vakmanschap" },
+  { value: "35", label: "Eigen vakmensen" },
+  { value: "500+", label: "Projecten opgeleverd" },
+  { value: "1982", label: "Opgericht in Enter" },
 ];
 
-const testimonials = [
-  {
-    quote:
-      "De communicatie was uitstekend en het resultaat overtreft onze verwachtingen. Echt vakmanschap.",
-    author: "Familie De Vries",
-    project: "Nieuwbouw woning Markelo",
-  },
-  {
-    quote:
-      "Professioneel, betrouwbaar en altijd bereikbaar. Ons bedrijfspand is precies geworden zoals we het voor ogen hadden.",
-    author: "Reggehave B.V.",
-    project: "Bedrijfspand Enter",
-  },
-  {
-    quote:
-      "Van tekening tot oplevering: alles verliep soepel. We zijn enorm blij met ons nieuwe huis.",
-    author: "Familie Bakker",
-    project: "Villa Blaricum",
-  },
-];
-
-const featuredProjects = [
-  {
-    title: "Woning met vijver",
-    image: "/images/projecten/woningbouw/vijver.jpg",
-    category: "Woningbouw",
-    description: "Luxe vrijstaande woning met geintegreerde waterpartij",
-  },
-  {
-    title: "Woning in Holten",
-    image: "/images/projecten/woningbouw/holten.jpg",
-    category: "Woningbouw",
-  },
-  {
-    title: "Bedrijfspand Enter",
-    image: "/images/projecten/utiliteitsbouw/bedrijfspand-oostkraay.jpg",
-    category: "Utiliteitsbouw",
-  },
-  {
-    title: "Woning in Enschede",
-    image: "/images/projecten/woningbouw/enschede.jpg",
-    category: "Woningbouw",
-  },
-];
-
-const processSteps = [
-  {
-    icon: MessageCircle,
-    title: "Kennismaking",
-    description: "Vrijblijvend gesprek over uw wensen en mogelijkheden.",
-  },
-  {
-    icon: Ruler,
-    title: "Ontwerp",
-    description: "Samen met u werken we het plan tot in detail uit.",
-  },
-  {
-    icon: FileCheck,
-    title: "Vergunning",
-    description: "Wij regelen alle benodigde vergunningen en papierwerk.",
-  },
-  {
-    icon: HardHat,
-    title: "Realisatie",
-    description: "Onze vakmensen bouwen uw project met zorg en precisie.",
-  },
-  {
-    icon: KeyRound,
-    title: "Oplevering",
-    description: "Sleutel in handen — samen inspecteren we het eindresultaat.",
-  },
-];
-
-const heroImages = [
-  { src: "/images/hero/team.jpg", alt: "Het team van Bouwbedrijf Homan" },
-  { src: "/images/projecten/woningbouw/vijver.jpg", alt: "Woning met vijver" },
-  {
-    src: "/images/projecten/woningbouw/holten.jpg",
-    alt: "Woningbouw in Holten",
-  },
+const werkgebied = [
+  "Enter",
+  "Wierden",
+  "Rijssen",
+  "Almelo",
+  "Hengelo",
+  "Borne",
+  "Enschede",
+  "Oldenzaal",
+  "Haaksbergen",
+  "Delden",
+  "Goor",
+  "Markelo",
+  "Holten",
+  "Bathmen",
+  "Raalte",
+  "Lemele",
+  "Hellendoorn",
+  "Nijverdal",
 ];
 
 export default function HomePage() {
   return (
-    <>
-      {/* Hero — Ken Burns effect */}
-      <section className="relative flex min-h-[90vh] items-center overflow-hidden bg-primary">
-        <KenBurnsHero images={heroImages} />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/50" />
-        <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
-          {/* Hero text — no framer-motion in the LCP critical path. CSS animations only. */}
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 backdrop-blur-sm border border-white/20 motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-2 motion-safe:duration-500">
-            <ShieldCheck className="h-4 w-4 text-white" aria-hidden="true" />
-            <span className="text-xs font-medium text-white">
-              Bouwgarant gecertificeerd
-            </span>
+    <div className="bg-background text-foreground">
+      {/* HERO */}
+      <section className="px-3 pt-8 sm:px-6 sm:pt-12">
+        <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
+          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
+            Bouwbedrijf Homan — Enter, sinds 1982
+          </p>
+          <h1 className="font-display mt-6 max-w-5xl text-[clamp(3rem,7.5vw,7rem)] leading-[0.9] tracking-[-0.035em]">
+            Bouwen met vakmanschap,
+            <br />
+            <span className="text-[var(--accent)]">op uw manier.</span>
+          </h1>
+          <div className="mt-10 grid gap-8 lg:grid-cols-12">
+            <p className="max-w-xl text-lg leading-relaxed text-foreground/70 lg:col-span-6">
+              Al ruim veertig jaar realiseren we woningen, bedrijfspanden en
+              renovaties in Twente. Met dertig vaste vakmensen en korte lijnen
+              — van eerste schets tot sleutel.
+            </p>
+            <div className="flex flex-wrap items-start gap-3 lg:col-span-6 lg:justify-end">
+              <Link
+                href="/contact"
+                className="group inline-flex items-center gap-2 rounded-full bg-foreground py-2.5 pl-6 pr-2 text-base font-medium text-background transition-transform hover:-translate-y-0.5"
+              >
+                <span>Start uw project</span>
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--accent)] text-white">
+                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                </span>
+              </Link>
+              <Link
+                href="/projecten"
+                className="group inline-flex items-center gap-2 rounded-full border border-foreground/20 px-6 py-3 text-base font-medium text-foreground transition-colors hover:bg-foreground/5"
+              >
+                Bekijk projecten
+                <ArrowUpRight
+                  className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  aria-hidden="true"
+                />
+              </Link>
+            </div>
           </div>
-          <h1 className="max-w-3xl text-fluid-3xl font-bold tracking-tight text-white motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-2 motion-safe:duration-500 motion-safe:delay-100">
+
+          {/* Hero image — landscape */}
+          <div className="relative mt-14 aspect-[16/9] overflow-hidden rounded-[28px] sm:rounded-[40px]">
+            <Image
+              src="/images/projecten/woningbouw/vijver.jpg"
+              alt="Woning gerealiseerd door Bouwbedrijf Homan"
+              fill
+              className="object-cover"
+              sizes="(min-width: 1024px) 1440px, 100vw"
+              priority
+            />
+            <div className="pointer-events-none absolute bottom-5 left-5 right-5 flex items-end justify-between">
+              <span className="rounded-full bg-white/90 px-4 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-foreground backdrop-blur">
+                Recent werk — 2026
+              </span>
+              <span
+                aria-hidden="true"
+                className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-[var(--accent)] shadow-sm"
+              >
+                <Plus className="h-5 w-5" strokeWidth={2.5} />
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* INTRO */}
+      <section className="px-3 pt-16 sm:px-6 sm:pt-24">
+        <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-5">
+              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
+                § Introductie
+              </p>
+              <h2 className="mt-5 text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
+                Een familiebedrijf dat bouwt zoals het hoort — zorgvuldig,
+                transparant, en met een duidelijke handtekening.
+              </h2>
+            </div>
+            <div className="lg:col-span-6 lg:col-start-7">
+              <p className="text-lg leading-relaxed text-foreground/70">
+                Opgericht in 1982 in Enter, uitgegroeid tot dé vertrouwde
+                aannemer van Twente. We werken met eigen vakmensen en vaste
+                onderaannemers zodat we kwaliteit en planning zelf in de hand
+                houden. Geen verrassingen — behalve die ene muur die mooier
+                wordt dan verwacht.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* STRAPLINE — display tagline */}
+      <section className="px-3 pt-20 sm:px-6 sm:pt-28">
+        <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
+          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
+            § Wat wij bouwen
+          </p>
+          <p className="font-display mt-6 max-w-5xl text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.035em]">
             Stijlvol wonen.
             <br />
-            <span className="bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
-              Sfeervol werken.
-            </span>
-          </h1>
-          <p className="mt-6 max-w-xl text-fluid-md leading-relaxed text-white/80 motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-2 motion-safe:duration-500 motion-safe:delay-200">
-            Al meer dan 45 jaar bouwt Bouwbedrijf Homan aan dromen in Twente.
-            Van luxe villa&apos;s tot moderne bedrijfspanden — met vakmanschap
-            waar u op kunt vertrouwen.
+            <span className="text-[var(--accent)]">Sfeervol werken.</span>
           </p>
-          <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-2 motion-safe:duration-500 motion-safe:delay-300">
-            <LinkButton
-              href="#keuzehulp"
-              size="lg"
-              className="bg-gradient-to-r from-red-600 to-red-700 border-0 text-white hover:from-red-700 hover:to-red-800 shadow-lg shadow-red-600/25 text-base px-8 py-3 h-auto min-h-[var(--tap)]"
-            >
-              Wat wilt u bouwen?
-              <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
-            </LinkButton>
-            <LinkButton
-              href="/projecten"
-              className="inline-flex items-center rounded-lg border-2 border-white/30 bg-transparent px-8 py-3 text-base font-medium text-white backdrop-blur-sm transition-all hover:bg-white/10 h-auto min-h-[var(--tap)]"
-            >
-              Bekijk onze projecten
-            </LinkButton>
+        </div>
+      </section>
+
+      {/* IN CIJFERS — big stats */}
+      <section className="px-3 pt-20 sm:px-6 sm:pt-28">
+        <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
+          <div className="flex items-end justify-between gap-6">
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
+              § In cijfers
+            </p>
+            <p className="hidden font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/40 sm:block">
+              Stand 2026
+            </p>
           </div>
-        </div>
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <ChevronDown className="h-6 w-6 text-white/50" />
-        </div>
-      </section>
-
-      {/* Stats — Animated counters */}
-      <section className="relative -mt-16 z-10">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <StaggerContainer
-            className="grid grid-cols-2 gap-1 overflow-hidden rounded-2xl bg-white shadow-2xl shadow-black/10 lg:grid-cols-4"
-            staggerDelay={0.1}
-          >
-            {stats.map((stat) => (
-              <StaggerItem key={stat.label}>
-                <div className="px-6 py-8 text-center transition-colors hover:bg-muted/50">
-                  <p className="text-3xl font-bold bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent sm:text-4xl">
-                    <AnimatedCounter
-                      target={stat.value}
-                      suffix={stat.suffix}
-                    />
-                  </p>
-                  <p className="mt-1 text-sm font-medium text-muted-foreground">
-                    {stat.label}
-                  </p>
-                </div>
-              </StaggerItem>
+          <dl className="mt-8 grid grid-cols-2 divide-y divide-foreground/10 border-t border-foreground/10 sm:grid-cols-4 sm:divide-y-0 sm:divide-x">
+            {stats.map((s, i) => (
+              <div
+                key={s.label}
+                className={`flex items-baseline gap-4 px-2 py-10 sm:block sm:px-8 sm:py-8 ${
+                  i % 2 === 1 ? "border-l border-foreground/10 sm:border-l-0" : ""
+                }`}
+              >
+                <dd className="font-display text-[clamp(3rem,6vw,5.5rem)] leading-none tracking-[-0.04em]">
+                  {s.value}
+                </dd>
+                <dt className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50 sm:mt-4 sm:block">
+                  {s.label}
+                </dt>
+              </div>
             ))}
-          </StaggerContainer>
+          </dl>
         </div>
       </section>
 
-      {/* Services — Card grid with images */}
-      <section className="py-24 sm:py-32" id="diensten">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <FadeIn className="text-center">
-            <p className="text-sm font-semibold uppercase tracking-widest text-red-700">
-              Onze expertise
-            </p>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-              Wat wij voor u kunnen betekenen
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-              Van vergunning tot oplevering — wij begeleiden u bij elke stap van
-              het bouwproces.
-            </p>
-          </FadeIn>
-
-          <StaggerContainer
-            className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
-            staggerDelay={0.15}
-          >
-            {services.map((service) => (
-              <StaggerItem key={service.title}>
-                <Link href={service.href} className="group block h-full">
-                  <div className="relative h-full overflow-hidden rounded-2xl bg-card shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                    <div className="relative h-48 overflow-hidden">
-                      <Image
-                        src={service.image}
-                        alt={service.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                        quality={60}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                      <div className="absolute bottom-4 left-4 inline-flex rounded-full bg-white/20 p-2.5 backdrop-blur-sm">
-                        <service.icon className="h-5 w-5 text-white" />
-                      </div>
-                    </div>
-                    <div className="p-5">
-                      <h3 className="text-lg font-bold">{service.title}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                        {service.description}
-                      </p>
-                      <span className="mt-4 inline-flex items-center text-sm font-semibold text-red-600 transition-colors group-hover:text-red-700">
-                        Meer informatie
-                        <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
-      </section>
-
-      {/* Process — "Zo werken wij" (angled + textured) */}
-      <section className="angle-both noise-texture relative bg-primary py-28 sm:py-36">
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <FadeIn className="text-center">
-            <p className="text-sm font-semibold uppercase tracking-widest text-red-400">
-              Van plan tot sleutel
-            </p>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-              Zo werken wij
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-white/70">
-              Een helder proces van begin tot eind — zodat u altijd weet waar u
-              aan toe bent.
-            </p>
-          </FadeIn>
-
-          <div className="relative mt-16">
-            {/* Connecting line */}
-            <div className="absolute left-0 right-0 top-12 hidden h-0.5 bg-gradient-to-r from-transparent via-red-500/40 to-transparent lg:block" />
-
-            <StaggerContainer
-              className="grid gap-8 sm:grid-cols-2 lg:grid-cols-5"
-              staggerDelay={0.12}
-            >
-              {processSteps.map((step, i) => (
-                <StaggerItem key={step.title}>
-                  <div className="group relative flex flex-col items-center text-center">
-                    <div className="relative z-10 mb-5 flex h-24 w-24 items-center justify-center rounded-2xl bg-white/10 ring-1 ring-white/20 backdrop-blur-sm transition-all duration-300 group-hover:bg-red-600/80 group-hover:ring-red-500/50 group-hover:scale-105">
-                      <step.icon className="h-8 w-8 text-white/80 transition-colors group-hover:text-white" />
-                      <span className="absolute -top-2 -right-2 flex h-7 w-7 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white ring-2 ring-primary">
-                        {i + 1}
-                      </span>
-                    </div>
-                    <h3 className="text-lg font-bold text-white">
-                      {step.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-white/60">
-                      {step.description}
-                    </p>
-                  </div>
-                </StaggerItem>
+      {/* WERKGEBIED */}
+      <section className="px-3 pt-20 sm:px-6 sm:pt-28">
+        <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-4">
+              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
+                § Werkgebied
+              </p>
+              <h2 className="mt-5 text-3xl font-bold leading-[1.05] tracking-tight sm:text-4xl">
+                Thuis in
+                <br />
+                <span className="text-[var(--accent)]">heel Twente.</span>
+              </h2>
+              <p className="mt-6 max-w-sm text-base leading-relaxed text-foreground/70">
+                We bouwen uitsluitend in Twente en directe omgeving. Korte
+                lijnen, vakmensen uit de buurt, en snel ter plekke bij vragen.
+              </p>
+            </div>
+            <ul className="flex flex-wrap gap-2 content-start lg:col-span-8 lg:pt-3">
+              {werkgebied.map((stad) => (
+                <li key={stad}>
+                  <span className="inline-flex items-center rounded-full border border-foreground/15 bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-foreground/30 hover:bg-foreground/5">
+                    {stad}
+                  </span>
+                </li>
               ))}
-            </StaggerContainer>
+              <li>
+                <span className="inline-flex items-center rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background">
+                  + meer op aanvraag
+                </span>
+              </li>
+            </ul>
           </div>
         </div>
       </section>
 
-      {/* Featured projects — Bigger showcase */}
-      <section className="py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <FadeIn>
-            <div className="flex items-end justify-between">
+      {/* PROJECTS — dark rounded card */}
+      <section className="px-3 pt-16 sm:px-6 sm:pt-24">
+        <div className="mx-auto max-w-[1440px]">
+          <div className="relative overflow-hidden rounded-[32px] bg-foreground px-6 py-16 text-white sm:rounded-[40px] sm:px-10 sm:py-20 lg:px-16 lg:py-24">
+            <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="text-sm font-semibold uppercase tracking-widest text-red-700">
-                  Portfolio
+                <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/50">
+                  § Portfolio
                 </p>
-                <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-                  Recente projecten
+                <h2 className="font-display mt-4 max-w-xl text-4xl leading-[1.02] tracking-tight sm:text-5xl">
+                  Recente projecten in Twente.
                 </h2>
               </div>
-              <LinkButton
+              <Link
                 href="/projecten"
-                className="hidden items-center rounded-lg bg-gradient-to-r from-red-600 to-red-700 border-0 font-medium text-white hover:from-red-700 hover:to-red-800 shadow-lg shadow-red-600/20 sm:inline-flex"
+                className="group inline-flex shrink-0 items-center gap-2 rounded-full bg-white py-2 pl-6 pr-2 text-sm font-medium text-foreground transition-transform hover:-translate-y-0.5"
               >
-                Alle projecten
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </LinkButton>
-            </div>
-          </FadeIn>
-
-          {/* Hero project — full width */}
-          <FadeIn className="mt-12">
-            <Link href="/projecten" className="group block">
-              <div className="relative overflow-hidden rounded-3xl aspect-[21/9]">
-                <Image
-                  src={featuredProjects[0].image}
-                  alt={featuredProjects[0].title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  sizes="100vw"
-                  quality={60}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10" />
-                <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-12">
-                  <Badge className="mb-3 bg-red-600/90 text-white border-0 text-sm px-4 py-1">
-                    {featuredProjects[0].category}
-                  </Badge>
-                  <h3 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
-                    {featuredProjects[0].title}
-                  </h3>
-                  {featuredProjects[0].description && (
-                    <p className="mt-2 max-w-lg text-lg text-white/70">
-                      {featuredProjects[0].description}
-                    </p>
-                  )}
-                  <span className="mt-4 inline-flex items-center text-sm font-semibold text-white/80 transition-colors group-hover:text-white">
-                    Bekijk project
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </span>
-                </div>
-              </div>
-            </Link>
-          </FadeIn>
-
-          {/* Secondary projects — 3 column grid */}
-          <StaggerContainer
-            className="mt-6 grid gap-6 sm:grid-cols-3"
-            staggerDelay={0.1}
-          >
-            {featuredProjects.slice(1).map((project) => (
-              <StaggerItem key={project.title}>
-                <Link href="/projecten" className="group block">
-                  <div className="relative overflow-hidden rounded-2xl aspect-[4/3]">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      sizes="(max-width: 640px) 100vw, 33vw"
-                      quality={60}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-80 transition-opacity group-hover:opacity-100" />
-                    <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10" />
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <Badge className="mb-2 bg-red-600/90 text-white border-0">
-                        {project.category}
-                      </Badge>
-                      <h3 className="text-xl font-bold text-white">
-                        {project.title}
-                      </h3>
-                    </div>
-                  </div>
-                </Link>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-
-          <FadeIn className="mt-8 text-center sm:hidden">
-            <LinkButton
-              href="/projecten"
-              className="bg-gradient-to-r from-red-600 to-red-700 border-0 text-white hover:from-red-700 hover:to-red-800 shadow-lg shadow-red-600/20"
-            >
-              Alle projecten bekijken
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </LinkButton>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* Werkgebied — local SEO + answers "do you work here?" */}
-      <AreaServed />
-
-      {/* About preview — Split layout */}
-      <section className="angle-top noise-texture relative bg-muted/80 py-28 sm:py-36">
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid items-center gap-16 lg:grid-cols-2">
-            <FadeIn direction="left">
-              <p className="text-sm font-semibold uppercase tracking-widest text-red-700">
-                Over ons
-              </p>
-              <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-                Vakmanschap met een{" "}
-                <span className="bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
-                  persoonlijke aanpak
+                <span>Alle projecten</span>
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--accent)] text-white">
+                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
                 </span>
-              </h2>
-              <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-                Sinds 1982 staat Bouwbedrijf Homan bekend om hoogwaardige
-                woning- en utiliteitsbouw. Met 35 ervaren vakmensen en korte
-                communicatielijnen zorgen wij ervoor dat uw project soepel
-                verloopt.
-              </p>
-              <div className="mt-10 grid grid-cols-3 gap-8">
-                {[
-                  { icon: Shield, label: "Garantie" },
-                  { icon: Users, label: "Eigen team" },
-                  { icon: Clock, label: "Op tijd" },
-                ].map((item) => (
-                  <div
-                    key={item.label}
-                    className="flex flex-col items-center text-center"
-                  >
-                    <div className="mb-3 rounded-xl bg-gradient-to-br from-red-50 to-red-100 p-3">
-                      <item.icon className="h-7 w-7 text-red-600" />
-                    </div>
-                    <span className="text-sm font-semibold">{item.label}</span>
-                  </div>
-                ))}
-              </div>
-              <LinkButton
-                href="/over-ons"
-                className="mt-10 bg-gradient-to-r from-red-600 to-red-700 border-0 text-white hover:from-red-700 hover:to-red-800 shadow-lg shadow-red-600/20"
-              >
-                Leer ons kennen
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </LinkButton>
-            </FadeIn>
-            <FadeIn direction="right">
-              <div className="relative">
-                <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
-                  <Image
-                    src="/images/projecten/woningbouw/enter-1.jpg"
-                    alt="Woning gerealiseerd door Bouwbedrijf Homan in Enter"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                </div>
-                <div className="absolute -bottom-6 -left-6 rounded-2xl bg-white p-5 shadow-2xl">
-                  <div className="flex items-center gap-3">
-                    <Image
-                      src="/images/bouwgarant-logo.png"
-                      alt="Bouwgarant"
-                      width={48}
-                      height={40}
-                      className="h-10 w-auto"
-                    />
-                    <div>
-                      <p className="text-sm font-bold">Bouwgarant</p>
-                      <p className="text-xs text-muted-foreground">
-                        Gecertificeerd
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </FadeIn>
+              </Link>
+            </div>
+
+            <div className="mt-12">
+              <RecentWorkSlider projects={projects.slice(0, 12)} />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <FadeIn className="text-center">
-            <p className="text-sm font-semibold uppercase tracking-widest text-red-700">
-              Ervaringen
+      {/* SERVICES */}
+      <section className="px-3 pt-24 sm:px-6 sm:pt-32">
+        <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
+          <div className="max-w-2xl">
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
+              § Diensten
             </p>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-              Wat onze klanten zeggen
+            <h2 className="font-display mt-5 text-4xl leading-[1.02] tracking-tight sm:text-5xl">
+              Wat we voor u maken.
             </h2>
-          </FadeIn>
-
-          <StaggerContainer
-            className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
-            staggerDelay={0.15}
-          >
-            {testimonials.map((testimonial) => (
-              <StaggerItem key={testimonial.author}>
-                <Card className="h-full border-0 shadow-lg transition-shadow hover:shadow-xl">
-                  <CardContent className="flex h-full flex-col p-8">
-                    <div className="mb-6 flex gap-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className="h-5 w-5 fill-red-500 text-red-500"
-                        />
-                      ))}
-                    </div>
-                    <blockquote className="flex-1 text-base leading-relaxed text-foreground/80">
-                      &ldquo;{testimonial.quote}&rdquo;
-                    </blockquote>
-                    <Separator className="my-6" />
-                    <div>
-                      <p className="font-bold">{testimonial.author}</p>
-                      <p className="text-sm text-muted-foreground">
-                        {testimonial.project}
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
-      </section>
-
-      {/* CTA — Keuzehulp (angled + textured) */}
-      <section
-        id="keuzehulp"
-        className="angle-top noise-texture relative overflow-hidden py-28 sm:py-36 scroll-mt-20"
-      >
-        <Image
-          src="/images/projecten/woningbouw/holten.jpg"
-          alt="Project Bouwbedrijf Homan"
-          fill
-          className="object-cover"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/75 to-black/60" />
-        <div className="relative mx-auto max-w-6xl px-4 text-center sm:px-6 lg:px-8">
-          <FadeIn>
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-              Klaar om te bouwen
-              <br />
-              aan uw droom?
-            </h2>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-white/80">
-              Vertel ons wat u zoekt en wij nemen persoonlijk contact met u op.
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-foreground/70">
+              Vier kerndiensten, elk met een eigen team en jarenlange ervaring.
+              Van schetsontwerp tot onderhoud na oplevering.
             </p>
-          </FadeIn>
-          <FadeIn delay={0.2}>
-            <div className="mt-12">
-              <ChoiceCardsLinked />
-            </div>
-          </FadeIn>
-          <FadeIn delay={0.4}>
-            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <LinkButton
-                href="tel:0547381035"
-                className="inline-flex items-center rounded-lg border-2 border-white/30 bg-transparent px-8 py-3 text-base font-medium text-white backdrop-blur-sm transition-all hover:bg-white/10 h-auto"
+          </div>
+
+          <div className="mt-16 grid gap-6 md:grid-cols-2">
+            {services.map((service) => (
+              <Link
+                key={service.title}
+                href={service.href}
+                className="group relative overflow-hidden rounded-[28px] bg-white transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-foreground/5"
               >
-                <Phone className="mr-2 h-5 w-5" />
-                Of bel direct: 0547 381 035
-              </LinkButton>
-            </div>
-          </FadeIn>
+                <div className="relative aspect-[16/9] overflow-hidden">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                    quality={70}
+                  />
+                </div>
+                <div className="flex items-start justify-between gap-4 p-8">
+                  <div className="flex-1">
+                    <div className="flex items-baseline gap-3">
+                      <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--accent)]">
+                        §{service.tag}
+                      </span>
+                      <h3 className="text-2xl font-semibold tracking-tight">
+                        {service.title}
+                      </h3>
+                    </div>
+                    <p className="mt-3 text-base leading-relaxed text-foreground/70">
+                      {service.description}
+                    </p>
+                  </div>
+                  <span
+                    aria-hidden="true"
+                    className="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-foreground text-background transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  >
+                    <ArrowUpRight className="h-4 w-4" />
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
-    </>
+
+      {/* MISSION / OVER ONS TEASER */}
+      <section className="px-3 pt-24 sm:px-6 sm:pt-32">
+        <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
+          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
+            § Over ons
+          </p>
+          <div className="mt-6 grid gap-12 lg:grid-cols-12 lg:gap-16">
+            <h2 className="text-[clamp(2.25rem,4vw,3.75rem)] font-semibold leading-[1.02] tracking-tight lg:col-span-7">
+              Bouwen is voor ons geen project — het is een belofte van
+              vakmanschap, afspraak en nazorg.
+            </h2>
+            <div className="lg:col-span-5 lg:pt-3">
+              <p className="text-lg leading-relaxed text-foreground/70">
+                We werken alleen in Twente omdat we geloven in korte lijnen en
+                lange relaties. De meeste klanten vinden ons via
+                mond-tot-mond, en de meeste vakmensen werken hier al tien jaar
+                of langer. Dat zegt genoeg.
+              </p>
+              <Link
+                href="/over-ons"
+                className="group mt-8 inline-flex items-center gap-2 rounded-full bg-foreground py-2.5 pl-6 pr-2 text-base font-medium text-background transition-transform hover:-translate-y-0.5"
+              >
+                <span>Leer ons kennen</span>
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--accent)] text-white">
+                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                </span>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="px-3 pt-24 sm:px-6 sm:pt-32">
+        <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <div className="max-w-2xl">
+              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
+                § Klanten aan het woord
+              </p>
+              <h2 className="font-display mt-5 text-4xl leading-[1.02] tracking-tight sm:text-5xl">
+                Wat opdrachtgevers
+                <br />
+                <span className="text-[var(--accent)]">over ons zeggen.</span>
+              </h2>
+            </div>
+            <p className="max-w-sm text-base leading-relaxed text-foreground/60">
+              De meeste klanten vinden ons via mond-tot-mond. Deze verhalen
+              zijn daarvan het bewijs.
+            </p>
+          </div>
+
+          <div className="mt-14">
+            <TestimonialsSlider items={testimonials} />
+          </div>
+        </div>
+      </section>
+
+      {/* CTA — cream to dark card */}
+      <section className="px-3 py-24 sm:px-6 sm:py-32">
+        <div className="mx-auto max-w-[1440px]">
+          <div className="relative overflow-hidden rounded-[32px] bg-foreground px-8 py-20 text-center text-white sm:rounded-[40px] sm:px-16 sm:py-28">
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/50">
+              Start een project
+            </p>
+            <h2 className="font-display mx-auto mt-6 max-w-3xl text-4xl leading-[1.02] tracking-tight sm:text-6xl">
+              Uw volgende bouwwerk
+              <br />
+              begint met <span className="text-[var(--accent)]">een gesprek.</span>
+            </h2>
+            <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">
+              Vrijblijvend kennismaken, ideeën delen, en kijken of het klikt.
+              We bellen u binnen één werkdag terug.
+            </p>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+              <Link
+                href="/contact"
+                className="group inline-flex items-center gap-2 rounded-full bg-white py-2 pl-6 pr-2 text-sm font-medium text-foreground transition-transform hover:-translate-y-0.5"
+              >
+                <span>Plan een gesprek</span>
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--accent)] text-white">
+                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                </span>
+              </Link>
+              <a
+                href="tel:0547381035"
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-white/5"
+              >
+                Of bel 0547 381 035
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }

@@ -79,41 +79,46 @@
   --spacing-fluid-2xl: clamp(4rem, 2.5rem + 7.5vw, 8rem);
 }
 
-/* ─── Color tokens (oklch) ─────────────────────────────────────────────── */
+/* ─── Color tokens (oklch) — Homan palette (warm off-white + brand red) ── */
 :root {
-  --background: oklch(0.985 0.002 80);
-  --foreground: oklch(0.195 0.01 60);
+  /* Near-white with subtle warmth */
+  --background: oklch(0.985 0.003 80);
+  /* Deep near-black ink */
+  --foreground: #18272d;
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.195 0.01 60);
+  --card-foreground: #18272d;
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.195 0.01 60);
-  --primary: oklch(0.25 0.02 60);
-  --primary-foreground: oklch(0.98 0.005 80);
-  --secondary: oklch(0.95 0.01 80);
-  --secondary-foreground: oklch(0.25 0.02 60);
-  --muted: oklch(0.955 0.008 80);
-  --muted-foreground: oklch(0.42 0.01 60); /* darkened from 0.50 → 0.42 for AA on light bg */
+  --popover-foreground: #18272d;
+  /* Dark panel */
+  --primary: #18272d;
+  --primary-foreground: oklch(0.985 0.003 80);
+  --secondary: oklch(0.95 0.006 80);
+  --secondary-foreground: #18272d;
+  --muted: oklch(0.955 0.005 80);
+  --muted-foreground: oklch(0.42 0.01 60); /* AA on off-white */
+  /* Homan brand red — ~#C62828 */
   --accent: oklch(0.52 0.22 27);
   --accent-foreground: oklch(1 0 0);
   --warm: oklch(0.52 0.22 27);
   --warm-foreground: oklch(1 0 0);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.90 0.01 80);
-  --input: oklch(0.90 0.01 80);
+  --border: oklch(0.90 0.008 80);
+  --input: oklch(0.90 0.008 80);
   --ring: oklch(0.52 0.22 27);
   --chart-1: oklch(0.52 0.22 27);
   --chart-2: oklch(0.65 0.12 80);
   --chart-3: oklch(0.45 0.08 60);
   --chart-4: oklch(0.75 0.06 80);
   --chart-5: oklch(0.35 0.04 60);
-  --radius: 0.5rem;
-  --sidebar: oklch(0.985 0.002 80);
-  --sidebar-foreground: oklch(0.195 0.01 60);
-  --sidebar-primary: oklch(0.25 0.02 60);
-  --sidebar-primary-foreground: oklch(0.98 0.005 80);
-  --sidebar-accent: oklch(0.95 0.01 80);
-  --sidebar-accent-foreground: oklch(0.25 0.02 60);
-  --sidebar-border: oklch(0.90 0.01 80);
+  /* Signature Somerville rounded shapes */
+  --radius: 1rem;
+  --sidebar: oklch(0.985 0.003 80);
+  --sidebar-foreground: #18272d;
+  --sidebar-primary: #18272d;
+  --sidebar-primary-foreground: oklch(0.985 0.003 80);
+  --sidebar-accent: oklch(0.95 0.006 80);
+  --sidebar-accent-foreground: #18272d;
+  --sidebar-border: oklch(0.90 0.008 80);
   --sidebar-ring: oklch(0.52 0.22 27);
 
   /* Layout primitives */
@@ -257,6 +262,62 @@
 .cq        { container-type: inline-size; }
 .cq-card   { container-type: inline-size; container-name: card; }
 .cq-grid   { container-type: inline-size; container-name: grid; }
+
+/* Article body prose — used on /actueel/[slug] */
+.article-prose {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: oklch(0.28 0.005 60);
+}
+.article-prose > * + * { margin-top: 1.25em; }
+.article-prose p {
+  max-width: 65ch;
+}
+.article-prose h2 {
+  margin-top: 2.5em;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--foreground);
+}
+.article-prose h3 {
+  margin-top: 2em;
+  font-size: 1.375rem;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--foreground);
+}
+.article-prose strong { font-weight: 700; color: var(--foreground); }
+.article-prose em { font-style: italic; }
+.article-prose ul, .article-prose ol {
+  padding-left: 1.5rem;
+}
+.article-prose ul { list-style: disc; }
+.article-prose ol { list-style: decimal; }
+.article-prose li + li { margin-top: 0.5em; }
+.article-prose blockquote {
+  margin-left: 0;
+  padding-left: 1.5rem;
+  border-left: 3px solid var(--accent);
+  font-style: italic;
+  color: oklch(0.35 0.005 60);
+}
+
+/* Display font utility — Archivo Black for big hero/display headings */
+.font-display {
+  font-family: var(--font-display), "Archivo Black", "Geist", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.035em;
+}
+
+/* Display-alt — same Archivo family, thinner weight for secondary display headings */
+.font-display-alt {
+  font-family: var(--font-display-alt), "Archivo", "Geist", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
 
 /* Hero crossfade — pure CSS, no JS animation library on the LCP path */
 @keyframes hero-fade-cycle {

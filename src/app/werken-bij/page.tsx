@@ -1,18 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowRight,
-  Heart,
-  Users,
-  TrendingUp,
-  Coffee,
-  Wrench,
-  HardHat,
-} from "lucide-react";
-import { LinkButton } from "@/components/link-button";
-import { Card, CardContent } from "@/components/ui/card";
-import { FadeIn, StaggerContainer, StaggerItem } from "@/components/animations-css";
+import { ArrowUpRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Werken bij",
@@ -23,173 +11,199 @@ export const metadata: Metadata = {
 
 const perks = [
   {
-    icon: Users,
+    tag: "01",
     title: "Hecht team",
-    description: "Werk in een team van 35 betrokken collega's.",
+    description:
+      "Werk in een team van 35 betrokken collega's. Korte lijnen, geen onzin — gewoon vakmensen onder elkaar.",
   },
   {
-    icon: TrendingUp,
+    tag: "02",
     title: "Groei",
-    description: "Opleidingen en doorgroeimogelijkheden.",
+    description:
+      "Opleidingen en doorgroeimogelijkheden binnen het bedrijf. We investeren graag in wie blijft.",
   },
   {
-    icon: Wrench,
+    tag: "03",
     title: "Afwisselend werk",
-    description: "Diverse projecten van woningbouw tot utiliteitsbouw.",
+    description:
+      "Van villa's tot centrumplannen. Elke week een andere locatie, elke maand een nieuw detail.",
   },
   {
-    icon: Coffee,
+    tag: "04",
     title: "Goede sfeer",
-    description: "Informele werksfeer met korte lijnen.",
+    description:
+      "Informele werksfeer, nuchter Twents. Vrijdagmiddag borrel hoort er gewoon bij.",
+  },
+];
+
+const vacatures = [
+  {
+    title: "Stagiair(e) bouwkunde",
+    type: "Stage",
+    period: "Doorlopend",
   },
 ];
 
 export default function WerkenBijPage() {
   return (
-    <>
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-primary py-20 sm:py-28">
-        <Image
-          src="/images/hero/team.jpg"
-          alt="Team Bouwbedrijf Homan"
-          fill
-          className="object-cover opacity-15"
-          preload
-          sizes="100vw"
-          fetchPriority="high"
-          quality={45}
-        />
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <FadeIn>
+    <div className="bg-background text-foreground">
+      {/* HERO */}
+      <section className="px-3 pt-12 sm:px-6 sm:pt-20">
+        <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
+          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
+            § Werken bij Homan
+          </p>
+          <h1 className="font-display mt-6 max-w-5xl text-[clamp(2.75rem,6.5vw,6rem)] leading-[0.9] tracking-[-0.035em]">
+            Bouw met ons aan
+            <br />
+            <span className="text-[var(--accent)]">iets moois.</span>
+          </h1>
+          <p className="mt-8 max-w-2xl text-lg leading-relaxed text-foreground/70">
+            Word onderdeel van een hecht team vakmensen. Bij ons werk je aan
+            uitdagende projecten in Twente — van villa's tot centrumplannen — in
+            een prettige, nuchtere werksfeer.
+          </p>
+        </div>
+      </section>
+
+      {/* PERKS — dark rounded card */}
+      <section className="px-3 pt-20 sm:px-6 sm:pt-28">
+        <div className="mx-auto max-w-[1440px]">
+          <div className="relative overflow-hidden rounded-[32px] bg-foreground px-6 py-16 text-white sm:rounded-[40px] sm:px-10 sm:py-20 lg:px-16 lg:py-24">
             <div className="max-w-2xl">
-              <p className="text-sm font-semibold uppercase tracking-widest text-red-400">
-                Kom erbij
+              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+                § Waarom Homan
               </p>
-              <h1 className="mt-3 text-4xl font-bold tracking-tight text-primary-foreground sm:text-5xl lg:text-6xl">
-                Werken bij Bouwbedrijf Homan
-              </h1>
-              <p className="mt-6 text-lg leading-relaxed text-primary-foreground/80 sm:text-xl">
-                Word onderdeel van een hecht team vakmensen. Bij ons werk je aan
-                uitdagende projecten in een prettige werksfeer.
+              <h2 className="font-display mt-5 text-4xl leading-[1.02] tracking-tight sm:text-5xl">
+                Wat je bij ons vindt.
+              </h2>
+              <p className="mt-6 text-lg leading-relaxed text-white/70">
+                Vier redenen om te kiezen voor Bouwbedrijf Homan — en om lang
+                te blijven.
               </p>
             </div>
-          </FadeIn>
+            <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {perks.map((p) => (
+                <div
+                  key={p.title}
+                  className="rounded-[24px] bg-white/5 p-7 backdrop-blur"
+                >
+                  <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+                    §{p.tag}
+                  </span>
+                  <h3 className="mt-4 text-2xl font-semibold tracking-tight">
+                    {p.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-white/70">
+                    {p.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Why */}
-      <section className="py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <FadeIn className="text-center">
-            <p className="text-sm font-semibold uppercase tracking-widest text-red-700">
-              Voordelen
+      {/* VACATURES */}
+      <section className="px-3 pt-24 sm:px-6 sm:pt-32">
+        <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
+                § Openstaande functies
+              </p>
+              <h2 className="font-display mt-5 text-4xl leading-[1.02] tracking-tight sm:text-5xl">
+                Vacatures
+              </h2>
+            </div>
+            <p className="max-w-sm text-foreground/60">
+              Staat jouw droombaan er niet bij? Stuur dan een open
+              sollicitatie.
             </p>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-              Waarom werken bij Homan?
-            </h2>
-          </FadeIn>
-          <StaggerContainer className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4" staggerDelay={0.15}>
-            {perks.map((perk) => (
-              <StaggerItem key={perk.title}>
-                <Card>
-                  <CardContent className="p-6 text-center">
-                    <div className="mx-auto mb-4 inline-flex rounded-lg bg-accent/10 p-3">
-                      <perk.icon className="h-6 w-6 text-accent" />
-                    </div>
-                    <h3 className="font-semibold">{perk.title}</h3>
-                    <p className="mt-2 text-sm text-muted-foreground">
-                      {perk.description}
+          </div>
+
+          <ol className="mt-12 border-t border-foreground/10">
+            {vacatures.map((job, i) => (
+              <li
+                key={job.title}
+                className="group flex flex-col gap-4 border-b border-foreground/10 py-8 sm:flex-row sm:items-center sm:justify-between sm:gap-10 sm:py-10"
+              >
+                <div className="flex items-baseline gap-5">
+                  <span className="font-mono text-sm uppercase tracking-[0.2em] text-accent">
+                    §{String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div>
+                    <h3 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+                      {job.title}
+                    </h3>
+                    <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
+                      {job.type} · Enter, Twente · {job.period}
                     </p>
-                  </CardContent>
-                </Card>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
-      </section>
-
-      {/* Open positions */}
-      <section className="bg-muted py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Vacatures
-            </h2>
-            <p className="mt-4 text-muted-foreground">
-              Staat jouw droombaan er niet bij? Stuur dan een open sollicitatie!
-            </p>
-          </div>
-          <div className="mx-auto mt-12 max-w-2xl space-y-4">
-            {[
-              {
-                title: "Stagiair(e) bouwkunde",
-                type: "Stage",
-                icon: TrendingUp,
-              },
-            ].map((job) => (
-              <Card key={job.title}>
-                <CardContent className="flex items-center justify-between p-5">
-                  <div className="flex items-center gap-4">
-                    <div className="rounded-lg bg-accent/10 p-2">
-                      <job.icon className="h-5 w-5 text-accent" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold">{job.title}</h3>
-                      <p className="text-sm text-muted-foreground">
-                        {job.type} · Enter, Twente
-                      </p>
-                    </div>
                   </div>
-                  <LinkButton
-                    href="/contact"
-                    variant="outline"
-                    size="sm"
-                  >
-                    Solliciteer
-                  </LinkButton>
-                </CardContent>
-              </Card>
+                </div>
+                <Link
+                  href="/contact"
+                  className="group/btn inline-flex shrink-0 items-center gap-2 rounded-full bg-foreground py-2.5 pl-6 pr-2 text-base font-medium text-background transition-transform hover:-translate-y-0.5"
+                >
+                  <span>Solliciteer</span>
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-white">
+                    <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                  </span>
+                </Link>
+              </li>
             ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* OPEN SOLLICITATIE */}
+      <section className="px-3 pt-20 sm:px-6 sm:pt-28">
+        <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-6">
+              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
+                § Open sollicitatie
+              </p>
+              <h2 className="font-display mt-5 text-[clamp(2rem,4vw,3.5rem)] leading-[1.02] tracking-tight">
+                Past niks — maar wel wat met Homan?
+              </h2>
+            </div>
+            <div className="lg:col-span-5 lg:col-start-8 lg:pt-3">
+              <p className="text-lg leading-relaxed text-foreground/70">
+                Stuur ons een mail of bel even. Als we klikken, vinden we wel
+                een plek. Vakmensen met een goed verhaal zijn altijd welkom.
+              </p>
+              <div className="mt-8 flex flex-col gap-3">
+                <a
+                  href="mailto:info@bouwbedrijfhoman.nl"
+                  className="group inline-flex items-center gap-2 rounded-full bg-foreground py-2.5 pl-6 pr-2 text-base font-medium text-background transition-transform hover:-translate-y-0.5"
+                >
+                  <span>info@bouwbedrijfhoman.nl</span>
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-white">
+                    <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                  </span>
+                </a>
+                <a
+                  href="tel:0547381035"
+                  className="inline-flex items-center gap-2 self-start rounded-full border border-foreground/20 px-6 py-3 text-base font-medium text-foreground transition-colors hover:bg-foreground/5"
+                >
+                  Of bel 0547 381 035
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Open sollicitatie CTA */}
-      <section className="py-16">
-        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <Heart className="mx-auto mb-4 h-10 w-10 text-accent" />
-          <h2 className="text-3xl font-bold tracking-tight">
-            Interesse? Neem contact op!
-          </h2>
-          <p className="mt-4 text-muted-foreground">
-            Stuur je CV en motivatie naar{" "}
-            <a
-              href="mailto:info@bouwbedrijfhoman.nl"
-              className="font-medium text-red-700 underline-offset-2 hover:underline"
-            >
-              info@bouwbedrijfhoman.nl
-            </a>{" "}
-            of bel ons op{" "}
-            <a
-              href="tel:0547381035"
-              className="font-medium text-red-700 underline-offset-2 hover:underline"
-            >
-              0547 381 035
-            </a>
-            .
-          </p>
-          <LinkButton
-            href="/contact"
-            className="mt-6 bg-gradient-to-r from-red-600 to-red-700 border-0 text-white hover:from-red-700 hover:to-red-800 shadow-lg shadow-red-600/25"
-          >
-            Neem contact op
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </LinkButton>
-          <p className="mt-8 text-xs text-muted-foreground">
-            Acquisitie naar aanleiding van deze vacatures wordt niet op prijs gesteld.
+      {/* SMALL PRINT */}
+      <section className="px-3 py-24 sm:px-6 sm:py-32">
+        <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
+          <p className="border-t border-foreground/10 pt-8 font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/40">
+            Acquisitie naar aanleiding van deze vacatures wordt niet op prijs
+            gesteld.
           </p>
         </div>
       </section>
-    </>
+    </div>
   );
 }

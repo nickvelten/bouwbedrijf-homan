@@ -1,18 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowRight,
-  Shield,
-  Users,
-  Clock,
-  Award,
-  Heart,
-  MessageCircle,
-} from "lucide-react";
-import { LinkButton } from "@/components/link-button";
-import { Card, CardContent } from "@/components/ui/card";
-import { FadeIn, StaggerContainer, StaggerItem } from "@/components/animations-css";
+import { ArrowUpRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Over ons",
@@ -23,25 +12,25 @@ export const metadata: Metadata = {
 
 const values = [
   {
-    icon: Award,
+    tag: "01",
     title: "Vakmanschap",
     description:
       "Traditioneel ambacht gecombineerd met moderne technieken. Onze vakmensen werken met passie en oog voor detail.",
   },
   {
-    icon: MessageCircle,
+    tag: "02",
     title: "Communicatie",
     description:
       "Korte lijnen tussen bouwplaats en kantoor. U heeft altijd een vast aanspreekpunt en bent op de hoogte van de voortgang.",
   },
   {
-    icon: Heart,
+    tag: "03",
     title: "Betrokkenheid",
     description:
       "Elk project is uniek en verdient onze volle aandacht. Wij bouwen mee aan uw droom alsof het de onze is.",
   },
   {
-    icon: Shield,
+    tag: "04",
     title: "Betrouwbaarheid",
     description:
       "Afspraken zijn afspraken. Met Bouwgarant certificering bieden wij u extra zekerheid.",
@@ -75,148 +64,106 @@ const timeline = [
   },
 ];
 
+const stats = [
+  { value: "45+", label: "Jaar ervaring" },
+  { value: "35", label: "Vakmensen" },
+  { value: "100%", label: "Bouwgarant" },
+  { value: "500+", label: "Tevreden klanten" },
+];
+
 export default function OverOnsPage() {
   return (
-    <>
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-primary py-20 sm:py-28">
-        <Image
-          src="/images/hero/team.jpg"
-          alt="Het team van Bouwbedrijf Homan"
-          fill
-          className="object-cover opacity-15"
-          preload
-          sizes="100vw"
-          fetchPriority="high"
-          quality={45}
-        />
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <FadeIn>
-            <div className="max-w-2xl">
-              <p className="text-sm font-semibold uppercase tracking-widest text-red-400">
-                Sinds 1982
-              </p>
-              <h1 className="mt-3 text-4xl font-bold tracking-tight text-primary-foreground sm:text-5xl lg:text-6xl">
-                Over Bouwbedrijf Homan
-              </h1>
-              <p className="mt-6 text-lg leading-relaxed text-primary-foreground/80 sm:text-xl">
-                Al meer dan 45 jaar bouwen wij aan dromen in Twente. Met
-                vakmanschap, betrokkenheid en een persoonlijke aanpak.
-              </p>
-            </div>
-          </FadeIn>
+    <div className="bg-background text-foreground">
+      {/* HERO */}
+      <section className="px-3 pt-12 sm:px-6 sm:pt-20">
+        <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
+          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
+            § Over ons — sinds 1982
+          </p>
+          <h1 className="font-display mt-6 max-w-5xl text-[clamp(2.75rem,6.5vw,6rem)] leading-[0.9] tracking-[-0.035em]">
+            Een familiebedrijf
+            <br />
+            met <span className="text-[var(--accent)]">handschrift.</span>
+          </h1>
+          <p className="mt-8 max-w-2xl text-lg leading-relaxed text-foreground/70">
+            Al meer dan 45 jaar bouwen wij aan dromen in Twente. Met
+            vakmanschap, betrokkenheid en een persoonlijke aanpak — van eerste
+            schets tot sleutel.
+          </p>
         </div>
       </section>
 
-      {/* Intro */}
-      <section className="py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
-            <FadeIn direction="left">
-              <p className="text-sm font-semibold uppercase tracking-widest text-red-700">
-                Wie wij zijn
+      {/* INTRO */}
+      <section className="px-3 pt-16 sm:px-6 sm:pt-24">
+        <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
+          <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-5">
+              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
+                § Wie wij zijn
               </p>
-              <h2 className="mt-3 text-3xl font-bold tracking-tight">
-                Hoogwaardige woning- en utiliteitsbouw
+              <h2 className="mt-5 text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
+                Hoogwaardige woning- en utiliteitsbouw, met oog voor detail.
               </h2>
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+            </div>
+            <div className="lg:col-span-6 lg:col-start-7">
+              <p className="text-lg leading-relaxed text-foreground/70">
                 Bouwbedrijf Homan is gespecialiseerd in hoogwaardige woning- en
                 utiliteitsbouw. Met een team van 35 ervaren vakmensen realiseren
                 wij projecten van standaardwoningen tot luxe villa&apos;s en van
                 kantoorpanden tot appartementencomplexen.
               </p>
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+              <p className="mt-5 text-lg leading-relaxed text-foreground/70">
                 Onze kracht zit in de combinatie van traditioneel vakmanschap en
-                moderne bouwtechnieken. Met korte communicatielijnen tussen
-                bouwplaats en kantoor houden wij u altijd op de hoogte van de
-                voortgang van uw project.
+                moderne bouwtechnieken. Korte lijnen tussen bouwplaats en
+                kantoor houden u altijd op de hoogte.
               </p>
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-                Heeft u al een bouwplan? Dan maken wij graag een vrijblijvende
-                offerte. Heeft u een kavel maar nog geen plan? Dan denken wij
-                graag met u mee over het ontwerp.
-              </p>
-              <div className="mt-8 flex gap-4">
-                <div className="flex items-center gap-3 rounded-lg border px-4 py-2">
-                  <Image
-                    src="/images/bouwgarant-logo.png"
-                    alt="Bouwgarant gecertificeerd"
-                    width={40}
-                    height={33}
-                    className="h-8 w-auto"
-                  />
-                  <span className="text-sm font-medium">Bouwgarant gecertificeerd</span>
-                </div>
-              </div>
-            </FadeIn>
-            <FadeIn direction="right">
-              <div className="relative aspect-square overflow-hidden rounded-xl">
+              <div className="mt-10 inline-flex items-center gap-3 rounded-full border border-foreground/15 px-5 py-2.5">
                 <Image
-                  src="/images/projecten/woningbouw/enter-2.jpg"
-                  alt="Project gerealiseerd door Bouwbedrijf Homan"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  src="/images/bouwgarant-logo.png"
+                  alt="Bouwgarant gecertificeerd"
+                  width={40}
+                  height={33}
+                  className="h-7 w-auto"
                 />
+                <span className="text-sm font-medium">
+                  Bouwgarant gecertificeerd
+                </span>
               </div>
-            </FadeIn>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Values */}
-      <section className="bg-muted py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <FadeIn className="text-center">
-            <p className="text-sm font-semibold uppercase tracking-widest text-red-700">
-              Waar wij voor staan
-            </p>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-              Onze kernwaarden
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-              Deze waarden vormen de basis van alles wat wij doen.
-            </p>
-          </FadeIn>
-          <StaggerContainer className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4" staggerDelay={0.15}>
-            {values.map((value) => (
-              <StaggerItem key={value.title}>
-                <Card>
-                  <CardContent className="p-6 text-center">
-                  <div className="mx-auto mb-4 inline-flex rounded-lg bg-accent/10 p-3">
-                    <value.icon className="h-6 w-6 text-accent" />
-                  </div>
-                  <h3 className="text-lg font-semibold">{value.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {value.description}
-                  </p>
-                  </CardContent>
-                </Card>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
-      </section>
-
-      {/* Timeline */}
-      <section className="py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Onze geschiedenis
-            </h2>
-          </div>
-          <div className="mx-auto mt-12 max-w-2xl">
-            <div className="relative space-y-8 border-l-2 border-accent/20 pl-8">
-              {timeline.map((item) => (
-                <div key={item.year} className="relative">
-                  <div className="absolute -left-[calc(2rem+5px)] top-1 h-2.5 w-2.5 rounded-full bg-accent" />
-                  <span className="text-sm font-bold text-accent">
-                    {item.year}
+      {/* VALUES — dark rounded card */}
+      <section className="px-3 pt-24 sm:px-6 sm:pt-32">
+        <div className="mx-auto max-w-[1440px]">
+          <div className="relative overflow-hidden rounded-[32px] bg-foreground px-6 py-16 text-white sm:rounded-[40px] sm:px-10 sm:py-20 lg:px-16 lg:py-24">
+            <div className="max-w-2xl">
+              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+                § Kernwaarden
+              </p>
+              <h2 className="font-display mt-5 text-4xl leading-[1.05] tracking-tight sm:text-5xl">
+                Waar wij voor staan.
+              </h2>
+              <p className="mt-6 text-lg leading-relaxed text-white/70">
+                Vier waarden die de basis vormen van alles wat wij doen — op de
+                bouwplaats én daarbuiten.
+              </p>
+            </div>
+            <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {values.map((v) => (
+                <div
+                  key={v.title}
+                  className="rounded-[24px] bg-white/5 p-7 backdrop-blur"
+                >
+                  <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+                    §{v.tag}
                   </span>
-                  <h3 className="mt-1 text-lg font-semibold">{item.title}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    {item.description}
+                  <h3 className="mt-4 text-2xl font-semibold tracking-tight">
+                    {v.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-white/70">
+                    {v.description}
                   </p>
                 </div>
               ))}
@@ -225,55 +172,95 @@ export default function OverOnsPage() {
         </div>
       </section>
 
-      {/* Team stats */}
-      <section className="bg-primary py-16">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-4 sm:px-6 lg:grid-cols-4 lg:px-8">
-          {[
-            { icon: Clock, value: "45+", label: "Jaar ervaring" },
-            { icon: Users, value: "35", label: "Vakmensen" },
-            { icon: Shield, value: "100%", label: "Bouwgarant" },
-            { icon: Heart, value: "500+", label: "Tevreden klanten" },
-          ].map((stat) => (
-            <div key={stat.label} className="text-center">
-              <stat.icon className="mx-auto mb-2 h-6 w-6 text-accent" />
-              <p className="text-3xl font-bold text-primary-foreground">
-                {stat.value}
+      {/* TIMELINE */}
+      <section className="px-3 pt-24 sm:px-6 sm:pt-32">
+        <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
+          <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-5">
+              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
+                § Geschiedenis
               </p>
-              <p className="mt-1 text-sm text-primary-foreground/60">
-                {stat.label}
+              <h2 className="font-display mt-5 text-4xl leading-[1.05] tracking-tight sm:text-5xl">
+                Vier decennia
+                <br />
+                <span className="text-accent">in het kort.</span>
+              </h2>
+              <p className="mt-6 max-w-md text-lg leading-relaxed text-foreground/70">
+                Van kleine ploeg in Enter tot vertrouwde bouwpartner in heel
+                Twente.
               </p>
             </div>
-          ))}
+            <ol className="lg:col-span-7">
+              {timeline.map((item, i) => (
+                <li
+                  key={item.year}
+                  className={`flex gap-6 border-foreground/10 py-8 sm:gap-10 ${
+                    i !== 0 ? "border-t" : ""
+                  }`}
+                >
+                  <span className="shrink-0 font-mono text-sm uppercase tracking-[0.2em] text-accent sm:text-base">
+                    {item.year}
+                  </span>
+                  <div>
+                    <h3 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+                      {item.title}
+                    </h3>
+                    <p className="mt-3 max-w-xl text-base leading-relaxed text-foreground/70">
+                      {item.description}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      {/* STATS */}
+      <section className="px-3 pt-24 sm:px-6 sm:pt-32">
+        <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
+          <dl className="grid grid-cols-2 gap-y-10 border-t border-foreground/10 pt-10 sm:grid-cols-4">
+            {stats.map((s) => (
+              <div key={s.label}>
+                <dt className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
+                  {s.label}
+                </dt>
+                <dd className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
+                  {s.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="relative overflow-hidden bg-primary py-20">
-        <Image
-          src="/images/hero/team.jpg"
-          alt="Team Bouwbedrijf Homan"
-          fill
-          className="object-cover opacity-10"
-          sizes="100vw"
-        />
-        <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <FadeIn>
-            <h2 className="text-3xl font-bold tracking-tight text-primary-foreground sm:text-4xl">
-              Wilt u ons team ontmoeten?
+      <section className="px-3 py-24 sm:px-6 sm:py-32">
+        <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
+          <div className="grid items-end gap-10 lg:grid-cols-12 lg:gap-16">
+            <h2 className="font-display text-[clamp(2.25rem,5vw,4.5rem)] leading-[0.95] tracking-[-0.03em] lg:col-span-8">
+              Wilt u <span className="text-accent">ons team</span> ontmoeten?
             </h2>
-            <p className="mt-4 text-lg text-primary-foreground/80">
-              Kom langs op de Vonderweg 19 in Enter of neem contact met ons op.
-            </p>
-            <LinkButton
-              href="/contact"
-              className="mt-8 bg-gradient-to-r from-red-600 to-red-700 border-0 text-white hover:from-red-700 hover:to-red-800 shadow-lg shadow-red-600/25"
-            >
-              Neem contact op
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </LinkButton>
-          </FadeIn>
+            <div className="flex flex-wrap items-center gap-3 lg:col-span-4 lg:justify-end">
+              <Link
+                href="/contact"
+                className="group inline-flex items-center gap-2 rounded-full bg-foreground py-2.5 pl-6 pr-2 text-base font-medium text-background transition-transform hover:-translate-y-0.5"
+              >
+                <span>Kom langs</span>
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-white">
+                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                </span>
+              </Link>
+              <a
+                href="tel:0547381035"
+                className="inline-flex items-center gap-2 rounded-full border border-foreground/20 px-6 py-3 text-base font-medium text-foreground transition-colors hover:bg-foreground/5"
+              >
+                Of bel 0547 381 035
+              </a>
+            </div>
+          </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
