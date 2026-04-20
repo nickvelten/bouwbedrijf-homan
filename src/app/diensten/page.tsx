@@ -14,7 +14,7 @@ const diensten = [
   {
     id: "woningbouw",
     tag: "01",
-    image: "/images/projecten/woningbouw/enter-1.jpg",
+    image: "/images/projecten/luxe-badhuis/01.jpg",
     title: "Woningbouw",
     subtitle: "Van droomhuis tot sleuteloverdracht",
     description:
@@ -31,7 +31,7 @@ const diensten = [
   {
     id: "utiliteitsbouw",
     tag: "02",
-    image: "/images/projecten/utiliteitsbouw/bedrijfspand-koops.jpg",
+    image: "/images/projecten/kantoor-bedrijfshal-enter/01.jpg",
     title: "Utiliteitsbouw",
     subtitle: "Functioneel en representatief",
     description:
@@ -48,7 +48,7 @@ const diensten = [
   {
     id: "verbouw",
     tag: "03",
-    image: "/images/projecten/utiliteitsbouw/restauratie-enter.jpg",
+    image: "/images/projecten/restauratieproject-buitengebied-enter/01.jpg",
     title: "Verbouw & renovatie",
     subtitle: "Nieuw leven voor uw pand",
     description:
@@ -65,7 +65,7 @@ const diensten = [
   {
     id: "onderhoud",
     tag: "04",
-    image: "/images/projecten/woningbouw/markelo.jpg",
+    image: "/images/projecten/landhuis-te-markelo/01.jpg",
     title: "Onderhoud",
     subtitle: "Preventief en correctief",
     description:

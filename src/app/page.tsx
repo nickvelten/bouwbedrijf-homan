@@ -13,7 +13,7 @@ const services = [
     description:
       "Van standaardwoning tot luxe villa. We bouwen uw droomhuis met oog voor detail en vakmanschap in elke hoek.",
     href: "/diensten#woningbouw",
-    image: "/images/projecten/woningbouw/vijver.jpg",
+    image: "/images/projecten/luxe-badhuis/01.jpg",
   },
   {
     tag: "02",
@@ -21,7 +21,7 @@ const services = [
     description:
       "Bedrijfspanden, kantoren, appartementencomplexen. Functioneel en representatief — gebouwd om mee te groeien.",
     href: "/diensten#utiliteitsbouw",
-    image: "/images/projecten/utiliteitsbouw/bedrijfspand-oostkraay.jpg",
+    image: "/images/projecten/kantoor-bedrijfshal-enter/01.jpg",
   },
   {
     tag: "03",
@@ -29,7 +29,7 @@ const services = [
     description:
       "Kleine verbouwing of complete renovatie. We bewaren het karakter van uw pand en geven het nieuw leven.",
     href: "/diensten#verbouw",
-    image: "/images/projecten/utiliteitsbouw/restauratie-enter.jpg",
+    image: "/images/projecten/restauratieproject-buitengebied-enter/01.jpg",
   },
   {
     tag: "04",
@@ -37,7 +37,7 @@ const services = [
     description:
       "Preventief en correctief onderhoud door eigen vakmensen. Zo blijft uw pand jarenlang als nieuw.",
     href: "/diensten#onderhoud",
-    image: "/images/projecten/woningbouw/lemele.jpg",
+    image: "/images/projecten/landhuis-te-markelo/01.jpg",
   },
 ];
 
@@ -115,7 +115,7 @@ export default function HomePage() {
           {/* Hero image — landscape */}
           <div className="relative mt-14 aspect-[16/9] overflow-hidden rounded-[28px] sm:rounded-[40px]">
             <Image
-              src="/images/projecten/woningbouw/vijver.jpg"
+              src="/images/projecten/luxe-badhuis/01.jpg"
               alt="Woning gerealiseerd door Bouwbedrijf Homan"
               fill
               className="object-cover"
