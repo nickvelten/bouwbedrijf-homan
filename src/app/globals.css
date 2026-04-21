@@ -142,6 +142,9 @@
     @apply bg-background text-foreground;
     /* Allow long URLs / Dutch compound words to wrap on narrow viewports */
     overflow-wrap: break-word;
+    /* Guard against any stray horizontal scroll on mobile — `clip` (not
+       `hidden`) keeps sticky/fixed descendants working. */
+    overflow-x: clip;
   }
 
   /* Visible, high-contrast focus ring on every focusable element ─ WCAG 2.4.7 */

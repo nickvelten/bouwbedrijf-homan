@@ -21,7 +21,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="mx-auto flex h-32 max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:h-36 lg:px-12">
+      <div className="mx-auto flex h-40 max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:h-44 lg:px-12">
         <Link
           href="/"
           className="flex items-center gap-2 text-foreground"
@@ -30,10 +30,10 @@ export function Header() {
           <Image
             src="/images/logo.png"
             alt="Bouwbedrijf Homan"
-            width={420}
-            height={240}
-            sizes="(min-width: 768px) 360px, 260px"
-            className="h-[84px] w-auto md:h-[104px]"
+            width={520}
+            height={300}
+            sizes="(min-width: 1024px) 440px, (min-width: 768px) 380px, 320px"
+            className="h-[112px] w-auto md:h-[128px] lg:h-[140px]"
             priority
           />
         </Link>
@@ -81,9 +81,9 @@ export function Header() {
                 <Image
                   src="/images/logo.png"
                   alt="Bouwbedrijf Homan"
-                  width={160}
-                  height={92}
-                  className="h-10 w-auto"
+                  width={320}
+                  height={184}
+                  className="h-20 w-auto"
                 />
               </div>
               <nav className="flex flex-col gap-1" aria-label="Mobiele navigatie">
