@@ -319,6 +319,30 @@
   letter-spacing: -0.025em;
 }
 
+/* ─── Marquee (auto-scrolling rail) ───────────────────────────────────── */
+@keyframes marquee-x {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+.marquee-viewport {
+  overflow: hidden;
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  flex-wrap: nowrap;
+  gap: 1.25rem;
+  animation: marquee-x var(--marquee-duration, 90s) linear infinite;
+  will-change: transform;
+}
+.marquee-viewport:hover .marquee-track,
+.marquee-viewport:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+
 /* Hero crossfade — pure CSS, no JS animation library on the LCP path */
 @keyframes hero-fade-cycle {
   0%, 8%, 92%, 100% { opacity: 0; }
