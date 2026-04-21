@@ -14,10 +14,18 @@ const categoryLabel: Record<Project["category"], string> = {
   beide: "Woningbouw · Utiliteit",
 };
 
+// px per second — slow, ambient drift
+const AUTO_SCROLL_SPEED = 22;
+
 export function RecentWorkSlider({ projects }: { projects: Project[] }) {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(true);
+  const pausedRef = useRef(false);
+
+  // Duplicate children so the RAF-driven scroll can loop seamlessly
+  // by wrapping scrollLeft back when it crosses half of scrollWidth.
+  const loop = [...projects, ...projects];
 
   const updateEdges = useCallback(() => {
     const el = scrollerRef.current;
@@ -38,6 +46,35 @@ export function RecentWorkSlider({ projects }: { projects: Project[] }) {
     };
   }, [updateEdges]);
 
+  // Auto-scroll loop
+  useEffect(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+
+    const prefersReducedMotion = window.matchMedia?.(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (prefersReducedMotion) return;
+
+    let rafId = 0;
+    let last = performance.now();
+
+    const step = (now: number) => {
+      const dt = (now - last) / 1000;
+      last = now;
+      if (!pausedRef.current) {
+        el.scrollLeft += AUTO_SCROLL_SPEED * dt;
+        const half = el.scrollWidth / 2;
+        if (half > 0 && el.scrollLeft >= half) {
+          el.scrollLeft -= half;
+        }
+      }
+      rafId = requestAnimationFrame(step);
+    };
+    rafId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(rafId);
+  }, []);
+
   const scrollBy = (dir: 1 | -1) => {
     const el = scrollerRef.current;
     if (!el) return;
@@ -46,8 +83,22 @@ export function RecentWorkSlider({ projects }: { projects: Project[] }) {
     el.scrollBy({ left: step * dir, behavior: "smooth" });
   };
 
+  const pause = () => {
+    pausedRef.current = true;
+  };
+  const resume = () => {
+    pausedRef.current = false;
+  };
+
   return (
-    <div>
+    <div
+      onPointerEnter={pause}
+      onPointerLeave={resume}
+      onFocusCapture={pause}
+      onBlurCapture={resume}
+      onTouchStart={pause}
+      onTouchEnd={resume}
+    >
       <div className="mb-8 flex items-center gap-2">
         <button
           type="button"
@@ -71,13 +122,15 @@ export function RecentWorkSlider({ projects }: { projects: Project[] }) {
 
       <div
         ref={scrollerRef}
-        className="-mx-6 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth px-6 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:-mx-10 sm:px-10 lg:-mx-16 lg:px-16"
+        className="-mx-6 flex snap-x gap-5 overflow-x-auto scroll-smooth px-6 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:-mx-10 sm:px-10 lg:-mx-16 lg:px-16"
       >
-        {projects.map((p) => (
+        {loop.map((p, i) => (
           <Link
-            key={p.slug}
+            key={`${p.slug}-${i}`}
             href={`/projecten/${p.slug}`}
             data-slide
+            aria-hidden={i >= projects.length ? "true" : undefined}
+            tabIndex={i >= projects.length ? -1 : undefined}
             className="group relative block shrink-0 basis-[82%] snap-start overflow-hidden rounded-[24px] bg-white/5 sm:basis-[58%] lg:basis-[38%]"
           >
             <div className="relative aspect-[3/2]">

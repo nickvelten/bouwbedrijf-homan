@@ -129,7 +129,7 @@ export function Footer() {
                   height={50}
                   className="h-8 w-auto brightness-0 invert opacity-70"
                 />
-                <span>Bouwgarant gecertificeerd · sinds 1982</span>
+                <span>Bouwgarant gecertificeerd</span>
               </div>
               <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
                 {legal.map((l) => (

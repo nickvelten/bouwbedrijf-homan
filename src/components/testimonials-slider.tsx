@@ -4,10 +4,17 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, Quote } from "lucide-react";
 import type { Testimonial } from "@/data/testimonials";
 
+// px per second — matches project slider drift
+const AUTO_SCROLL_SPEED = 22;
+
 export function TestimonialsSlider({ items }: { items: Testimonial[] }) {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(true);
+  const pausedRef = useRef(false);
+
+  // Duplicate for seamless infinite scroll
+  const loop = [...items, ...items];
 
   const updateEdges = useCallback(() => {
     const el = scrollerRef.current;
@@ -28,6 +35,35 @@ export function TestimonialsSlider({ items }: { items: Testimonial[] }) {
     };
   }, [updateEdges]);
 
+  // Auto-scroll loop
+  useEffect(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+
+    const prefersReducedMotion = window.matchMedia?.(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (prefersReducedMotion) return;
+
+    let rafId = 0;
+    let last = performance.now();
+
+    const step = (now: number) => {
+      const dt = (now - last) / 1000;
+      last = now;
+      if (!pausedRef.current) {
+        el.scrollLeft += AUTO_SCROLL_SPEED * dt;
+        const half = el.scrollWidth / 2;
+        if (half > 0 && el.scrollLeft >= half) {
+          el.scrollLeft -= half;
+        }
+      }
+      rafId = requestAnimationFrame(step);
+    };
+    rafId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(rafId);
+  }, []);
+
   const scrollBy = (dir: 1 | -1) => {
     const el = scrollerRef.current;
     if (!el) return;
@@ -36,8 +72,22 @@ export function TestimonialsSlider({ items }: { items: Testimonial[] }) {
     el.scrollBy({ left: step * dir, behavior: "smooth" });
   };
 
+  const pause = () => {
+    pausedRef.current = true;
+  };
+  const resume = () => {
+    pausedRef.current = false;
+  };
+
   return (
-    <div>
+    <div
+      onPointerEnter={pause}
+      onPointerLeave={resume}
+      onFocusCapture={pause}
+      onBlurCapture={resume}
+      onTouchStart={pause}
+      onTouchEnd={resume}
+    >
       <div className="mb-8 flex items-center gap-2">
         <button
           type="button"
@@ -61,48 +111,27 @@ export function TestimonialsSlider({ items }: { items: Testimonial[] }) {
 
       <div
         ref={scrollerRef}
-        className="-mx-3 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth px-3 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8"
+        className="-mx-3 flex snap-x gap-5 overflow-x-auto scroll-smooth px-3 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8"
       >
-        {items.map((t, i) => (
+        {loop.map((t, i) => (
           <figure
-            key={t.author}
+            key={`${t.author}-${i}`}
             data-slide
-            className={`relative flex shrink-0 basis-[85%] snap-start flex-col justify-between rounded-[28px] border p-8 sm:basis-[60%] sm:p-10 lg:basis-[38%] ${
-              i === 0
-                ? "border-white/10 bg-foreground text-white"
-                : "border-foreground/10 bg-white"
-            }`}
+            aria-hidden={i >= items.length ? "true" : undefined}
+            className="relative flex shrink-0 basis-[85%] snap-start flex-col justify-between rounded-[28px] border border-white/10 bg-foreground p-8 text-white sm:basis-[60%] sm:p-10 lg:basis-[38%]"
           >
             <Quote
-              className={`h-8 w-8 ${
-                i === 0 ? "text-[var(--accent)]" : "text-foreground/20"
-              }`}
+              className="h-8 w-8 text-[var(--accent)]"
               aria-hidden="true"
             />
-            <blockquote
-              className={`mt-6 text-base leading-relaxed ${
-                i === 0 ? "text-white/90" : "text-foreground/80"
-              }`}
-            >
+            <blockquote className="mt-6 text-base leading-relaxed text-white/90">
               &ldquo;{t.quote.length > 260 ? `${t.quote.slice(0, 260).trim()}…` : t.quote}&rdquo;
             </blockquote>
-            <figcaption
-              className={`mt-8 border-t pt-6 ${
-                i === 0 ? "border-white/10" : "border-foreground/10"
-              }`}
-            >
-              <p
-                className={`font-mono text-[10px] uppercase tracking-[0.2em] ${
-                  i === 0 ? "text-white/50" : "text-foreground/50"
-                }`}
-              >
+            <figcaption className="mt-8 border-t border-white/10 pt-6">
+              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/50">
                 {t.role ?? "Opdrachtgever"}
               </p>
-              <p
-                className={`mt-2 text-lg font-semibold tracking-tight ${
-                  i === 0 ? "text-white" : "text-foreground"
-                }`}
-              >
+              <p className="mt-2 text-lg font-semibold tracking-tight text-white">
                 {t.author}
               </p>
             </figcaption>

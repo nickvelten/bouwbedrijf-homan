@@ -6,6 +6,8 @@ import { projects } from "@/data/projects";
 import { RecentWorkSlider } from "@/components/recent-work-slider";
 import { TestimonialsSlider } from "@/components/testimonials-slider";
 
+const FOUNDED_YEAR = 1982;
+
 const services = [
   {
     tag: "01",
@@ -41,12 +43,6 @@ const services = [
   },
 ];
 
-const stats = [
-  { value: "40+", label: "Jaar vakmanschap" },
-  { value: "35", label: "Eigen vakmensen" },
-  { value: "500+", label: "Projecten opgeleverd" },
-  { value: "1982", label: "Opgericht in Enter" },
-];
 
 const werkgebied = [
   "Enter",
@@ -70,12 +66,43 @@ const werkgebied = [
 ];
 
 export default function HomePage() {
+  const yearsOfCraft = new Date().getFullYear() - FOUNDED_YEAR;
+  const stats = [
+    { value: `${yearsOfCraft}+`, label: "Jaar vakmanschap" },
+    { value: "35", label: "Eigen vakmensen" },
+    { value: "900+", label: "Projecten opgeleverd" },
+    { value: `${FOUNDED_YEAR}`, label: "Opgericht in Enter" },
+  ];
   return (
     <div className="bg-background text-foreground">
       {/* HERO */}
-      <section className="px-3 pt-8 sm:px-6 sm:pt-12">
-        <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
+      <section className="relative overflow-hidden px-3 pt-8 sm:px-6 sm:pt-12">
+        {/* Watermark beeldmerk — subtle grey, to the right behind hero text */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 right-[-8%] z-0 flex items-start justify-end sm:right-[-4%] lg:right-[2%]"
+        >
+          <svg
+            viewBox="0 0 220 220"
+            className="h-[min(95vw,720px)] w-auto translate-y-6 text-foreground/[0.045]"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polygon
+              points="110,8 210,56 210,164 110,212 10,164 10,56"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="7"
+            />
+            <rect x="10" y="102" width="200" height="16" />
+            <rect x="50" y="48" width="46" height="46" />
+            <rect x="124" y="48" width="46" height="46" />
+            <rect x="50" y="126" width="46" height="46" />
+            <rect x="124" y="126" width="46" height="46" />
+          </svg>
+        </div>
+        <div className="relative z-10 mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50">
             Bouwbedrijf Homan — Enter, sinds 1982
           </p>
           <h1 className="font-display mt-6 max-w-5xl text-[clamp(3rem,7.5vw,7rem)] leading-[0.9] tracking-[-0.035em]">
@@ -85,14 +112,14 @@ export default function HomePage() {
           </h1>
           <div className="mt-10 grid gap-8 lg:grid-cols-12">
             <p className="max-w-xl text-lg leading-relaxed text-foreground/70 lg:col-span-6">
-              Al ruim veertig jaar realiseren we woningen, bedrijfspanden en
+              Al bijna 50 jaar realiseren we woningen, bedrijfspanden en
               renovaties in Twente. Met dertig vaste vakmensen en korte lijnen
               — van eerste schets tot sleutel.
             </p>
             <div className="flex flex-wrap items-start gap-3 lg:col-span-6 lg:justify-end">
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-foreground py-2.5 pl-6 pr-2 text-base font-medium text-background transition-transform hover:-translate-y-0.5"
+                className="group inline-flex h-[60px] items-center gap-2 rounded-full bg-foreground pl-6 pr-2 text-base font-medium text-background transition-transform hover:-translate-y-0.5"
               >
                 <span>Start uw project</span>
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--accent)] text-white">
@@ -101,7 +128,7 @@ export default function HomePage() {
               </Link>
               <Link
                 href="/projecten"
-                className="group inline-flex items-center gap-2 rounded-full border border-foreground/20 px-6 py-3 text-base font-medium text-foreground transition-colors hover:bg-foreground/5"
+                className="group inline-flex h-[60px] items-center gap-2 rounded-full border border-foreground/20 px-7 text-base font-medium text-foreground transition-colors hover:bg-foreground/5"
               >
                 Bekijk projecten
                 <ArrowUpRight
@@ -142,7 +169,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">
-              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50">
                 § Introductie
               </p>
               <h2 className="mt-5 text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
@@ -166,7 +193,7 @@ export default function HomePage() {
       {/* STRAPLINE — display tagline */}
       <section className="px-3 pt-20 sm:px-6 sm:pt-28">
         <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50">
             § Wat wij bouwen
           </p>
           <p className="font-display mt-6 max-w-5xl text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.035em]">
@@ -181,10 +208,10 @@ export default function HomePage() {
       <section className="px-3 pt-20 sm:px-6 sm:pt-28">
         <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
           <div className="flex items-end justify-between gap-6">
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50">
               § In cijfers
             </p>
-            <p className="hidden font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/40 sm:block">
+            <p className="hidden font-mono text-xs uppercase tracking-[0.2em] text-foreground/40 sm:block">
               Stand 2026
             </p>
           </div>
@@ -199,7 +226,7 @@ export default function HomePage() {
                 <dd className="font-display text-[clamp(3rem,6vw,5.5rem)] leading-none tracking-[-0.04em]">
                   {s.value}
                 </dd>
-                <dt className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50 sm:mt-4 sm:block">
+                <dt className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 sm:mt-4 sm:block">
                   {s.label}
                 </dt>
               </div>
@@ -213,7 +240,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
-              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50">
                 § Werkgebied
               </p>
               <h2 className="mt-5 text-3xl font-bold leading-[1.05] tracking-tight sm:text-4xl">
@@ -235,9 +262,12 @@ export default function HomePage() {
                 </li>
               ))}
               <li>
-                <span className="inline-flex items-center rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background transition-transform hover:-translate-y-0.5"
+                >
                   + meer op aanvraag
-                </span>
+                </Link>
               </li>
             </ul>
           </div>
@@ -250,7 +280,7 @@ export default function HomePage() {
           <div className="relative overflow-hidden rounded-[32px] bg-foreground px-6 py-16 text-white sm:rounded-[40px] sm:px-10 sm:py-20 lg:px-16 lg:py-24">
             <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/50">
+                <p className="font-mono text-xs uppercase tracking-[0.2em] text-white/50">
                   § Portfolio
                 </p>
                 <h2 className="font-display mt-4 max-w-xl text-4xl leading-[1.02] tracking-tight sm:text-5xl">
@@ -279,7 +309,7 @@ export default function HomePage() {
       <section className="px-3 pt-24 sm:px-6 sm:pt-32">
         <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
           <div className="max-w-2xl">
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50">
               § Diensten
             </p>
             <h2 className="font-display mt-5 text-4xl leading-[1.02] tracking-tight sm:text-5xl">
@@ -311,7 +341,7 @@ export default function HomePage() {
                 <div className="flex items-start justify-between gap-4 p-8">
                   <div className="flex-1">
                     <div className="flex items-baseline gap-3">
-                      <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--accent)]">
+                      <span className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--accent)]">
                         §{service.tag}
                       </span>
                       <h3 className="text-2xl font-semibold tracking-tight">
@@ -338,7 +368,7 @@ export default function HomePage() {
       {/* MISSION / OVER ONS TEASER */}
       <section className="px-3 pt-24 sm:px-6 sm:pt-32">
         <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50">
             § Over ons
           </p>
           <div className="mt-6 grid gap-12 lg:grid-cols-12 lg:gap-16">
@@ -370,21 +400,15 @@ export default function HomePage() {
       {/* TESTIMONIALS */}
       <section className="px-3 pt-24 sm:px-6 sm:pt-32">
         <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
-          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-            <div className="max-w-2xl">
-              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
-                § Klanten aan het woord
-              </p>
-              <h2 className="font-display mt-5 text-4xl leading-[1.02] tracking-tight sm:text-5xl">
-                Wat opdrachtgevers
-                <br />
-                <span className="text-[var(--accent)]">over ons zeggen.</span>
-              </h2>
-            </div>
-            <p className="max-w-sm text-base leading-relaxed text-foreground/60">
-              De meeste klanten vinden ons via mond-tot-mond. Deze verhalen
-              zijn daarvan het bewijs.
+          <div className="max-w-2xl">
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50">
+              § Klanten aan het woord
             </p>
+            <h2 className="font-display mt-5 text-4xl leading-[1.02] tracking-tight sm:text-5xl">
+              Wat opdrachtgevers
+              <br />
+              <span className="text-[var(--accent)]">over ons zeggen.</span>
+            </h2>
           </div>
 
           <div className="mt-14">
@@ -397,7 +421,7 @@ export default function HomePage() {
       <section className="px-3 py-24 sm:px-6 sm:py-32">
         <div className="mx-auto max-w-[1440px]">
           <div className="relative overflow-hidden rounded-[32px] bg-foreground px-8 py-20 text-center text-white sm:rounded-[40px] sm:px-16 sm:py-28">
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/50">
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-white/50">
               Start een project
             </p>
             <h2 className="font-display mx-auto mt-6 max-w-3xl text-4xl leading-[1.02] tracking-tight sm:text-6xl">
