@@ -188,7 +188,7 @@ export default async function ArticlePage({ params }: { params: Params }) {
             <div className="flex items-end justify-between gap-6">
               <div>
                 <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
-                  <BrandMark className="h-3 w-[0.65rem] text-foreground" />
+                  <BrandMark className="h-2.5 w-3 text-foreground" />
                   Meer lezen
                 </p>
                 <h2 className="mt-3 text-3xl font-bold leading-tight tracking-tight sm:text-4xl">

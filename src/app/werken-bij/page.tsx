@@ -63,7 +63,7 @@ export default function WerkenBijPage() {
         <HeroBeeldmerk />
         <div className="relative z-10 mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
-            <BrandMark className="h-3 w-[0.65rem] text-foreground" />
+            <BrandMark className="h-2.5 w-3 text-foreground" />
             Werken bij Homan
           </p>
           <h1 className="font-display mt-6 max-w-5xl text-[clamp(2.75rem,6.5vw,6rem)] leading-[0.9] tracking-[-0.035em]">
@@ -79,13 +79,29 @@ export default function WerkenBijPage() {
         </div>
       </section>
 
+      {/* ACQUISITIE — compact notice, up high */}
+      <section className="px-3 pt-10 sm:px-6 sm:pt-14">
+        <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
+          <div className="flex flex-col gap-3 rounded-[20px] border-2 border-accent/40 bg-accent/[0.06] px-5 py-4 sm:flex-row sm:items-center sm:gap-5 sm:px-6 sm:py-5">
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent inline-flex shrink-0 items-center gap-2">
+              <BrandMark className="h-2.5 w-2.5" />
+              Let op
+            </p>
+            <p className="text-sm font-medium leading-snug text-foreground sm:text-base">
+              Acquisitie naar aanleiding van deze vacatures wordt niet op prijs
+              gesteld — we werven rechtstreeks, geen bureaus.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* PERKS — dark rounded card */}
       <section className="px-3 pt-20 sm:px-6 sm:pt-28">
         <div className="mx-auto max-w-[1440px]">
           <div className="relative overflow-hidden rounded-[32px] bg-foreground px-6 py-16 text-white sm:rounded-[40px] sm:px-10 sm:py-20 lg:px-16 lg:py-24">
             <div className="max-w-2xl">
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent inline-flex items-center gap-2">
-                <BrandMark className="h-3 w-[0.65rem] text-white" />
+                <BrandMark className="h-2.5 w-3 text-white" />
                 Waarom Homan
               </p>
               <h2 className="font-display mt-5 text-4xl leading-[1.02] tracking-tight sm:text-5xl">
@@ -103,7 +119,7 @@ export default function WerkenBijPage() {
                   className="rounded-[24px] bg-white/5 p-7 backdrop-blur"
                 >
                   <span className="font-mono text-xs uppercase tracking-[0.2em] text-accent inline-flex items-center gap-1.5">
-                    <BrandMark className="h-3 w-[0.65rem] text-white" />
+                    <BrandMark className="h-2.5 w-3 text-white" />
                     {p.tag}
                   </span>
                   <h3 className="mt-4 text-2xl font-semibold tracking-tight">
@@ -125,7 +141,7 @@ export default function WerkenBijPage() {
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
-                <BrandMark className="h-3 w-[0.65rem] text-foreground" />
+                <BrandMark className="h-2.5 w-3 text-foreground" />
                 Openstaande functies
               </p>
               <h2 className="font-display mt-5 text-4xl leading-[1.02] tracking-tight sm:text-5xl">
@@ -146,7 +162,7 @@ export default function WerkenBijPage() {
               >
                 <div className="flex items-start gap-5">
                   <span className="font-mono text-xs uppercase tracking-[0.2em] text-accent inline-flex items-center gap-1.5 pt-2">
-                    <BrandMark className="h-3 w-[0.65rem] text-foreground" />
+                    <BrandMark className="h-2.5 w-3 text-foreground" />
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <div>
@@ -184,7 +200,7 @@ export default function WerkenBijPage() {
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-6">
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
-                <BrandMark className="h-3 w-[0.65rem] text-foreground" />
+                <BrandMark className="h-2.5 w-3 text-foreground" />
                 Open sollicitatie
               </p>
               <h2 className="font-display mt-5 text-[clamp(2rem,4vw,3.5rem)] leading-[1.02] tracking-tight">
@@ -218,26 +234,7 @@ export default function WerkenBijPage() {
         </div>
       </section>
 
-      {/* ACQUISITIE — prominent notice */}
-      <section className="px-3 pt-20 pb-24 sm:px-6 sm:pt-28 sm:pb-32">
-        <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
-          <div className="rounded-[28px] border-2 border-accent/40 bg-accent/[0.06] px-6 py-10 sm:rounded-[32px] sm:px-10 sm:py-12">
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent inline-flex items-center gap-2">
-              <BrandMark className="h-3 w-[0.65rem] text-foreground" />
-              Let op
-            </p>
-            <p className="mt-5 max-w-3xl text-2xl font-semibold leading-snug tracking-tight text-foreground sm:text-3xl">
-              Acquisitie naar aanleiding van deze vacatures wordt niet op prijs
-              gesteld.
-            </p>
-            <p className="mt-4 max-w-2xl text-base leading-relaxed text-foreground/70">
-              We werven zelf, rechtstreeks. Benaderingen van bureaus of
-              intermediairs worden niet beantwoord en leiden niet tot
-              samenwerking.
-            </p>
-          </div>
-        </div>
-      </section>
+      <div className="h-20 sm:h-28" aria-hidden="true" />
     </div>
   );
 }

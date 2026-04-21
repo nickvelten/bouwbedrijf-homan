@@ -72,7 +72,7 @@ export default async function ProjectDetailPage({
             Alle projecten
           </Link>
           <p className="mt-8 font-mono text-xs uppercase tracking-[0.2em] text-[var(--accent)] inline-flex items-center gap-2">
-            <BrandMark className="h-3 w-[0.65rem] text-foreground" />
+            <BrandMark className="h-2.5 w-3 text-foreground" />
             {categoryLabel[project.category] ?? project.category}
           </p>
           <h1 className="font-display mt-6 max-w-5xl text-[clamp(2.5rem,6.5vw,6rem)] leading-[0.95] tracking-[-0.02em]">
@@ -160,7 +160,7 @@ export default async function ProjectDetailPage({
             <div className="flex items-end justify-between gap-6">
               <div>
                 <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
-                  <BrandMark className="h-3 w-[0.65rem] text-foreground" />
+                  <BrandMark className="h-2.5 w-3 text-foreground" />
                   Meer werk
                 </p>
                 <h2 className="mt-3 text-3xl font-bold leading-tight tracking-tight sm:text-4xl">

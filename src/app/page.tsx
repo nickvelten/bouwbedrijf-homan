@@ -149,7 +149,7 @@ export default function HomePage() {
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
-                <BrandMark className="h-3 w-[0.65rem] text-[var(--accent)]" />
+                <BrandMark className="h-2.5 w-3 text-[var(--accent)]" />
                 Introductie
               </p>
               <h2 className="mt-5 text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
@@ -174,7 +174,7 @@ export default function HomePage() {
       <section className="px-3 pt-20 sm:px-6 sm:pt-28">
         <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
-            <BrandMark className="h-3 w-[0.65rem] text-[var(--accent)]" />
+            <BrandMark className="h-2.5 w-3 text-[var(--accent)]" />
             Wat wij bouwen
           </p>
           <p className="font-display mt-6 max-w-5xl text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.035em]">
@@ -190,7 +190,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
           <div className="flex items-end justify-between gap-6">
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
-              <BrandMark className="h-3 w-[0.65rem] text-[var(--accent)]" />
+              <BrandMark className="h-2.5 w-3 text-[var(--accent)]" />
               In cijfers
             </p>
             <p className="hidden font-mono text-xs uppercase tracking-[0.2em] text-foreground/40 sm:block">
@@ -223,7 +223,7 @@ export default function HomePage() {
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
-                <BrandMark className="h-3 w-[0.65rem] text-[var(--accent)]" />
+                <BrandMark className="h-2.5 w-3 text-[var(--accent)]" />
                 Werkgebied
               </p>
               <h2 className="mt-5 text-3xl font-bold leading-[1.05] tracking-tight sm:text-4xl">
@@ -264,7 +264,7 @@ export default function HomePage() {
             <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <p className="font-mono text-xs uppercase tracking-[0.2em] text-white/50 inline-flex items-center gap-2">
-                  <BrandMark className="h-3 w-[0.65rem] text-[var(--accent)]" />
+                  <BrandMark className="h-2.5 w-3 text-[var(--accent)]" />
                   Portfolio
                 </p>
                 <h2 className="font-display mt-4 max-w-xl text-4xl leading-[1.02] tracking-tight sm:text-5xl">
@@ -294,7 +294,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
           <div className="max-w-2xl">
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
-              <BrandMark className="h-3 w-[0.65rem] text-[var(--accent)]" />
+              <BrandMark className="h-2.5 w-3 text-[var(--accent)]" />
               Diensten
             </p>
             <h2 className="font-display mt-5 text-4xl leading-[1.02] tracking-tight sm:text-5xl">
@@ -327,7 +327,7 @@ export default function HomePage() {
                   <div className="flex-1">
                     <div className="flex items-baseline gap-3">
                       <span className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--accent)] inline-flex items-center gap-1.5">
-                        <BrandMark className="h-3 w-[0.65rem]" />
+                        <BrandMark className="h-2.5 w-3" />
                         {service.tag}
                       </span>
                       <h3 className="text-2xl font-semibold tracking-tight">
@@ -355,7 +355,7 @@ export default function HomePage() {
       <section className="px-3 pt-24 sm:px-6 sm:pt-32">
         <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
-            <BrandMark className="h-3 w-[0.65rem] text-[var(--accent)]" />
+            <BrandMark className="h-2.5 w-3 text-[var(--accent)]" />
             Over ons
           </p>
           <div className="mt-6 grid gap-12 lg:grid-cols-12 lg:gap-16">
@@ -389,7 +389,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
           <div className="max-w-2xl">
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
-              <BrandMark className="h-3 w-[0.65rem] text-[var(--accent)]" />
+              <BrandMark className="h-2.5 w-3 text-[var(--accent)]" />
               Klanten aan het woord
             </p>
             <h2 className="font-display mt-5 text-4xl leading-[1.02] tracking-tight sm:text-5xl">

@@ -118,7 +118,7 @@ export default function DienstenPage() {
         <HeroBeeldmerk />
         <div className="relative z-10 mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
-            <BrandMark className="h-3 w-[0.65rem] text-foreground" />
+            <BrandMark className="h-2.5 w-3 text-foreground" />
             Diensten
           </p>
           <h1 className="font-display mt-6 max-w-5xl text-[clamp(2.75rem,6.5vw,6rem)] leading-[0.95] tracking-[-0.02em]">
@@ -165,7 +165,7 @@ export default function DienstenPage() {
                 >
                   <div className="flex items-baseline gap-3">
                     <span className="font-mono text-xs uppercase tracking-[0.2em] text-accent inline-flex items-center gap-1.5">
-                      <BrandMark className="h-3 w-[0.65rem] text-foreground" />
+                      <BrandMark className="h-2.5 w-3 text-foreground" />
                       {d.tag}
                     </span>
                     <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
@@ -212,7 +212,7 @@ export default function DienstenPage() {
         <div className="mx-auto max-w-[1440px]">
           <div className="relative overflow-hidden rounded-[32px] bg-foreground px-6 py-16 text-white sm:rounded-[40px] sm:px-10 sm:py-20 lg:px-16 lg:py-24">
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-white/50 inline-flex items-center gap-2">
-              <BrandMark className="h-3 w-[0.65rem] text-white" />
+              <BrandMark className="h-2.5 w-3 text-white" />
               Werkwijze
             </p>
             <h2 className="font-display mt-5 max-w-2xl text-4xl leading-[1.05] tracking-tight sm:text-5xl">
@@ -222,7 +222,7 @@ export default function DienstenPage() {
               {steps.map((s) => (
                 <div key={s.step} className="border-t border-white/15 pt-6">
                   <span className="font-mono text-xs uppercase tracking-[0.2em] text-accent inline-flex items-center gap-1.5">
-                    <BrandMark className="h-3 w-[0.65rem] text-white" />
+                    <BrandMark className="h-2.5 w-3 text-white" />
                     {s.step}
                   </span>
                   <h3 className="mt-4 text-2xl font-semibold tracking-tight">

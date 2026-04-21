@@ -60,7 +60,7 @@ export default function ActueelPage() {
         <HeroBeeldmerk />
         <div className="relative z-10 mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
-            <BrandMark className="h-3 w-[0.65rem] text-foreground" />
+            <BrandMark className="h-2.5 w-3 text-foreground" />
             Actueel
           </p>
           <h1 className="font-display mt-6 max-w-5xl text-[clamp(2.75rem,6.5vw,6rem)] leading-[0.95] tracking-[-0.02em]">

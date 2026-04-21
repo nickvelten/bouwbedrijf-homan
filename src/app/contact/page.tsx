@@ -45,7 +45,7 @@ export default function ContactPage() {
         <HeroBeeldmerk />
         <div className="relative z-10 mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
-            <BrandMark className="h-3 w-[0.65rem] text-foreground" />
+            <BrandMark className="h-2.5 w-3 text-foreground" />
             Contact
           </p>
           <h1 className="font-display mt-6 max-w-5xl text-[clamp(2.75rem,7vw,6.5rem)] leading-[0.9] tracking-[-0.035em]">
@@ -77,7 +77,7 @@ export default function ContactPage() {
               >
                 <div className="flex items-start justify-between">
                   <span className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--accent)] inline-flex items-center gap-1.5">
-                    <BrandMark className="h-3 w-[0.65rem] text-foreground" />
+                    <BrandMark className="h-2.5 w-3 text-foreground" />
                     {a.tag}
                   </span>
                   <span
@@ -107,7 +107,7 @@ export default function ContactPage() {
             {/* Left: copy + form */}
             <div className="lg:col-span-7">
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
-                <BrandMark className="h-3 w-[0.65rem] text-foreground" />
+                <BrandMark className="h-2.5 w-3 text-foreground" />
                 Formulier
               </p>
               <h2 className="font-display mt-5 text-4xl leading-[1.02] tracking-tight sm:text-5xl">
@@ -137,7 +137,7 @@ export default function ContactPage() {
                     H.
                   </span>
                   <p className="relative font-mono text-xs uppercase tracking-[0.2em] text-accent inline-flex items-center gap-2">
-                    <BrandMark className="h-3 w-[0.65rem] text-white" />
+                    <BrandMark className="h-2.5 w-3 text-white" />
                     Contactgegevens
                   </p>
                   <ul className="relative mt-6 space-y-5">
@@ -236,7 +236,7 @@ export default function ContactPage() {
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-7">
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
-                <BrandMark className="h-3 w-[0.65rem] text-foreground" />
+                <BrandMark className="h-2.5 w-3 text-foreground" />
                 Onze belofte
               </p>
               <h2 className="font-display mt-5 text-[clamp(2.25rem,5vw,4.5rem)] leading-[0.98] tracking-tight">
