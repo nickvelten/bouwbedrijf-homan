@@ -61,7 +61,7 @@ export function Footer() {
                   className="inline-flex items-center gap-2 rounded hover:text-white"
                 >
                   <Phone className="h-4 w-4" aria-hidden="true" />
-                  0547 381 035
+                  0547 38 10 35
                 </a>
               </li>
               <li>

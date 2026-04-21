@@ -5,6 +5,8 @@ import { testimonials } from "@/data/testimonials";
 import { projects } from "@/data/projects";
 import { RecentWorkSlider } from "@/components/recent-work-slider";
 import { TestimonialsSlider } from "@/components/testimonials-slider";
+import { BrandMark } from "@/components/brand-mark";
+import { HeroBeeldmerk } from "@/components/hero-beeldmerk";
 
 const FOUNDED_YEAR = 1982;
 
@@ -77,30 +79,7 @@ export default function HomePage() {
     <div className="bg-background text-foreground">
       {/* HERO */}
       <section className="relative overflow-hidden px-3 pt-8 sm:px-6 sm:pt-12">
-        {/* Watermark beeldmerk — subtle grey, to the right behind hero text */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-y-0 right-[-8%] z-0 flex items-start justify-end sm:right-[-4%] lg:right-[2%]"
-        >
-          <svg
-            viewBox="0 0 220 220"
-            className="h-[min(95vw,720px)] w-auto translate-y-6 text-foreground/[0.045]"
-            fill="currentColor"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <polygon
-              points="110,8 210,56 210,164 110,212 10,164 10,56"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="7"
-            />
-            <rect x="10" y="102" width="200" height="16" />
-            <rect x="50" y="48" width="46" height="46" />
-            <rect x="124" y="48" width="46" height="46" />
-            <rect x="50" y="126" width="46" height="46" />
-            <rect x="124" y="126" width="46" height="46" />
-          </svg>
-        </div>
+        <HeroBeeldmerk />
         <div className="relative z-10 mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50">
             Bouwbedrijf Homan — Enter, sinds 1982
@@ -169,8 +148,9 @@ export default function HomePage() {
         <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50">
-                § Introductie
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
+                <BrandMark className="h-3 w-[0.65rem] text-[var(--accent)]" />
+                Introductie
               </p>
               <h2 className="mt-5 text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
                 Een familiebedrijf dat bouwt zoals het hoort — zorgvuldig,
@@ -193,8 +173,9 @@ export default function HomePage() {
       {/* STRAPLINE — display tagline */}
       <section className="px-3 pt-20 sm:px-6 sm:pt-28">
         <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50">
-            § Wat wij bouwen
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
+            <BrandMark className="h-3 w-[0.65rem] text-[var(--accent)]" />
+            Wat wij bouwen
           </p>
           <p className="font-display mt-6 max-w-5xl text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.035em]">
             Stijlvol wonen.
@@ -208,8 +189,9 @@ export default function HomePage() {
       <section className="px-3 pt-20 sm:px-6 sm:pt-28">
         <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
           <div className="flex items-end justify-between gap-6">
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50">
-              § In cijfers
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
+              <BrandMark className="h-3 w-[0.65rem] text-[var(--accent)]" />
+              In cijfers
             </p>
             <p className="hidden font-mono text-xs uppercase tracking-[0.2em] text-foreground/40 sm:block">
               Stand 2026
@@ -240,8 +222,9 @@ export default function HomePage() {
         <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50">
-                § Werkgebied
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
+                <BrandMark className="h-3 w-[0.65rem] text-[var(--accent)]" />
+                Werkgebied
               </p>
               <h2 className="mt-5 text-3xl font-bold leading-[1.05] tracking-tight sm:text-4xl">
                 Thuis in
@@ -280,8 +263,9 @@ export default function HomePage() {
           <div className="relative overflow-hidden rounded-[32px] bg-foreground px-6 py-16 text-white sm:rounded-[40px] sm:px-10 sm:py-20 lg:px-16 lg:py-24">
             <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="font-mono text-xs uppercase tracking-[0.2em] text-white/50">
-                  § Portfolio
+                <p className="font-mono text-xs uppercase tracking-[0.2em] text-white/50 inline-flex items-center gap-2">
+                  <BrandMark className="h-3 w-[0.65rem] text-[var(--accent)]" />
+                  Portfolio
                 </p>
                 <h2 className="font-display mt-4 max-w-xl text-4xl leading-[1.02] tracking-tight sm:text-5xl">
                   Recente projecten in Twente.
@@ -309,8 +293,9 @@ export default function HomePage() {
       <section className="px-3 pt-24 sm:px-6 sm:pt-32">
         <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
           <div className="max-w-2xl">
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50">
-              § Diensten
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
+              <BrandMark className="h-3 w-[0.65rem] text-[var(--accent)]" />
+              Diensten
             </p>
             <h2 className="font-display mt-5 text-4xl leading-[1.02] tracking-tight sm:text-5xl">
               Wat we voor u maken.
@@ -341,8 +326,9 @@ export default function HomePage() {
                 <div className="flex items-start justify-between gap-4 p-8">
                   <div className="flex-1">
                     <div className="flex items-baseline gap-3">
-                      <span className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--accent)]">
-                        §{service.tag}
+                      <span className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--accent)] inline-flex items-center gap-1.5">
+                        <BrandMark className="h-3 w-[0.65rem]" />
+                        {service.tag}
                       </span>
                       <h3 className="text-2xl font-semibold tracking-tight">
                         {service.title}
@@ -368,13 +354,14 @@ export default function HomePage() {
       {/* MISSION / OVER ONS TEASER */}
       <section className="px-3 pt-24 sm:px-6 sm:pt-32">
         <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50">
-            § Over ons
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
+            <BrandMark className="h-3 w-[0.65rem] text-[var(--accent)]" />
+            Over ons
           </p>
           <div className="mt-6 grid gap-12 lg:grid-cols-12 lg:gap-16">
             <h2 className="text-[clamp(2.25rem,4vw,3.75rem)] font-semibold leading-[1.02] tracking-tight lg:col-span-7">
-              Bouwen is voor ons geen project — het is een belofte van
-              vakmanschap, afspraak en nazorg.
+              &ldquo;Bouwen is voor ons geen project &mdash; het is een belofte
+              van vakmanschap, afspraak en nazorg.&rdquo;
             </h2>
             <div className="lg:col-span-5 lg:pt-3">
               <p className="text-lg leading-relaxed text-foreground/70">
@@ -401,8 +388,9 @@ export default function HomePage() {
       <section className="px-3 pt-24 sm:px-6 sm:pt-32">
         <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
           <div className="max-w-2xl">
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50">
-              § Klanten aan het woord
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
+              <BrandMark className="h-3 w-[0.65rem] text-[var(--accent)]" />
+              Klanten aan het woord
             </p>
             <h2 className="font-display mt-5 text-4xl leading-[1.02] tracking-tight sm:text-5xl">
               Wat opdrachtgevers
@@ -436,7 +424,7 @@ export default function HomePage() {
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-white py-2 pl-6 pr-2 text-sm font-medium text-foreground transition-transform hover:-translate-y-0.5"
+                className="group inline-flex h-[60px] items-center gap-2 rounded-full bg-white pl-6 pr-2 text-base font-medium text-foreground transition-transform hover:-translate-y-0.5"
               >
                 <span>Plan een gesprek</span>
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--accent)] text-white">
@@ -445,9 +433,9 @@ export default function HomePage() {
               </Link>
               <a
                 href="tel:0547381035"
-                className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-white/5"
+                className="inline-flex h-[60px] items-center gap-2 rounded-full border border-white/20 px-7 text-base font-medium text-white transition-colors hover:bg-white/5"
               >
-                Of bel 0547 381 035
+                Of bel 0547 38 10 35
               </a>
             </div>
           </div>

@@ -90,7 +90,7 @@ export function ProjectGallery({ title, photos }: Props) {
               close();
             }}
             aria-label="Sluiten"
-            className="absolute right-4 top-4 flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+            className="absolute right-4 top-4 z-20 flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
           >
             <X className="h-5 w-5" />
           </button>
@@ -102,7 +102,7 @@ export function ProjectGallery({ title, photos }: Props) {
               prev();
             }}
             aria-label="Vorige foto"
-            className="absolute left-4 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 sm:left-6"
+            className="absolute left-4 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 sm:left-6"
           >
             <ChevronLeft className="h-6 w-6" />
           </button>
@@ -114,14 +114,13 @@ export function ProjectGallery({ title, photos }: Props) {
               next();
             }}
             aria-label="Volgende foto"
-            className="absolute right-4 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 sm:right-6"
+            className="absolute right-4 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 sm:right-6"
           >
             <ChevronRight className="h-6 w-6" />
           </button>
 
           <div
-            className="relative h-full w-full max-w-[1600px]"
-            onClick={(e) => e.stopPropagation()}
+            className="pointer-events-none relative z-10 h-full w-full max-w-[1600px]"
           >
             <Image
               src={photos[openIndex]}
@@ -134,7 +133,7 @@ export function ProjectGallery({ title, photos }: Props) {
             />
           </div>
 
-          <p className="absolute bottom-5 left-1/2 -translate-x-1/2 rounded-full bg-white/10 px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-white/80 backdrop-blur">
+          <p className="absolute bottom-5 left-1/2 z-20 -translate-x-1/2 rounded-full bg-white/10 px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-white/80 backdrop-blur">
             {openIndex + 1} / {photos.length}
           </p>
         </div>

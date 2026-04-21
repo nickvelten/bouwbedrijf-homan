@@ -5,6 +5,8 @@ export type Article = {
   category: "algemeen" | "utiliteit" | "woningbouw" | "vacature";
   cover: string; // "/images/actueel/<slug>/cover.jpg"
   body: string; // markdown
+  /** Optional Vimeo video rendered above the article body (just the numeric ID) */
+  vimeoId?: string;
 };
 
 export const articles: Article[] = [
@@ -30,6 +32,7 @@ export const articles: Article[] = [
     "date": "2025-06-30",
     "category": "utiliteit",
     "cover": "/images/actueel/unieke-dronevlucht-door-opgeleverd-zorgcomplex-de-herbergier-in-enter/cover.jpg",
+    "vimeoId": "1097453219",
     "body": "## 20 comfortabele appartementen\n\nIn opdracht van Scala Pojects bouwden we hier een modern zorgcomplex met 20 appartementen. Bekijk hoe comfort en een moderne, huiselijke sfeer samenkomen in dit bijzondere pand.\n\n## Meer weten?\n\nWe staan je graag te woord. Neem gerust contact met ons op door te bellen naar 0547 38 10 35 of een mailtje te sturen naar info@bouwbedrijfhoman.nl."
   },
   {

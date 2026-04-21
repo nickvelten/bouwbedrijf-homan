@@ -11,7 +11,7 @@ export function TestimonialsSlider({ items }: { items: Testimonial[] }) {
       className="marquee-viewport -mx-3 sm:-mx-6 lg:-mx-8"
       style={{ "--marquee-duration": duration } as CSSProperties}
     >
-      <ul className="marquee-track px-3 pb-4 sm:px-6 lg:px-8" role="list">
+      <ul className="marquee-track pb-4" role="list">
         {loop.map((t, i) => (
           <li
             key={`${t.author}-${i}`}

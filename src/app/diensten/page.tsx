@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Check } from "lucide-react";
+import { BrandMark } from "@/components/brand-mark";
+import { HeroBeeldmerk } from "@/components/hero-beeldmerk";
 
 export const metadata: Metadata = {
   title: "Diensten",
@@ -112,10 +114,12 @@ export default function DienstenPage() {
   return (
     <div className="bg-background text-foreground">
       {/* HERO */}
-      <section className="px-3 pt-12 sm:px-6 sm:pt-20">
-        <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
-            § Diensten
+      <section className="relative overflow-hidden px-3 pt-12 sm:px-6 sm:pt-20">
+        <HeroBeeldmerk />
+        <div className="relative z-10 mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
+            <BrandMark className="h-3 w-[0.65rem] text-foreground" />
+            Diensten
           </p>
           <h1 className="font-display mt-6 max-w-5xl text-[clamp(2.75rem,6.5vw,6rem)] leading-[0.95] tracking-[-0.02em]">
             Vier disciplines,
@@ -123,10 +127,9 @@ export default function DienstenPage() {
             <span className="text-accent">één handtekening.</span>
           </h1>
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-foreground/70">
-            Van vergunning tot oplevering begeleiden we u bij elke stap. Met
-            ruim veertig jaar ervaring bieden we een compleet pakket
-            bouwdiensten — steeds op dezelfde manier: zorgvuldig en
-            transparant.
+            Van vergunning tot oplevering begeleiden we u bij elke stap. Al
+            bijna 50 jaar bieden we een compleet pakket bouwdiensten —
+            steeds op dezelfde manier: zorgvuldig en transparant.
           </p>
         </div>
       </section>
@@ -161,8 +164,9 @@ export default function DienstenPage() {
                   }`}
                 >
                   <div className="flex items-baseline gap-3">
-                    <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
-                      §{d.tag}
+                    <span className="font-mono text-xs uppercase tracking-[0.2em] text-accent inline-flex items-center gap-1.5">
+                      <BrandMark className="h-3 w-[0.65rem] text-foreground" />
+                      {d.tag}
                     </span>
                     <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
                       {d.title}
@@ -207,8 +211,9 @@ export default function DienstenPage() {
       <section className="px-3 pt-24 sm:px-6 sm:pt-32">
         <div className="mx-auto max-w-[1440px]">
           <div className="relative overflow-hidden rounded-[32px] bg-foreground px-6 py-16 text-white sm:rounded-[40px] sm:px-10 sm:py-20 lg:px-16 lg:py-24">
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/50">
-              § Werkwijze
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-white/50 inline-flex items-center gap-2">
+              <BrandMark className="h-3 w-[0.65rem] text-white" />
+              Werkwijze
             </p>
             <h2 className="font-display mt-5 max-w-2xl text-4xl leading-[1.05] tracking-tight sm:text-5xl">
               Helder proces — geen verrassingen onderweg.
@@ -216,8 +221,9 @@ export default function DienstenPage() {
             <div className="mt-12 grid gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
               {steps.map((s) => (
                 <div key={s.step} className="border-t border-white/15 pt-6">
-                  <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
-                    §{s.step}
+                  <span className="font-mono text-xs uppercase tracking-[0.2em] text-accent inline-flex items-center gap-1.5">
+                    <BrandMark className="h-3 w-[0.65rem] text-white" />
+                    {s.step}
                   </span>
                   <h3 className="mt-4 text-2xl font-semibold tracking-tight">
                     {s.title}
@@ -242,7 +248,7 @@ export default function DienstenPage() {
             <div className="flex flex-wrap items-center gap-3 lg:col-span-4 lg:justify-end">
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-foreground py-2.5 pl-6 pr-2 text-base font-medium text-background transition-transform hover:-translate-y-0.5"
+                className="group inline-flex h-[60px] items-center gap-2 rounded-full bg-foreground pl-6 pr-2 text-base font-medium text-background transition-transform hover:-translate-y-0.5"
               >
                 <span>Contact opnemen</span>
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-white">
@@ -251,9 +257,9 @@ export default function DienstenPage() {
               </Link>
               <a
                 href="tel:0547381035"
-                className="inline-flex items-center gap-2 rounded-full border border-foreground/20 px-6 py-3 text-base font-medium text-foreground transition-colors hover:bg-foreground/5"
+                className="inline-flex h-[60px] items-center gap-2 rounded-full border border-foreground/20 px-7 text-base font-medium text-foreground transition-colors hover:bg-foreground/5"
               >
-                Of bel 0547 381 035
+                Of bel 0547 38 10 35
               </a>
             </div>
           </div>

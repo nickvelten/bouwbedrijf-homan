@@ -2,11 +2,15 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { BrandMark } from "@/components/brand-mark";
+import { HeroBeeldmerk } from "@/components/hero-beeldmerk";
+
+const FOUNDED_YEAR = 1982;
 
 export const metadata: Metadata = {
   title: "Over ons",
   description:
-    "Bouwbedrijf Homan: al meer dan 45 jaar uw betrouwbare aannemer in Twente. 35 vakmensen, Bouwgarant gecertificeerd, gevestigd in Enter.",
+    "Bouwbedrijf Homan: al bijna 50 jaar uw betrouwbare aannemer in Twente. 35 vakmensen, Bouwgarant gecertificeerd, gevestigd in Enter.",
   alternates: { canonical: "https://www.bouwbedrijfhoman.nl/over-ons" },
 };
 
@@ -64,21 +68,23 @@ const timeline = [
   },
 ];
 
-const stats = [
-  { value: "45+", label: "Jaar ervaring" },
-  { value: "35", label: "Vakmensen" },
-  { value: "100%", label: "Bouwgarant" },
-  { value: "500+", label: "Tevreden klanten" },
-];
-
 export default function OverOnsPage() {
+  const yearsOfCraft = new Date().getFullYear() - FOUNDED_YEAR;
+  const stats = [
+    { value: `${yearsOfCraft}+`, label: "Jaar ervaring" },
+    { value: "35", label: "Vakmensen" },
+    { value: "100%", label: "Bouwgarant" },
+    { value: "900+", label: "Tevreden klanten" },
+  ];
   return (
     <div className="bg-background text-foreground">
       {/* HERO */}
-      <section className="px-3 pt-12 sm:px-6 sm:pt-20">
-        <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
-            § Over ons — sinds 1982
+      <section className="relative overflow-hidden px-3 pt-12 sm:px-6 sm:pt-20">
+        <HeroBeeldmerk />
+        <div className="relative z-10 mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
+            <BrandMark className="h-3 w-[0.65rem] text-foreground" />
+            Over ons — sinds {FOUNDED_YEAR}
           </p>
           <h1 className="font-display mt-6 max-w-5xl text-[clamp(2.75rem,6.5vw,6rem)] leading-[0.9] tracking-[-0.035em]">
             Een familiebedrijf
@@ -86,9 +92,9 @@ export default function OverOnsPage() {
             met <span className="text-[var(--accent)]">handschrift.</span>
           </h1>
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-foreground/70">
-            Al meer dan 45 jaar bouwen wij aan dromen in Twente. Met
-            vakmanschap, betrokkenheid en een persoonlijke aanpak — van eerste
-            schets tot sleutel.
+            Al bijna 50 jaar bouwen wij aan dromen in Twente. Met vakmanschap,
+            betrokkenheid en een persoonlijke aanpak — van eerste schets tot
+            sleutel.
           </p>
         </div>
       </section>
@@ -98,8 +104,9 @@ export default function OverOnsPage() {
         <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">
-              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
-                § Wie wij zijn
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
+                <BrandMark className="h-3 w-[0.65rem] text-foreground" />
+                Wie wij zijn
               </p>
               <h2 className="mt-5 text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
                 Hoogwaardige woning- en utiliteitsbouw, met oog voor detail.
@@ -134,13 +141,47 @@ export default function OverOnsPage() {
         </div>
       </section>
 
+      {/* MANAGEMENT PHOTO */}
+      <section className="px-3 pt-20 sm:px-6 sm:pt-28">
+        <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
+          <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
+            <div className="relative overflow-hidden rounded-[28px] bg-muted aspect-[4/5] sm:aspect-[4/3] lg:col-span-7 lg:aspect-[4/3]">
+              <Image
+                src="/images/over-ons/management.jpg"
+                alt="Luc Velten en Justin Hoek — het management van Bouwbedrijf Homan"
+                fill
+                className="object-cover"
+                sizes="(min-width: 1024px) 58vw, 100vw"
+                quality={80}
+              />
+            </div>
+            <div className="lg:col-span-5">
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
+                <BrandMark className="h-3 w-[0.65rem] text-foreground" />
+                Management
+              </p>
+              <h2 className="mt-5 text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
+                Luc Velten &amp; Justin Hoek.
+              </h2>
+              <p className="mt-5 text-lg leading-relaxed text-foreground/70">
+                Algemeen directeur Luc Velten en operationeel directeur Justin
+                Hoek sturen samen het bedrijf aan. Luc focust op ontwikkeling en
+                klantenbegeleiding in het voortraject, Justin coördineert alle
+                lopende projecten — van bouwplaats tot oplevering.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* VALUES — dark rounded card */}
       <section className="px-3 pt-24 sm:px-6 sm:pt-32">
         <div className="mx-auto max-w-[1440px]">
           <div className="relative overflow-hidden rounded-[32px] bg-foreground px-6 py-16 text-white sm:rounded-[40px] sm:px-10 sm:py-20 lg:px-16 lg:py-24">
             <div className="max-w-2xl">
-              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
-                § Kernwaarden
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent inline-flex items-center gap-2">
+                <BrandMark className="h-3 w-[0.65rem] text-white" />
+                Kernwaarden
               </p>
               <h2 className="font-display mt-5 text-4xl leading-[1.05] tracking-tight sm:text-5xl">
                 Waar wij voor staan.
@@ -156,8 +197,9 @@ export default function OverOnsPage() {
                   key={v.title}
                   className="rounded-[24px] bg-white/5 p-7 backdrop-blur"
                 >
-                  <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
-                    §{v.tag}
+                  <span className="font-mono text-xs uppercase tracking-[0.2em] text-accent inline-flex items-center gap-1.5">
+                    <BrandMark className="h-3 w-[0.65rem] text-white" />
+                    {v.tag}
                   </span>
                   <h3 className="mt-4 text-2xl font-semibold tracking-tight">
                     {v.title}
@@ -177,8 +219,9 @@ export default function OverOnsPage() {
         <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">
-              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
-                § Geschiedenis
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
+                <BrandMark className="h-3 w-[0.65rem] text-foreground" />
+                Geschiedenis
               </p>
               <h2 className="font-display mt-5 text-4xl leading-[1.05] tracking-tight sm:text-5xl">
                 Vier decennia
@@ -244,7 +287,7 @@ export default function OverOnsPage() {
             <div className="flex flex-wrap items-center gap-3 lg:col-span-4 lg:justify-end">
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-foreground py-2.5 pl-6 pr-2 text-base font-medium text-background transition-transform hover:-translate-y-0.5"
+                className="group inline-flex h-[60px] items-center gap-2 rounded-full bg-foreground pl-6 pr-2 text-base font-medium text-background transition-transform hover:-translate-y-0.5"
               >
                 <span>Kom langs</span>
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-white">
@@ -253,9 +296,9 @@ export default function OverOnsPage() {
               </Link>
               <a
                 href="tel:0547381035"
-                className="inline-flex items-center gap-2 rounded-full border border-foreground/20 px-6 py-3 text-base font-medium text-foreground transition-colors hover:bg-foreground/5"
+                className="inline-flex h-[60px] items-center gap-2 rounded-full border border-foreground/20 px-7 text-base font-medium text-foreground transition-colors hover:bg-foreground/5"
               >
-                Of bel 0547 381 035
+                Of bel 0547 38 10 35
               </a>
             </div>
           </div>

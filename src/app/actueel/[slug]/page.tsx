@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import { articles } from "@/data/articles";
+import { BrandMark } from "@/components/brand-mark";
 
 type Params = Promise<{ slug: string }>;
 
@@ -107,20 +108,33 @@ export default async function ArticlePage({ params }: { params: Params }) {
         </div>
       </section>
 
-      {/* COVER */}
+      {/* COVER or VIDEO */}
       <section className="px-3 pt-10 sm:px-6 sm:pt-14">
         <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
-          <div className="relative aspect-[21/9] overflow-hidden rounded-[28px] sm:rounded-[40px]">
-            <Image
-              src={article.cover}
-              alt={article.title}
-              fill
-              className="object-cover"
-              sizes="(min-width: 1024px) 1440px, 100vw"
-              quality={80}
-              priority
-            />
-          </div>
+          {article.vimeoId ? (
+            <div className="relative aspect-video overflow-hidden rounded-[28px] bg-black sm:rounded-[40px]">
+              <iframe
+                src={`https://player.vimeo.com/video/${article.vimeoId}?dnt=1&title=0&byline=0&portrait=0`}
+                title={article.title}
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowFullScreen
+                className="absolute inset-0 h-full w-full"
+                loading="lazy"
+              />
+            </div>
+          ) : (
+            <div className="relative aspect-[21/9] overflow-hidden rounded-[28px] sm:rounded-[40px]">
+              <Image
+                src={article.cover}
+                alt={article.title}
+                fill
+                className="object-cover"
+                sizes="(min-width: 1024px) 1440px, 100vw"
+                quality={80}
+                priority
+              />
+            </div>
+          )}
         </div>
       </section>
 
@@ -173,8 +187,9 @@ export default async function ArticlePage({ params }: { params: Params }) {
           <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
             <div className="flex items-end justify-between gap-6">
               <div>
-                <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
-                  § Meer lezen
+                <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
+                  <BrandMark className="h-3 w-[0.65rem] text-foreground" />
+                  Meer lezen
                 </p>
                 <h2 className="mt-3 text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
                   Laatste berichten
@@ -235,7 +250,7 @@ export default async function ArticlePage({ params }: { params: Params }) {
             <div className="mt-10 flex flex-wrap gap-3">
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-white py-2 pl-6 pr-2 text-sm font-medium text-foreground transition-transform hover:-translate-y-0.5"
+                className="group inline-flex h-[60px] items-center gap-2 rounded-full bg-white pl-6 pr-2 text-base font-medium text-foreground transition-transform hover:-translate-y-0.5"
               >
                 <span>Plan een gesprek</span>
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--accent)] text-white">

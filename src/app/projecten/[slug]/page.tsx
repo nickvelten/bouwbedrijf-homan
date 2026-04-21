@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { ArrowUpRight, ArrowLeft } from "lucide-react";
 import { projects } from "@/data/projects";
 import { ProjectGallery } from "@/components/project-gallery";
+import { BrandMark } from "@/components/brand-mark";
 
 type Params = Promise<{ slug: string }>;
 
@@ -70,8 +71,9 @@ export default async function ProjectDetailPage({
             <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
             Alle projecten
           </Link>
-          <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--accent)]">
-            § {categoryLabel[project.category] ?? project.category}
+          <p className="mt-8 font-mono text-xs uppercase tracking-[0.2em] text-[var(--accent)] inline-flex items-center gap-2">
+            <BrandMark className="h-3 w-[0.65rem] text-foreground" />
+            {categoryLabel[project.category] ?? project.category}
           </p>
           <h1 className="font-display mt-6 max-w-5xl text-[clamp(2.5rem,6.5vw,6rem)] leading-[0.95] tracking-[-0.02em]">
             {project.title}
@@ -133,7 +135,7 @@ export default async function ProjectDetailPage({
             <div className="mt-10 flex flex-wrap gap-3">
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-white py-2 pl-6 pr-2 text-sm font-medium text-foreground transition-transform hover:-translate-y-0.5"
+                className="group inline-flex h-[60px] items-center gap-2 rounded-full bg-white pl-6 pr-2 text-base font-medium text-foreground transition-transform hover:-translate-y-0.5"
               >
                 <span>Plan een gesprek</span>
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--accent)] text-white">
@@ -142,9 +144,9 @@ export default async function ProjectDetailPage({
               </Link>
               <a
                 href="tel:0547381035"
-                className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-white/5"
+                className="inline-flex h-[60px] items-center gap-2 rounded-full border border-white/20 px-7 text-base font-medium text-white transition-colors hover:bg-white/5"
               >
-                Of bel 0547 381 035
+                Of bel 0547 38 10 35
               </a>
             </div>
           </div>
@@ -157,8 +159,9 @@ export default async function ProjectDetailPage({
           <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
             <div className="flex items-end justify-between gap-6">
               <div>
-                <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
-                  § Meer werk
+                <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
+                  <BrandMark className="h-3 w-[0.65rem] text-foreground" />
+                  Meer werk
                 </p>
                 <h2 className="mt-3 text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
                   Vergelijkbare projecten

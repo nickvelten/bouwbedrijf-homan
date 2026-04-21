@@ -3,11 +3,13 @@ import Link from "next/link";
 import { ArrowUpRight, Phone, Mail, MapPin, Clock } from "lucide-react";
 import { ContactForm } from "@/components/contact-form";
 import { MapFacade } from "@/components/map-facade";
+import { BrandMark } from "@/components/brand-mark";
+import { HeroBeeldmerk } from "@/components/hero-beeldmerk";
 
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Neem contact op met Bouwbedrijf Homan in Enter. Bel 0547 381 035 of mail info@bouwbedrijfhoman.nl voor een vrijblijvend gesprek.",
+    "Neem contact op met Bouwbedrijf Homan in Enter. Bel 0547 38 10 35 of mail info@bouwbedrijfhoman.nl voor een vrijblijvend gesprek.",
   alternates: { canonical: "https://www.bouwbedrijfhoman.nl/contact" },
 };
 
@@ -15,7 +17,7 @@ const quickActions = [
   {
     tag: "01",
     label: "Bel ons",
-    value: "0547 381 035",
+    value: "0547 38 10 35",
     helper: "Ma–Do 08:30–17:00 (pauze 12:30–13:00) · Vr tot 16:00",
     href: "tel:0547381035",
   },
@@ -39,10 +41,12 @@ export default function ContactPage() {
   return (
     <div className="bg-background text-foreground">
       {/* HERO */}
-      <section className="px-3 pt-12 sm:px-6 sm:pt-20">
-        <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
-            § Contact
+      <section className="relative overflow-hidden px-3 pt-12 sm:px-6 sm:pt-20">
+        <HeroBeeldmerk />
+        <div className="relative z-10 mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
+            <BrandMark className="h-3 w-[0.65rem] text-foreground" />
+            Contact
           </p>
           <h1 className="font-display mt-6 max-w-5xl text-[clamp(2.75rem,7vw,6.5rem)] leading-[0.9] tracking-[-0.035em]">
             Laten we het eens
@@ -72,8 +76,9 @@ export default function ContactPage() {
                 className="group relative overflow-hidden rounded-[28px] border border-foreground/10 bg-white p-8 transition-all hover:-translate-y-1 hover:border-foreground/20 hover:shadow-xl hover:shadow-foreground/5 sm:p-10"
               >
                 <div className="flex items-start justify-between">
-                  <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--accent)]">
-                    §{a.tag}
+                  <span className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--accent)] inline-flex items-center gap-1.5">
+                    <BrandMark className="h-3 w-[0.65rem] text-foreground" />
+                    {a.tag}
                   </span>
                   <span
                     aria-hidden="true"
@@ -85,7 +90,7 @@ export default function ContactPage() {
                 <p className="mt-10 font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
                   {a.label}
                 </p>
-                <p className="mt-3 text-2xl font-bold tracking-tight sm:text-3xl">
+                <p className="mt-3 break-words text-xl font-bold tracking-tight sm:text-[1.5rem] lg:text-[1.6rem]">
                   {a.value}
                 </p>
                 <p className="mt-3 text-sm text-foreground/60">{a.helper}</p>
@@ -101,8 +106,9 @@ export default function ContactPage() {
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             {/* Left: copy + form */}
             <div className="lg:col-span-7">
-              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
-                § Formulier
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
+                <BrandMark className="h-3 w-[0.65rem] text-foreground" />
+                Formulier
               </p>
               <h2 className="font-display mt-5 text-4xl leading-[1.02] tracking-tight sm:text-5xl">
                 Of stuur ons
@@ -130,8 +136,9 @@ export default function ContactPage() {
                   >
                     H.
                   </span>
-                  <p className="relative font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
-                    § Contactgegevens
+                  <p className="relative font-mono text-xs uppercase tracking-[0.2em] text-accent inline-flex items-center gap-2">
+                    <BrandMark className="h-3 w-[0.65rem] text-white" />
+                    Contactgegevens
                   </p>
                   <ul className="relative mt-6 space-y-5">
                     <li>
@@ -147,7 +154,7 @@ export default function ContactPage() {
                             Telefoon
                           </span>
                           <span className="mt-1 block text-lg font-semibold tracking-tight">
-                            0547 381 035
+                            0547 38 10 35
                           </span>
                         </span>
                       </a>
@@ -164,7 +171,7 @@ export default function ContactPage() {
                           <span className="block font-mono text-[10px] uppercase tracking-[0.2em] text-white/50">
                             E-mail
                           </span>
-                          <span className="mt-1 block text-lg font-semibold tracking-tight">
+                          <span className="mt-1 block break-all text-base font-semibold tracking-tight sm:text-[1.05rem]">
                             info@bouwbedrijfhoman.nl
                           </span>
                         </span>
@@ -228,8 +235,9 @@ export default function ContactPage() {
         <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-7">
-              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
-                § Onze belofte
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
+                <BrandMark className="h-3 w-[0.65rem] text-foreground" />
+                Onze belofte
               </p>
               <h2 className="font-display mt-5 text-[clamp(2.25rem,5vw,4.5rem)] leading-[0.98] tracking-tight">
                 Binnen één werkdag
@@ -246,7 +254,7 @@ export default function ContactPage() {
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
                   href="tel:0547381035"
-                  className="group inline-flex items-center gap-2 rounded-full bg-foreground py-2.5 pl-6 pr-2 text-base font-medium text-background transition-transform hover:-translate-y-0.5"
+                  className="group inline-flex h-[60px] items-center gap-2 rounded-full bg-foreground pl-6 pr-2 text-base font-medium text-background transition-transform hover:-translate-y-0.5"
                 >
                   <span>Bel direct</span>
                   <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-white">

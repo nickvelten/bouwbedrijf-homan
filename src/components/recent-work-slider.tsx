@@ -23,7 +23,7 @@ export function RecentWorkSlider({ projects }: { projects: Project[] }) {
       className="marquee-viewport -mx-6 sm:-mx-10 lg:-mx-16"
       style={{ "--marquee-duration": duration } as CSSProperties}
     >
-      <ul className="marquee-track px-6 pb-4 sm:px-10 lg:px-16" role="list">
+      <ul className="marquee-track pb-4" role="list">
         {loop.map((p, i) => (
           <li
             key={`${p.slug}-${i}`}

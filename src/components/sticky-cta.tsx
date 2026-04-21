@@ -4,7 +4,7 @@ import { Phone, MessageCircle } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 const TEL = "0547381035";
-const TEL_DISPLAY = "0547 381 035";
+const TEL_DISPLAY = "0547 38 10 35";
 // 31 6 52488… is a placeholder; replace with the real WhatsApp business number when known.
 const WHATSAPP = "31652488000";
 

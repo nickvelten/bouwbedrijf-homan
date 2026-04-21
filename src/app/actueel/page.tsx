@@ -3,6 +3,27 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Plus } from "lucide-react";
 import { articles } from "@/data/articles";
+import { BrandMark } from "@/components/brand-mark";
+import { HeroBeeldmerk } from "@/components/hero-beeldmerk";
+
+function InstagramIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className={className}
+    >
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
 
 export const metadata: Metadata = {
   title: "Actueel",
@@ -35,10 +56,12 @@ export default function ActueelPage() {
   return (
     <div className="bg-background text-foreground">
       {/* HERO */}
-      <section className="px-3 pt-12 sm:px-6 sm:pt-20">
-        <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
-            § Actueel — {articles.length} berichten
+      <section className="relative overflow-hidden px-3 pt-12 sm:px-6 sm:pt-20">
+        <HeroBeeldmerk />
+        <div className="relative z-10 mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
+            <BrandMark className="h-3 w-[0.65rem] text-foreground" />
+            Actueel
           </p>
           <h1 className="font-display mt-6 max-w-5xl text-[clamp(2.75rem,6.5vw,6rem)] leading-[0.95] tracking-[-0.02em]">
             Nieuws &amp;
@@ -50,6 +73,23 @@ export default function ActueelPage() {
             verhalen van achter de steigers. Zo blijft u op de hoogte van wat
             er bij ons speelt.
           </p>
+          <div className="mt-10 flex flex-wrap items-center gap-3">
+            <a
+              href="https://www.instagram.com/bouwbedrijfhoman/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex h-[60px] items-center gap-2.5 rounded-full bg-foreground pl-6 pr-2 text-base font-medium text-background transition-transform hover:-translate-y-0.5"
+            >
+              <InstagramIcon className="h-5 w-5" />
+              <span>Volg @bouwbedrijfhoman</span>
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--accent)] text-white">
+                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              </span>
+            </a>
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50">
+              Dagelijkse updates vanaf de bouwplaats
+            </p>
+          </div>
         </div>
       </section>
 
@@ -161,18 +201,22 @@ export default function ActueelPage() {
             </p>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
               <a
-                href="https://www.instagram.com/bouwbedrijfhoman"
+                href="https://www.instagram.com/bouwbedrijfhoman/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-white py-2.5 pl-6 pr-6 text-sm font-medium text-foreground transition-transform hover:-translate-y-0.5"
+                className="group inline-flex h-[60px] items-center gap-2.5 rounded-full bg-white pl-6 pr-2 text-base font-medium text-foreground transition-transform hover:-translate-y-0.5"
               >
-                Instagram
+                <InstagramIcon className="h-5 w-5" />
+                <span>@bouwbedrijfhoman</span>
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--accent)] text-white">
+                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                </span>
               </a>
               <a
                 href="https://www.linkedin.com/company/bouwbedrijf-homan/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-2.5 text-sm font-medium text-white transition-colors hover:bg-white/5"
+                className="inline-flex h-[60px] items-center gap-2 rounded-full border border-white/20 px-7 text-base font-medium text-white transition-colors hover:bg-white/5"
               >
                 LinkedIn
               </a>
