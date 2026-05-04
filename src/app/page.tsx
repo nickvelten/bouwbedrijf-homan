@@ -121,8 +121,8 @@ export default function HomePage() {
           {/* Hero image — landscape */}
           <div className="relative mt-14 aspect-[16/9] overflow-hidden rounded-[28px] sm:rounded-[40px]">
             <Image
-              src="/images/projecten/luxe-badhuis/01.jpg"
-              alt="Woning gerealiseerd door Bouwbedrijf Homan"
+              src="/images/kantoor-enter.jpg"
+              alt="Bouwbedrijf Homan — kantoor en bedrijfspand in Enter"
               fill
               className="object-cover"
               sizes="(min-width: 1024px) 1440px, 100vw"
@@ -130,7 +130,7 @@ export default function HomePage() {
             />
             <div className="pointer-events-none absolute bottom-5 left-5 right-5 flex items-end justify-between">
               <span className="rounded-full bg-white/90 px-4 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-foreground backdrop-blur">
-                Recent werk — 2026
+                Ons kantoor in Enter
               </span>
               <span
                 aria-hidden="true"

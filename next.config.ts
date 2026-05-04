@@ -5,6 +5,8 @@ const nextConfig: NextConfig = {
     inlineCss: true,
   },
   images: {
+    // Skip on-the-fly optimization in dev to avoid sharp RAM spikes on large source images
+    unoptimized: process.env.NODE_ENV === "development",
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 60 * 60 * 24 * 30,
     qualities: [40, 45, 60, 75],
