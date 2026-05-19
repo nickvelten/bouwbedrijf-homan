@@ -3,69 +3,14 @@ import Image from "next/image";
 import { ArrowUpRight, Plus } from "lucide-react";
 import { testimonials } from "@/data/testimonials";
 import { projects } from "@/data/projects";
+import { services } from "@/data/services";
+import { places } from "@/data/places";
 import { RecentWorkSlider } from "@/components/recent-work-slider";
 import { TestimonialsSlider } from "@/components/testimonials-slider";
 import { BrandMark } from "@/components/brand-mark";
 import { HeroBeeldmerk } from "@/components/hero-beeldmerk";
 
 const FOUNDED_YEAR = 1982;
-
-const services = [
-  {
-    tag: "01",
-    title: "Woningbouw",
-    description:
-      "Van standaardwoning tot luxe villa. We bouwen uw droomhuis met oog voor detail en vakmanschap in elke hoek.",
-    href: "/diensten#woningbouw",
-    image: "/images/projecten/luxe-badhuis/01.jpg",
-  },
-  {
-    tag: "02",
-    title: "Utiliteitsbouw",
-    description:
-      "Bedrijfspanden, kantoren, appartementencomplexen. Functioneel en representatief — gebouwd om mee te groeien.",
-    href: "/diensten#utiliteitsbouw",
-    image: "/images/projecten/kantoor-bedrijfshal-enter/01.jpg",
-  },
-  {
-    tag: "03",
-    title: "Verbouw & renovatie",
-    description:
-      "Kleine verbouwing of complete renovatie. We bewaren het karakter van uw pand en geven het nieuw leven.",
-    href: "/diensten#verbouw",
-    image: "/images/projecten/restauratieproject-buitengebied-enter/01.jpg",
-  },
-  {
-    tag: "04",
-    title: "Onderhoud",
-    description:
-      "Preventief en correctief onderhoud door eigen vakmensen. Zo blijft uw pand jarenlang als nieuw.",
-    href: "/diensten#onderhoud",
-    image: "/images/projecten/landhuis-te-markelo/01.jpg",
-  },
-];
-
-
-const werkgebied = [
-  "Enter",
-  "Wierden",
-  "Rijssen",
-  "Almelo",
-  "Hengelo",
-  "Borne",
-  "Enschede",
-  "Oldenzaal",
-  "Haaksbergen",
-  "Delden",
-  "Goor",
-  "Markelo",
-  "Holten",
-  "Bathmen",
-  "Raalte",
-  "Lemele",
-  "Hellendoorn",
-  "Nijverdal",
-];
 
 export default function HomePage() {
   const yearsOfCraft = new Date().getFullYear() - FOUNDED_YEAR;
@@ -84,7 +29,7 @@ export default function HomePage() {
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50">
             Bouwbedrijf Homan — Enter, sinds 1982
           </p>
-          <h1 className="font-display mt-6 max-w-5xl text-[clamp(3rem,7.5vw,7rem)] leading-[0.9] tracking-[-0.035em]">
+          <h1 className="font-display mt-6 max-w-5xl text-[clamp(2.55rem,6.4vw,5.95rem)] leading-[0.9] tracking-[-0.035em]">
             Bouwen met vakmanschap,
             <br />
             <span className="text-[var(--accent)]">op uw manier.</span>
@@ -237,11 +182,14 @@ export default function HomePage() {
               </p>
             </div>
             <ul className="flex flex-wrap gap-2 content-start lg:col-span-8 lg:pt-3">
-              {werkgebied.map((stad) => (
-                <li key={stad}>
-                  <span className="inline-flex items-center rounded-full border border-foreground/15 bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-foreground/30 hover:bg-foreground/5">
-                    {stad}
-                  </span>
+              {places.map((plaats) => (
+                <li key={plaats.slug}>
+                  <Link
+                    href={`/werkgebied/${plaats.slug}`}
+                    className="inline-flex items-center rounded-full border border-foreground/15 bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-foreground/30 hover:bg-foreground/5"
+                  >
+                    {plaats.name}
+                  </Link>
                 </li>
               ))}
               <li>
@@ -309,8 +257,8 @@ export default function HomePage() {
           <div className="mt-16 grid gap-6 md:grid-cols-2">
             {services.map((service) => (
               <Link
-                key={service.title}
-                href={service.href}
+                key={service.id}
+                href={`/diensten/${service.id}`}
                 className="group relative overflow-hidden rounded-[28px] bg-white transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-foreground/5"
               >
                 <div className="relative aspect-[16/9] overflow-hidden">
@@ -335,7 +283,7 @@ export default function HomePage() {
                       </h3>
                     </div>
                     <p className="mt-3 text-base leading-relaxed text-foreground/70">
-                      {service.description}
+                      {service.teaser}
                     </p>
                   </div>
                   <span

@@ -10,6 +10,40 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "koedijk-enter",
+    title: "Woning Koedijk in Enter",
+    category: "woningbouw",
+    opdrachtgever: "Particulier",
+    architect: "Bouwbedrijf Homan",
+    photos: [
+      "/images/projecten/koedijk-enter/01.jpg",
+      "/images/projecten/koedijk-enter/02.jpg",
+      "/images/projecten/koedijk-enter/03.jpg",
+      "/images/projecten/koedijk-enter/04.jpg",
+      "/images/projecten/koedijk-enter/05.jpg",
+      "/images/projecten/koedijk-enter/06.jpg",
+      "/images/projecten/koedijk-enter/07.jpg",
+      "/images/projecten/koedijk-enter/08.jpg",
+      "/images/projecten/koedijk-enter/09.jpg",
+    ],
+  },
+  {
+    slug: "polmann-enter",
+    title: "Woning Polmann in Enter",
+    category: "woningbouw",
+    opdrachtgever: "Particulier",
+    architect: "Bouwbedrijf Homan",
+    photos: [
+      "/images/projecten/polmann-enter/01.jpg",
+      "/images/projecten/polmann-enter/02.jpg",
+      "/images/projecten/polmann-enter/03.jpg",
+      "/images/projecten/polmann-enter/04.jpg",
+      "/images/projecten/polmann-enter/05.jpg",
+      "/images/projecten/polmann-enter/06.jpg",
+      "/images/projecten/polmann-enter/07.jpg",
+    ],
+  },
+  {
     slug: "appartementencomplex-te-markelo",
     title: "Appartementencomplex in Markelo",
     category: "utiliteit",

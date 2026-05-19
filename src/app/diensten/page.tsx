@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowUpRight, Check } from "lucide-react";
 import { BrandMark } from "@/components/brand-mark";
 import { HeroBeeldmerk } from "@/components/hero-beeldmerk";
+import { services as diensten } from "@/data/services";
 
 export const metadata: Metadata = {
   title: "Diensten",
@@ -11,77 +12,6 @@ export const metadata: Metadata = {
     "Bouwbedrijf Homan biedt woningbouw, utiliteitsbouw, verbouwingen, renovaties en onderhoud in Twente. Van vergunning tot oplevering.",
   alternates: { canonical: "https://www.bouwbedrijfhoman.nl/diensten" },
 };
-
-const diensten = [
-  {
-    id: "woningbouw",
-    tag: "01",
-    image: "/images/projecten/luxe-badhuis/01.jpg",
-    title: "Woningbouw",
-    subtitle: "Van droomhuis tot sleuteloverdracht",
-    description:
-      "Een moderne stadswoning, een ruim landhuis of een luxe villa — wij bouwen uw droomhuis met oog voor detail. Van eerste schets tot sleutel begeleiden we u in het volledige traject.",
-    features: [
-      "Vrijstaande woningen en villa's",
-      "Twee-onder-één-kapwoningen",
-      "Rijtjeswoningen en seriebouw",
-      "Energiezuinig en duurzaam bouwen",
-      "Compleet bouwmanagement",
-      "Bouwtekeningen en vergunningen",
-    ],
-  },
-  {
-    id: "utiliteitsbouw",
-    tag: "02",
-    image: "/images/projecten/kantoor-bedrijfshal-enter/01.jpg",
-    title: "Utiliteitsbouw",
-    subtitle: "Functioneel en representatief",
-    description:
-      "Een bedrijfspand dat past bij uw onderneming. We bouwen kantoren, bedrijfshallen, winkelpanden en appartementencomplexen — functioneel, duurzaam, en gemaakt om mee te groeien.",
-    features: [
-      "Kantoorpanden en bedrijfshallen",
-      "Winkelpanden",
-      "Appartementencomplexen",
-      "Scholen en zorginstellingen",
-      "Maatwerk naar uw specificaties",
-      "Turnkey oplevering",
-    ],
-  },
-  {
-    id: "verbouw",
-    tag: "03",
-    image: "/images/projecten/restauratieproject-buitengebied-enter/01.jpg",
-    title: "Verbouw & renovatie",
-    subtitle: "Nieuw leven voor uw pand",
-    description:
-      "Uw woning of bedrijfspand verdient een tweede leven. Aanbouw, dakopbouw of complete renovatie — we transformeren het pand met respect voor het bestaande karakter.",
-    features: [
-      "Aanbouw en uitbouw",
-      "Dakopbouw en dakkapellen",
-      "Complete renovatie",
-      "Keuken- en badkamerverbouwing",
-      "Restauratie van monumentale panden",
-      "Energetische verbetering",
-    ],
-  },
-  {
-    id: "onderhoud",
-    tag: "04",
-    image: "/images/projecten/landhuis-te-markelo/01.jpg",
-    title: "Onderhoud",
-    subtitle: "Preventief en correctief",
-    description:
-      "Goed onderhoud verlengt de levensduur van uw pand en voorkomt grote kosten later. We bieden zowel preventief als correctief onderhoud voor woningen én bedrijfspanden.",
-    features: [
-      "Periodieke inspecties",
-      "Meerjarenonderhoudsplannen",
-      "Schilderwerk en voegwerk",
-      "Dakreparaties",
-      "Houtrot en betonherstel",
-      "Gevelreiniging",
-    ],
-  },
-];
 
 const steps = [
   {
@@ -192,10 +122,10 @@ export default function DienstenPage() {
                     ))}
                   </ul>
                   <Link
-                    href="/contact"
+                    href={`/diensten/${d.id}`}
                     className="group mt-10 inline-flex items-center gap-2 rounded-full bg-foreground py-2.5 pl-6 pr-2 text-base font-medium text-background transition-transform hover:-translate-y-0.5"
                   >
-                    <span>Vrijblijvende offerte</span>
+                    <span>Meer over {d.title.toLowerCase()}</span>
                     <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-white">
                       <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
                     </span>
