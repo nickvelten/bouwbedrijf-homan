@@ -343,7 +343,17 @@
   animation-play-state: paused;
 }
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track { animation: none; }
+  /* Product decision: the project/quote rails keep autoplaying for everyone,
+     so we deliberately exempt the marquee from the global reduced-motion
+     reset above (which otherwise collapses every animation to 0.01ms). */
+  .marquee-track {
+    animation: marquee-x var(--marquee-duration, 90s) linear infinite !important;
+    animation-play-state: running !important;
+  }
+  .marquee-viewport:hover .marquee-track,
+  .marquee-viewport:focus-within .marquee-track {
+    animation-play-state: paused !important;
+  }
 }
 
 /* Hero crossfade — pure CSS, no JS animation library on the LCP path */

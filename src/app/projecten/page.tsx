@@ -13,8 +13,10 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.bouwbedrijfhoman.nl/projecten" },
 };
 
+// Nieuwbouw: expliciet getagde nieuwbouwprojecten — eigen rubriek.
+const nieuwbouw = projects.filter((p) => p.nieuwbouw);
 const woningbouw = projects.filter(
-  (p) => p.category === "woningbouw" || p.category === "beide",
+  (p) => (p.category === "woningbouw" || p.category === "beide") && !p.nieuwbouw,
 );
 const utiliteit = projects.filter(
   (p) => p.category === "utiliteit" || p.category === "beide",
@@ -107,6 +109,12 @@ export default function ProjectenPage() {
           </p>
           <div className="mt-10 flex flex-wrap gap-2.5">
             <a
+              href="#nieuwbouw"
+              className="inline-flex items-center rounded-full border border-foreground/20 bg-background px-6 py-3 text-base font-medium text-foreground transition-colors hover:border-foreground/40 hover:bg-foreground/5"
+            >
+              Nieuwbouw
+            </a>
+            <a
               href="#woningbouw"
               className="inline-flex items-center rounded-full border border-foreground/20 bg-background px-6 py-3 text-base font-medium text-foreground transition-colors hover:border-foreground/40 hover:bg-foreground/5"
             >
@@ -134,14 +142,42 @@ export default function ProjectenPage() {
         </div>
       </section>
 
-      {/* WONINGBOUW */}
-      <section className="px-3 pt-16 sm:px-6 sm:pt-24" id="woningbouw">
+      {/* NIEUWBOUW */}
+      <section className="px-3 pt-16 sm:px-6 sm:pt-24" id="nieuwbouw">
         <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
           <div className="flex items-end justify-between gap-6">
             <div>
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--accent)] inline-flex items-center gap-1.5">
                 <BrandMark className="h-2.5 w-3 text-foreground" />
                 01
+              </p>
+              <h2 className="font-display mt-3 text-4xl leading-tight tracking-tight sm:text-5xl">
+                Nieuwbouw
+              </h2>
+              <p className="mt-3 max-w-xl text-foreground/60">
+                {nieuwbouw.length} nieuwbouwproject
+                {nieuwbouw.length === 1 ? "" : "en"} — van twee-onder-één-kap
+                tot complete woonblokken.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {nieuwbouw.map((p) => (
+              <ProjectCard key={p.slug} project={p} categoryLabel="Nieuwbouw" />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WONINGBOUW */}
+      <section className="px-3 pt-24 sm:px-6 sm:pt-32" id="woningbouw">
+        <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
+          <div className="flex items-end justify-between gap-6">
+            <div>
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--accent)] inline-flex items-center gap-1.5">
+                <BrandMark className="h-2.5 w-3 text-foreground" />
+                02
               </p>
               <h2 className="font-display mt-3 text-4xl leading-tight tracking-tight sm:text-5xl">
                 Woningbouw
@@ -168,7 +204,7 @@ export default function ProjectenPage() {
               <div>
                 <p className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--accent)] inline-flex items-center gap-1.5">
                   <BrandMark className="h-2.5 w-3 text-white" />
-                  02
+                  03
                 </p>
                 <h2 className="font-display mt-3 text-4xl leading-tight tracking-tight sm:text-5xl">
                   Utiliteit
@@ -200,7 +236,7 @@ export default function ProjectenPage() {
             <div>
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--accent)] inline-flex items-center gap-1.5">
                 <BrandMark className="h-2.5 w-3 text-foreground" />
-                03
+                04
               </p>
               <h2 className="font-display mt-3 text-4xl leading-tight tracking-tight sm:text-5xl">
                 Verbouw &amp; renovatie
@@ -251,7 +287,7 @@ export default function ProjectenPage() {
             <div>
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--accent)] inline-flex items-center gap-1.5">
                 <BrandMark className="h-2.5 w-3 text-foreground" />
-                04
+                05
               </p>
               <h2 className="font-display mt-3 text-4xl leading-tight tracking-tight sm:text-5xl">
                 Onderhoud
