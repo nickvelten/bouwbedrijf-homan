@@ -6,6 +6,7 @@ const nav = [
   { name: "Home", href: "/" },
   { name: "Diensten", href: "/diensten" },
   { name: "Projecten", href: "/projecten" },
+  { name: "Werkgebied", href: "/werkgebied" },
   { name: "Actueel", href: "/actueel" },
   { name: "Over ons", href: "/over-ons" },
   { name: "Werken bij", href: "/werken-bij" },
