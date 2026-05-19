@@ -87,7 +87,7 @@ export default function ActueelPage() {
               </span>
             </a>
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50">
-              Dagelijkse updates vanaf de bouwplaats
+              Wekelijkse updates vanaf de bouwplaats
             </p>
           </div>
         </div>

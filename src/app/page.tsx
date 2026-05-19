@@ -182,7 +182,7 @@ export default function HomePage() {
               </p>
             </div>
             <ul className="flex flex-wrap gap-2 content-start lg:col-span-8 lg:pt-3">
-              {places.map((plaats) => (
+              {places.filter((p) => p.featured).map((plaats) => (
                 <li key={plaats.slug}>
                   <Link
                     href={`/werkgebied/${plaats.slug}`}
@@ -194,10 +194,10 @@ export default function HomePage() {
               ))}
               <li>
                 <Link
-                  href="/contact"
+                  href="/werkgebied"
                   className="inline-flex items-center rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background transition-transform hover:-translate-y-0.5"
                 >
-                  + meer op aanvraag
+                  + heel ons werkgebied
                 </Link>
               </li>
             </ul>
