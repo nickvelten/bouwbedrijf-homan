@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ArrowUpRight, ArrowLeft } from "lucide-react";
-import { places, getPlace, projectsInPlace } from "@/data/places";
+import { places, getPlace, projectsInPlace, placeIntro } from "@/data/places";
 import { BrandMark } from "@/components/brand-mark";
 import { HeroBeeldmerk } from "@/components/hero-beeldmerk";
 
@@ -23,7 +23,7 @@ export async function generateMetadata({
   if (!place) return { title: "Plaats niet gevonden" };
 
   const title = `Aannemer in ${place.name} — Bouwbedrijf Homan`;
-  const description = `Bouwbedrijf Homan is uw aannemer in ${place.name}: woningbouw, utiliteitsbouw, verbouw, renovatie en onderhoud. ${place.intro}`;
+  const description = `Bouwbedrijf Homan is uw aannemer in ${place.name}: woningbouw, utiliteitsbouw, verbouw, renovatie en onderhoud. ${placeIntro(place)}`;
 
   return {
     title,
@@ -65,7 +65,7 @@ export default async function PlacePage({ params }: { params: Params }) {
             <span className="text-[var(--accent)]">{place.name}.</span>
           </h1>
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-foreground/70">
-            {place.intro} Van eerste schets tot oplevering — woningbouw,
+            {placeIntro(place)} Van eerste schets tot oplevering — woningbouw,
             utiliteit, verbouw en onderhoud in {place.name} en omgeving.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">

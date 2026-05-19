@@ -28,7 +28,7 @@ const perks = [
     tag: "03",
     title: "Afwisselend werk",
     description:
-      "Van villa's tot centrumplannen. Elke week een andere locatie, elke maand een nieuw detail.",
+      "Van luxe villa's tot centrumplannen. Elke keer weer afwisselend werk, en altijd meedenken tot in het perfecte detail.",
   },
   {
     tag: "04",

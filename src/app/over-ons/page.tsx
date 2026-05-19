@@ -124,6 +124,12 @@ export default function OverOnsPage() {
                 moderne bouwtechnieken. Korte lijnen tussen bouwplaats en
                 kantoor houden u altijd op de hoogte.
               </p>
+              <p className="mt-5 text-lg leading-relaxed text-foreground/70">
+                Vanuit kantoor én bouwplaats brengen wij, met een team van 35
+                medewerkers, samen uw wensen in vervulling. De lijnen zijn kort
+                en we werken zo prettig mogelijk samen, tot het perfecte
+                resultaat.
+              </p>
               <div className="mt-10 inline-flex items-center gap-3 rounded-full border border-foreground/15 px-5 py-2.5">
                 <Image
                   src="/images/bouwgarant-logo.png"
@@ -171,6 +177,25 @@ export default function OverOnsPage() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* TEAM PHOTO */}
+      <section className="px-3 pt-20 sm:px-6 sm:pt-28">
+        <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
+          <div className="relative overflow-hidden rounded-[28px] bg-muted aspect-[16/9] sm:rounded-[36px]">
+            <Image
+              src="/images/over-ons/team-2026.jpg"
+              alt="Het team van Bouwbedrijf Homan voor het kantoor in Enter"
+              fill
+              className="object-cover"
+              sizes="(min-width: 1024px) 1440px, 100vw"
+              quality={75}
+            />
+          </div>
+          <p className="mt-4 font-mono text-xs uppercase tracking-[0.2em] text-foreground/50">
+            Ons team — Enter, 2026
+          </p>
         </div>
       </section>
 

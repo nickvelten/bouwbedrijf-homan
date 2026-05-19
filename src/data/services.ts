@@ -17,7 +17,7 @@ export const services: Service[] = [
   {
     id: "woningbouw",
     tag: "01",
-    image: "/images/projecten/luxe-badhuis/01.jpg",
+    image: "/images/projecten/woning-kempischebouwstijl/01.jpg",
     title: "Woningbouw",
     subtitle: "Van droomhuis tot sleuteloverdracht",
     teaser:
@@ -36,7 +36,7 @@ export const services: Service[] = [
   {
     id: "utiliteitsbouw",
     tag: "02",
-    image: "/images/projecten/kantoor-bedrijfshal-enter/01.jpg",
+    image: "/images/projecten/bedrijfspand-elsmoat/01.jpg",
     title: "Utiliteitsbouw",
     subtitle: "Functioneel en representatief",
     teaser:
@@ -74,7 +74,7 @@ export const services: Service[] = [
   {
     id: "onderhoud",
     tag: "04",
-    image: "/images/projecten/landhuis-te-markelo/01.jpg",
+    image: "/images/projecten/verbouwing-kantoorpand-in-enter/02.jpg",
     title: "Onderhoud",
     subtitle: "Preventief en correctief",
     teaser:
