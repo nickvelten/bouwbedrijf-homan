@@ -146,14 +146,14 @@ export default function HomePage() {
             {stats.map((s, i) => (
               <div
                 key={s.label}
-                className={`flex items-baseline gap-4 px-2 py-10 sm:block sm:px-8 sm:py-8 ${
+                className={`block px-3 py-8 sm:px-8 sm:py-8 ${
                   i % 2 === 1 ? "border-l border-foreground/10 sm:border-l-0" : ""
                 }`}
               >
-                <dd className="font-display text-[clamp(3rem,6vw,5.5rem)] leading-none tracking-[-0.04em]">
+                <dd className="font-display text-[clamp(2.5rem,8vw,5.5rem)] leading-none tracking-[-0.04em]">
                   {s.value}
                 </dd>
-                <dt className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 sm:mt-4 sm:block">
+                <dt className="mt-3 block font-mono text-[10px] uppercase tracking-[0.18em] text-foreground/50 sm:mt-4 sm:text-xs sm:tracking-[0.2em]">
                   {s.label}
                 </dt>
               </div>

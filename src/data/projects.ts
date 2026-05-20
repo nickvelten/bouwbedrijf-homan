@@ -5,17 +5,14 @@ export type Project = {
   opdrachtgever?: string;
   architect?: string;
   locatie?: string;
-  /** Shown in the dedicated "Nieuwbouw" rubriek on /projecten. */
-  nieuwbouw?: boolean;
   photos: string[]; // paths like "/images/projecten/<slug>/01.jpg"
 };
 
 export const projects: Project[] = [
   {
     slug: "berghorst-fase-2-enter",
-    title: "Nieuwbouw Berghorst fase 2 in Enter",
+    title: "Berghorst fase 2 in Enter",
     category: "woningbouw",
-    nieuwbouw: true,
     opdrachtgever: "Reggehave",
     architect: "Reggehave",
     photos: ["/images/projecten/berghorst-fase-2-enter/01.jpg"],
@@ -24,7 +21,6 @@ export const projects: Project[] = [
     slug: "blok-van-4-berghorst-enter",
     title: "Blok van 4 Berghorst in Enter",
     category: "woningbouw",
-    nieuwbouw: true,
     opdrachtgever: "Eigen ontwikkeling",
     architect: "Reggehave",
     photos: ["/images/projecten/blok-van-4-berghorst-enter/01.jpg"],
@@ -38,37 +34,37 @@ export const projects: Project[] = [
     photos: ["/images/projecten/bedrijfshal-enschede/01.jpg"],
   },
   {
-    slug: "koedijk-enter",
-    title: "Woning Koedijk in Enter",
+    slug: "woning-in-enter-7",
+    title: "Woning in Enter",
     category: "woningbouw",
     opdrachtgever: "Particulier",
     architect: "Bouwbedrijf Homan",
     photos: [
-      "/images/projecten/koedijk-enter/01.jpg",
-      "/images/projecten/koedijk-enter/02.jpg",
-      "/images/projecten/koedijk-enter/03.jpg",
-      "/images/projecten/koedijk-enter/04.jpg",
-      "/images/projecten/koedijk-enter/05.jpg",
-      "/images/projecten/koedijk-enter/06.jpg",
-      "/images/projecten/koedijk-enter/07.jpg",
-      "/images/projecten/koedijk-enter/08.jpg",
-      "/images/projecten/koedijk-enter/09.jpg",
+      "/images/projecten/woning-in-enter-7/01.jpg",
+      "/images/projecten/woning-in-enter-7/02.jpg",
+      "/images/projecten/woning-in-enter-7/03.jpg",
+      "/images/projecten/woning-in-enter-7/04.jpg",
+      "/images/projecten/woning-in-enter-7/05.jpg",
+      "/images/projecten/woning-in-enter-7/06.jpg",
+      "/images/projecten/woning-in-enter-7/07.jpg",
+      "/images/projecten/woning-in-enter-7/08.jpg",
+      "/images/projecten/woning-in-enter-7/09.jpg",
     ],
   },
   {
-    slug: "polmann-enter",
-    title: "Woning Polmann in Enter",
+    slug: "woning-in-enter-9",
+    title: "Woning in Enter",
     category: "woningbouw",
     opdrachtgever: "Particulier",
     architect: "Bouwbedrijf Homan",
     photos: [
-      "/images/projecten/polmann-enter/01.jpg",
-      "/images/projecten/polmann-enter/02.jpg",
-      "/images/projecten/polmann-enter/03.jpg",
-      "/images/projecten/polmann-enter/04.jpg",
-      "/images/projecten/polmann-enter/05.jpg",
-      "/images/projecten/polmann-enter/06.jpg",
-      "/images/projecten/polmann-enter/07.jpg",
+      "/images/projecten/woning-in-enter-9/01.jpg",
+      "/images/projecten/woning-in-enter-9/02.jpg",
+      "/images/projecten/woning-in-enter-9/03.jpg",
+      "/images/projecten/woning-in-enter-9/04.jpg",
+      "/images/projecten/woning-in-enter-9/05.jpg",
+      "/images/projecten/woning-in-enter-9/06.jpg",
+      "/images/projecten/woning-in-enter-9/07.jpg",
     ],
   },
   {
