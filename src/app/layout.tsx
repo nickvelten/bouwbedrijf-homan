@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import { Geist, Fraunces, Instrument_Serif, JetBrains_Mono, Archivo_Black, Archivo } from "next/font/google";
+import { GoogleTagManager } from "@next/third-parties/google";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ChromeGate } from "@/components/chrome-gate";
 import { ScrollToTop } from "@/components/scroll-to-top";
+
+const GTM_ID = "GTM-5MSTG2NN";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -175,7 +178,16 @@ export default function RootLayout({
           }}
         />
       </head>
+      <GoogleTagManager gtmId={GTM_ID} />
       <body className="min-h-full flex flex-col">
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
         <ScrollToTop />
         <a href="#main" className="skip-link">
           Spring naar hoofdinhoud
