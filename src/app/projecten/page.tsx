@@ -174,7 +174,7 @@ export default function ProjectenPage() {
                   02
                 </p>
                 <h2 className="font-display mt-3 text-4xl leading-tight tracking-tight sm:text-5xl">
-                  Utiliteit
+                  Utiliteitsbouw
                 </h2>
                 <p className="mt-3 text-white/60">
                   {utiliteit.length} bedrijfs- en centrumprojecten
@@ -187,7 +187,7 @@ export default function ProjectenPage() {
                 <ProjectCard
                   key={p.slug}
                   project={p}
-                  categoryLabel="Utiliteit"
+                  categoryLabel="Utiliteitsbouw"
                   onDark
                 />
               ))}
@@ -310,7 +310,7 @@ export default function ProjectenPage() {
                 href="/contact"
                 className="group inline-flex h-[60px] items-center gap-2 rounded-full bg-foreground pl-6 pr-2 text-base font-medium text-background transition-transform hover:-translate-y-0.5"
               >
-                <span>Laten we kennismaken</span>
+                <span>Plan een gesprek</span>
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--accent)] text-white">
                   <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
                 </span>

@@ -36,8 +36,8 @@ export default function HomePage() {
           </h1>
           <div className="mt-10 grid gap-8 lg:grid-cols-12">
             <p className="max-w-xl text-lg leading-relaxed text-foreground/70 lg:col-span-6">
-              Al bijna 50 jaar realiseren we woningen, bedrijfspanden en
-              renovaties in Twente. Met 30 vaste vakmensen en korte lijnen,
+              Al ruim 40 jaar realiseren we woningen, bedrijfspanden en
+              renovaties in Twente. Met 35 vaste vakmensen en korte lijnen,
               van eerste schets tot sleutel.
             </p>
             <div className="flex flex-wrap items-start gap-3 lg:col-span-6 lg:justify-end">
@@ -45,14 +45,14 @@ export default function HomePage() {
                 href="/contact"
                 className="group inline-flex h-[60px] items-center gap-2 rounded-full bg-foreground pl-6 pr-2 text-base font-medium text-background transition-transform hover:-translate-y-0.5"
               >
-                <span>Laten we kennismaken</span>
+                <span>Plan een gesprek</span>
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--accent)] text-white">
                   <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
                 </span>
               </Link>
               <Link
                 href="/projecten"
-                className="group inline-flex h-[60px] items-center gap-2 rounded-full border border-foreground/20 px-7 text-base font-medium text-foreground transition-colors hover:bg-foreground/5"
+                className="group inline-flex h-[60px] items-center gap-2 rounded-full border border-foreground/20 bg-background px-7 text-base font-medium text-foreground transition-colors hover:bg-foreground/5"
               >
                 Bekijk projecten
                 <ArrowUpRight
@@ -63,22 +63,32 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Hero image — sfeerfoto gerealiseerde woning */}
-          <div className="relative mt-14 aspect-[16/9] overflow-hidden rounded-[28px] sm:rounded-[40px]">
+          {/* Hero image — sfeerfoto gerealiseerde woning, linkt naar het project */}
+          <Link
+            href="/projecten/woning-in-holten-2"
+            aria-label="Bekijk het project Woning in Holten"
+            className="group relative mt-14 block aspect-[16/9] overflow-hidden rounded-[28px] sm:rounded-[40px]"
+          >
             <Image
               src="/images/projecten/woning-in-holten-2/01.jpg"
               alt="Door Bouwbedrijf Homan gerealiseerde woning in Holten"
               fill
-              className="object-cover"
+              className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
               sizes="(min-width: 1024px) 1440px, 100vw"
               priority
             />
-            <div className="pointer-events-none absolute bottom-5 left-5 right-5 flex items-end justify-between">
+            <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-3">
               <span className="rounded-full bg-white/90 px-4 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-foreground backdrop-blur">
-                Gerealiseerd door Homan
+                Woning in Holten
+              </span>
+              <span className="inline-flex items-center gap-2 rounded-full bg-foreground/90 py-2 pl-4 pr-2 text-sm font-medium text-background backdrop-blur transition-transform group-hover:-translate-y-0.5">
+                Bekijk dit project
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[var(--accent)] text-white">
+                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                </span>
               </span>
             </div>
-          </div>
+          </Link>
         </div>
       </section>
 

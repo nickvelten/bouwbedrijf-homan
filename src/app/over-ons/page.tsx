@@ -10,7 +10,7 @@ const FOUNDED_YEAR = 1982;
 export const metadata: Metadata = {
   title: "Over ons",
   description:
-    "Bouwbedrijf Homan: al bijna 50 jaar je betrouwbare aannemer in Twente. 35 vakmensen, Bouwgarant gecertificeerd, gevestigd in Enter.",
+    "Bouwbedrijf Homan: al ruim 40 jaar je betrouwbare aannemer in Twente. 35 vakmensen, Bouwgarant gecertificeerd, gevestigd in Enter.",
   alternates: { canonical: "https://www.bouwbedrijfhoman.nl/over-ons" },
 };
 
@@ -92,7 +92,7 @@ export default function OverOnsPage() {
             met <span className="text-[var(--accent)]">handschrift.</span>
           </h1>
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-foreground/70">
-            Al bijna 50 jaar bouwen wij aan dromen in Twente. Met vakmanschap,
+            Al ruim 40 jaar bouwen wij aan dromen in Twente. Met vakmanschap,
             betrokkenheid en een persoonlijke aanpak, van eerste schets tot
             sleutel.
           </p>
@@ -314,7 +314,7 @@ export default function OverOnsPage() {
                 href="/contact"
                 className="group inline-flex h-[60px] items-center gap-2 rounded-full bg-foreground pl-6 pr-2 text-base font-medium text-background transition-transform hover:-translate-y-0.5"
               >
-                <span>Kom langs</span>
+                <span>Plan een gesprek</span>
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-white">
                   <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
                 </span>

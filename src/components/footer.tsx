@@ -13,11 +13,6 @@ const nav = [
   { name: "Contact", href: "/contact" },
 ];
 
-const legal = [
-  { name: "Privacy", href: "/privacy" },
-  { name: "Algemene voorwaarden", href: "/algemene-voorwaarden" },
-];
-
 // Brand glyphs (simple-icons paths) — lucide-react in this version doesn't
 // ship social brand icons, so we render them as inline SVG.
 const social = [
@@ -63,7 +58,7 @@ export function Footer() {
               href="/contact"
               className="group mt-10 inline-flex items-center gap-2 rounded-full bg-white py-2 pl-6 pr-2 text-sm font-medium text-foreground transition-transform hover:-translate-y-0.5"
             >
-              <span>Start een gesprek</span>
+              <span>Plan een gesprek</span>
               <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--accent)] text-white">
                 <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
               </span>
@@ -104,17 +99,23 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-2">
                 <Clock className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
-                <dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-sm">
-                  <dt className="text-white/50">Maandag</dt>
-                  <dd className="tabular-nums">08:30 – 12:30 · 13:00 – 17:00</dd>
-                  <dt className="text-white/50">Dinsdag</dt>
-                  <dd className="tabular-nums">08:30 – 12:30 · 13:00 – 17:00</dd>
-                  <dt className="text-white/50">Woensdag</dt>
-                  <dd className="tabular-nums">08:30 – 12:30 · 13:00 – 17:00</dd>
-                  <dt className="text-white/50">Donderdag</dt>
-                  <dd className="tabular-nums">08:30 – 12:30 · 13:00 – 17:00</dd>
-                  <dt className="text-white/50">Vrijdag</dt>
-                  <dd className="tabular-nums">08:30 – 12:30 · 13:00 – 16:00</dd>
+                <dl className="space-y-3 text-sm">
+                  <div>
+                    <dt className="font-mono text-[11px] uppercase tracking-[0.15em] text-white/50">
+                      Maandag t/m donderdag
+                    </dt>
+                    <dd className="mt-1 tabular-nums text-white/90">
+                      08:30 – 12:30 · 13:00 – 17:00
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="font-mono text-[11px] uppercase tracking-[0.15em] text-white/50">
+                      Vrijdag
+                    </dt>
+                    <dd className="mt-1 tabular-nums text-white/90">
+                      08:30 – 12:30 · 13:00 – 16:00
+                    </dd>
+                  </div>
                 </dl>
               </li>
             </ul>
@@ -176,15 +177,6 @@ export function Footer() {
                 </div>
               </div>
               <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
-                {legal.map((l) => (
-                  <Link
-                    key={l.href}
-                    href={l.href}
-                    className="transition-colors hover:text-white"
-                  >
-                    {l.name}
-                  </Link>
-                ))}
                 <span aria-hidden="true">©</span>
                 <span>{new Date().getFullYear()} Bouwbedrijf Homan B.V.</span>
               </div>

@@ -42,8 +42,8 @@ export async function generateMetadata({
 
 const categoryLabel: Record<string, string> = {
   woningbouw: "Woningbouw",
-  utiliteit: "Utiliteit",
-  beide: "Woningbouw · Utiliteit",
+  utiliteit: "Utiliteitsbouw",
+  beide: "Woningbouw · Utiliteitsbouw",
   verbouwing: "Verbouw & renovatie",
 };
 
@@ -60,8 +60,23 @@ export default async function ProjectDetailPage({
     .filter((p) => p.category === project.category && p.slug !== project.slug)
     .slice(0, 3);
 
+  const BASE = "https://www.bouwbedrijfhoman.nl";
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: BASE },
+      { "@type": "ListItem", position: 2, name: "Projecten", item: `${BASE}/projecten` },
+      { "@type": "ListItem", position: 3, name: project.title, item: `${BASE}/projecten/${project.slug}` },
+    ],
+  };
+
   return (
     <div className="bg-background text-foreground">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+      />
       {/* HERO */}
       <section className="px-3 pt-12 sm:px-6 sm:pt-20">
         <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
@@ -126,7 +141,7 @@ export default async function ProjectDetailPage({
         <div className="mx-auto max-w-[1440px]">
           <div className="relative overflow-hidden rounded-[32px] bg-foreground px-8 py-16 text-white sm:rounded-[40px] sm:px-16 sm:py-24">
             <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/50">
-              Laten we kennismaken
+              Plan een gesprek
             </p>
             <h2 className="font-display mt-5 max-w-3xl text-4xl leading-[1.02] tracking-tight sm:text-5xl lg:text-6xl">
               Zin om samen iets

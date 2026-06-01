@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { projects } from "@/data/projects";
 import { places } from "@/data/places";
 import { services } from "@/data/services";
+import { articles } from "@/data/articles";
 
 const BASE = "https://www.bouwbedrijfhoman.nl";
 const STATIC_ROUTES = [
@@ -9,6 +10,7 @@ const STATIC_ROUTES = [
   "/diensten",
   "/projecten",
   "/werkgebied",
+  "/actueel",
   "/over-ons",
   "/werken-bij",
   "/contact",
@@ -45,10 +47,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.5,
   }));
 
+  const articleEntries = articles.map((a) => ({
+    url: `${BASE}/actueel/${a.slug}`,
+    lastModified: a.date ? new Date(a.date) : now,
+    changeFrequency: "yearly" as const,
+    priority: 0.5,
+  }));
+
   return [
     ...staticEntries,
     ...serviceEntries,
     ...placeEntries,
     ...projectEntries,
+    ...articleEntries,
   ];
 }
