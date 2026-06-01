@@ -21,9 +21,9 @@ export const services: Service[] = [
     title: "Woningbouw",
     subtitle: "Van droomhuis tot sleuteloverdracht",
     teaser:
-      "Van standaardwoning tot luxe villa. We bouwen uw droomhuis met oog voor detail en vakmanschap in elke hoek.",
+      "Van standaardwoning tot luxe villa. We bouwen je droomhuis met oog voor detail en vakmanschap in elke hoek.",
     description:
-      "Een moderne stadswoning, een ruim landhuis of een luxe villa — wij bouwen uw droomhuis met oog voor detail. Van eerste schets tot sleutel begeleiden we u in het volledige traject.",
+      "Een moderne stadswoning, een ruim landhuis of een luxe villa: wij bouwen je droomhuis met oog voor detail. Van eerste schets tot sleutel begeleiden we je in het volledige traject.",
     features: [
       "Vrijstaande woningen en villa's",
       "Twee-onder-één-kapwoningen",
@@ -40,15 +40,15 @@ export const services: Service[] = [
     title: "Utiliteitsbouw",
     subtitle: "Functioneel en representatief",
     teaser:
-      "Bedrijfspanden, kantoren, appartementencomplexen. Functioneel en representatief — gebouwd om mee te groeien.",
+      "Bedrijfspanden, kantoren, appartementencomplexen. Functioneel en representatief, gebouwd om mee te groeien.",
     description:
-      "Een bedrijfspand dat past bij uw onderneming. We bouwen kantoren, bedrijfshallen, winkelpanden en appartementencomplexen — functioneel, duurzaam, en gemaakt om mee te groeien.",
+      "Een bedrijfspand dat past bij je onderneming. We bouwen kantoren, bedrijfshallen, winkelpanden en appartementencomplexen: functioneel, duurzaam en gemaakt om mee te groeien.",
     features: [
       "Kantoorpanden en bedrijfshallen",
       "Winkelpanden",
       "Appartementencomplexen",
       "Scholen en zorginstellingen",
-      "Maatwerk naar uw specificaties",
+      "Maatwerk naar je specificaties",
       "Turnkey oplevering",
     ],
   },
@@ -57,11 +57,11 @@ export const services: Service[] = [
     tag: "03",
     image: "/images/projecten/restauratieproject-buitengebied-enter/01.jpg",
     title: "Verbouw & renovatie",
-    subtitle: "Nieuw leven voor uw pand",
+    subtitle: "Nieuw leven voor je pand",
     teaser:
-      "Kleine verbouwing of complete renovatie. We bewaren het karakter van uw pand en geven het nieuw leven.",
+      "Kleine verbouwing of complete renovatie. We bewaren het karakter van je pand en geven het nieuw leven.",
     description:
-      "Uw woning of bedrijfspand verdient een tweede leven. Aanbouw, dakopbouw of complete renovatie — we transformeren het pand met respect voor het bestaande karakter.",
+      "Je woning of bedrijfspand verdient een tweede leven. Aanbouw, dakopbouw of complete renovatie. We transformeren het pand met respect voor het bestaande karakter.",
     features: [
       "Aanbouw en uitbouw",
       "Dakopbouw en dakkapellen",
@@ -78,9 +78,9 @@ export const services: Service[] = [
     title: "Onderhoud",
     subtitle: "Preventief en correctief",
     teaser:
-      "Preventief en correctief onderhoud door eigen vakmensen. Zo blijft uw pand jarenlang als nieuw.",
+      "Preventief en correctief onderhoud door eigen vakmensen. Zo blijft je pand jarenlang als nieuw.",
     description:
-      "Goed onderhoud verlengt de levensduur van uw pand en voorkomt grote kosten later. We bieden zowel preventief als correctief onderhoud voor woningen én bedrijfspanden.",
+      "Goed onderhoud verlengt de levensduur van je pand en voorkomt grote kosten later. We bieden zowel preventief als correctief onderhoud voor woningen én bedrijfspanden.",
     features: [
       "Periodieke inspecties",
       "Meerjarenonderhoudsplannen",

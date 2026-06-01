@@ -240,7 +240,7 @@ export default async function ArticlePage({ params }: { params: Params }) {
         <div className="mx-auto max-w-[1440px]">
           <div className="relative overflow-hidden rounded-[32px] bg-foreground px-8 py-16 text-white sm:rounded-[40px] sm:px-16 sm:py-20">
             <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/50">
-              Uw project
+              Jouw project
             </p>
             <h2 className="font-display mt-5 max-w-3xl text-4xl leading-[1.02] tracking-tight sm:text-5xl">
               Ook iets moois

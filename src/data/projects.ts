@@ -1,7 +1,7 @@
 export type Project = {
   slug: string;
   title: string;
-  category: "woningbouw" | "utiliteit" | "beide";
+  category: "woningbouw" | "utiliteit" | "beide" | "verbouwing";
   opdrachtgever?: string;
   architect?: string;
   locatie?: string;
@@ -665,7 +665,7 @@ export const projects: Project[] = [
   {
     slug: "middenplein-in-enter",
     title: "Middenplein in Enter",
-    category: "beide",
+    category: "utiliteit",
     opdrachtgever: "Middenplein VOF en Velten Invest",
     architect: "Bouwbedrijf Homan",
     photos: [
@@ -693,7 +693,7 @@ export const projects: Project[] = [
   {
     slug: "restauratieproject-buitengebied-enter",
     title: "Restauratieproject buitengebied Enter",
-    category: "utiliteit",
+    category: "verbouwing",
     opdrachtgever: "Zakelijk",
     photos: [
       "/images/projecten/restauratieproject-buitengebied-enter/01.jpg",

@@ -10,6 +10,7 @@ const categoryLabel: Record<Project["category"], string> = {
   woningbouw: "Woningbouw",
   utiliteit: "Utiliteit",
   beide: "Woningbouw · Utiliteit",
+  verbouwing: "Verbouw & renovatie",
 };
 
 export function RecentWorkSlider({ projects }: { projects: Project[] }) {

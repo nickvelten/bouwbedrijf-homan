@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUpRight, Plus } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { testimonials } from "@/data/testimonials";
 import { projects } from "@/data/projects";
 import { services } from "@/data/services";
@@ -27,25 +27,25 @@ export default function HomePage() {
         <HeroBeeldmerk />
         <div className="relative z-10 mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50">
-            Bouwbedrijf Homan — Enter, sinds 1982
+            Bouwbedrijf Homan · Enter, sinds 1982
           </p>
-          <h1 className="font-display mt-6 max-w-5xl text-[clamp(2.55rem,6.4vw,5.95rem)] leading-[0.9] tracking-[-0.035em]">
-            Bouwen met vakmanschap,
+          <h1 className="font-display mt-6 max-w-5xl text-[clamp(2.25rem,5.5vw,5rem)] leading-[0.95] tracking-[-0.03em]">
+            Sfeervol wonen,
             <br />
-            <span className="text-[var(--accent)]">op uw manier.</span>
+            <span className="text-[var(--accent)]">stijlvol werken.</span>
           </h1>
           <div className="mt-10 grid gap-8 lg:grid-cols-12">
             <p className="max-w-xl text-lg leading-relaxed text-foreground/70 lg:col-span-6">
               Al bijna 50 jaar realiseren we woningen, bedrijfspanden en
-              renovaties in Twente. Met dertig vaste vakmensen en korte lijnen
-              — van eerste schets tot sleutel.
+              renovaties in Twente. Met 30 vaste vakmensen en korte lijnen,
+              van eerste schets tot sleutel.
             </p>
             <div className="flex flex-wrap items-start gap-3 lg:col-span-6 lg:justify-end">
               <Link
                 href="/contact"
                 className="group inline-flex h-[60px] items-center gap-2 rounded-full bg-foreground pl-6 pr-2 text-base font-medium text-background transition-transform hover:-translate-y-0.5"
               >
-                <span>Start uw project</span>
+                <span>Laten we kennismaken</span>
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--accent)] text-white">
                   <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
                 </span>
@@ -63,11 +63,11 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Hero image — landscape */}
+          {/* Hero image — sfeerfoto gerealiseerde woning */}
           <div className="relative mt-14 aspect-[16/9] overflow-hidden rounded-[28px] sm:rounded-[40px]">
             <Image
-              src="/images/kantoor-enter.jpg"
-              alt="Bouwbedrijf Homan — kantoor en bedrijfspand in Enter"
+              src="/images/projecten/woning-in-holten-2/01.jpg"
+              alt="Door Bouwbedrijf Homan gerealiseerde woning in Holten"
               fill
               className="object-cover"
               sizes="(min-width: 1024px) 1440px, 100vw"
@@ -75,13 +75,7 @@ export default function HomePage() {
             />
             <div className="pointer-events-none absolute bottom-5 left-5 right-5 flex items-end justify-between">
               <span className="rounded-full bg-white/90 px-4 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-foreground backdrop-blur">
-                Ons kantoor in Enter
-              </span>
-              <span
-                aria-hidden="true"
-                className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-[var(--accent)] shadow-sm"
-              >
-                <Plus className="h-5 w-5" strokeWidth={2.5} />
+                Gerealiseerd door Homan
               </span>
             </div>
           </div>
@@ -98,7 +92,7 @@ export default function HomePage() {
                 Introductie
               </p>
               <h2 className="mt-5 text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
-                Een familiebedrijf dat bouwt zoals het hoort — zorgvuldig,
+                Een familiebedrijf dat bouwt zoals het hoort: zorgvuldig,
                 transparant, en met een duidelijke handtekening.
               </h2>
             </div>
@@ -107,7 +101,7 @@ export default function HomePage() {
                 Opgericht in 1982 in Enter, uitgegroeid tot dé vertrouwde
                 aannemer van Twente. We werken met eigen vakmensen en vaste
                 onderaannemers zodat we kwaliteit en planning zelf in de hand
-                houden. Geen verrassingen — behalve die ene muur die mooier
+                houden. Geen verrassingen, behalve die ene muur die mooier
                 wordt dan verwacht.
               </p>
             </div>
@@ -142,20 +136,15 @@ export default function HomePage() {
               Stand 2026
             </p>
           </div>
-          <dl className="mt-8 grid grid-cols-2 divide-y divide-foreground/10 border-t border-foreground/10 sm:grid-cols-4 sm:divide-y-0 sm:divide-x">
-            {stats.map((s, i) => (
-              <div
-                key={s.label}
-                className={`block px-3 py-8 sm:px-8 sm:py-8 ${
-                  i % 2 === 1 ? "border-l border-foreground/10 sm:border-l-0" : ""
-                }`}
-              >
-                <dd className="font-display text-[clamp(2.5rem,8vw,5.5rem)] leading-none tracking-[-0.04em]">
-                  {s.value}
-                </dd>
-                <dt className="mt-3 block font-mono text-[10px] uppercase tracking-[0.18em] text-foreground/50 sm:mt-4 sm:text-xs sm:tracking-[0.2em]">
+          <dl className="mt-8 grid grid-cols-2 gap-y-10 border-t border-foreground/10 pt-10 sm:grid-cols-4">
+            {stats.map((s) => (
+              <div key={s.label}>
+                <dt className="font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
                   {s.label}
                 </dt>
+                <dd className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
+                  {s.value}
+                </dd>
               </div>
             ))}
           </dl>
@@ -246,7 +235,7 @@ export default function HomePage() {
               Diensten
             </p>
             <h2 className="font-display mt-5 text-4xl leading-[1.02] tracking-tight sm:text-5xl">
-              Wat we voor u maken.
+              Wat we voor je maken.
             </h2>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-foreground/70">
               Vier kerndiensten, elk met een eigen team en jarenlange ervaring.
@@ -341,9 +330,9 @@ export default function HomePage() {
               Klanten aan het woord
             </p>
             <h2 className="font-display mt-5 text-4xl leading-[1.02] tracking-tight sm:text-5xl">
-              Wat opdrachtgevers
+              Wat klanten waarderen
               <br />
-              <span className="text-[var(--accent)]">over ons zeggen.</span>
+              <span className="text-[var(--accent)]">aan onze manier van bouwen.</span>
             </h2>
           </div>
 
@@ -358,16 +347,16 @@ export default function HomePage() {
         <div className="mx-auto max-w-[1440px]">
           <div className="relative overflow-hidden rounded-[32px] bg-foreground px-8 py-20 text-center text-white sm:rounded-[40px] sm:px-16 sm:py-28">
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-white/50">
-              Start een project
+              Vrijblijvend kennismaken
             </p>
-            <h2 className="font-display mx-auto mt-6 max-w-3xl text-4xl leading-[1.02] tracking-tight sm:text-6xl">
-              Uw volgende bouwwerk
+            <h2 className="font-display mx-auto mt-6 max-w-3xl text-4xl leading-[1.02] tracking-tight sm:text-5xl">
+              Een plek die écht bij je past
               <br />
               begint met <span className="text-[var(--accent)]">een gesprek.</span>
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">
               Vrijblijvend kennismaken, ideeën delen, en kijken of het klikt.
-              We bellen u binnen één werkdag terug.
+              We bellen je binnen één werkdag terug.
             </p>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
               <Link

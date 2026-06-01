@@ -25,10 +25,11 @@ type Props = {
  * hero watermark lands in the exact same spot on every page.
  */
 export function HeroBeeldmerk({ onDark = false, className = "" }: Props) {
-  // Single grey tint used for the entire beeldmerk (no more brand red) —
-  // the core squares are drawn at full strength; the ghost totem at α 0.35.
-  const coreTint = onDark ? "rgba(255,255,255,0.10)" : "rgba(24,39,45,0.12)";
-  const ghostTint = onDark ? "rgba(255,255,255,0.04)" : "rgba(24,39,45,0.05)";
+  // Single, uniform grey tint for the entire beeldmerk — core squares and
+  // ghost totem use the SAME faint value (no light/dark distinction) at a
+  // lower opacity, so the watermark stays subtle, also on mobile.
+  const coreTint = onDark ? "rgba(255,255,255,0.055)" : "rgba(24,39,45,0.06)";
+  const ghostTint = coreTint;
   return (
     <div
       aria-hidden="true"
@@ -38,7 +39,7 @@ export function HeroBeeldmerk({ onDark = false, className = "" }: Props) {
         <svg
           viewBox="0 0 56.6 319.5"
           preserveAspectRatio="xMaxYMin meet"
-          className="absolute right-3 -top-32 h-[min(95vw,820px)] w-auto sm:right-6 sm:-top-40 lg:right-8 lg:-top-48"
+          className="absolute right-3 -top-24 h-[min(58vw,720px)] w-auto sm:right-6 sm:-top-40 sm:h-[min(85vw,820px)] lg:right-8 lg:-top-48"
           xmlns="http://www.w3.org/2000/svg"
         >
           {/* ─── GHOST TOTEM (α 0.05) — light-grey blokken boven en onder ─── */}

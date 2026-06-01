@@ -37,7 +37,7 @@ const featured: Place[] = [
     name: "Almelo",
     featured: true,
     intro:
-      "Almelo valt ruim binnen onze werkstraal van 50 km. Van particuliere woningbouw tot bedrijfspanden — we bouwen er met oog voor detail.",
+      "Almelo valt ruim binnen onze werkstraal van 50 km. Van particuliere woningbouw tot bedrijfspanden, we bouwen er met oog voor detail.",
   },
   {
     slug: "hengelo",
@@ -51,7 +51,7 @@ const featured: Place[] = [
     name: "Borne",
     featured: true,
     intro:
-      "In Borne staan we klaar voor nieuwbouw, verbouw en renovatie — met eigen vakmensen en korte communicatielijnen.",
+      "In Borne staan we klaar voor nieuwbouw, verbouw en renovatie, met eigen vakmensen en korte communicatielijnen.",
   },
   {
     slug: "enschede",
@@ -65,7 +65,7 @@ const featured: Place[] = [
     name: "Oldenzaal",
     featured: true,
     intro:
-      "Oldenzaal ligt binnen onze werkstraal vanuit Enter. Woningbouw, utiliteit, verbouw en onderhoud — alles onder één dak.",
+      "Oldenzaal ligt binnen onze werkstraal vanuit Enter. Woningbouw, utiliteit, verbouw en onderhoud, alles onder één dak.",
   },
   {
     slug: "haaksbergen",
@@ -217,7 +217,7 @@ export function getPlace(slug: string): Place | undefined {
 export function placeIntro(place: Place): string {
   return (
     place.intro ??
-    `Bouwbedrijf Homan is ook actief in ${place.name}. Vanuit ons kantoor in Enter realiseren we hier woningbouw, utiliteitsbouw, verbouw, renovatie en onderhoud — met eigen vakmensen en korte lijnen.`
+    `Bouwbedrijf Homan is ook actief in ${place.name}. Vanuit ons kantoor in Enter realiseren we hier woningbouw, utiliteitsbouw, verbouw, renovatie en onderhoud, met eigen vakmensen en korte lijnen.`
   );
 }
 

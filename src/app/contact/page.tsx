@@ -55,8 +55,8 @@ export default function ContactPage() {
           </h1>
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-foreground/70">
             Vrijblijvend kennismaken, ideeën delen of een concreet plan
-            bespreken? Kies hieronder hoe u ons wilt bereiken. Bellen is het
-            snelste — we nemen binnen één werkdag contact op.
+            bespreken? Kies hieronder hoe je ons wilt bereiken. Bellen is het
+            snelste, we nemen binnen één werkdag contact op.
           </p>
         </div>
       </section>
@@ -116,8 +116,8 @@ export default function ContactPage() {
                 <span className="text-[var(--accent)]">een bericht.</span>
               </h2>
               <p className="mt-6 max-w-lg text-lg leading-relaxed text-foreground/70">
-                Vul het formulier in met uw situatie. We nemen binnen één
-                werkdag contact met u op — vaak sneller.
+                Vul het formulier in met je situatie. We nemen binnen één
+                werkdag contact met je op, vaak sneller.
               </p>
 
               <div className="mt-12 rounded-[32px] border border-foreground/10 bg-white p-6 sm:p-10">
@@ -200,7 +200,7 @@ export default function ContactPage() {
                         <span className="block font-mono text-[10px] uppercase tracking-[0.2em] text-white/50">
                           Openingstijden
                         </span>
-                        <dl className="mt-2 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 font-mono text-xs text-white/90">
+                        <dl className="mt-2 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-sm text-white/90">
                           <dt className="text-white/50">Ma–Do</dt>
                           <dd className="tabular-nums">08:30 – 12:30 · 13:00 – 17:00</dd>
                           <dt className="text-white/50">Vrijdag</dt>
@@ -247,8 +247,8 @@ export default function ContactPage() {
             </div>
             <div className="lg:col-span-5 lg:pt-3">
               <p className="text-lg leading-relaxed text-foreground/70">
-                Geen wachtrijen, geen afdeling-call-back-after-call. U spreekt
-                direct iemand van Homan die uw vraag begrijpt — en u het juiste
+                Geen wachtrijen, geen afdeling-call-back-after-call. Je spreekt
+                direct iemand van Homan die je vraag begrijpt en je het juiste
                 antwoord kan geven.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">

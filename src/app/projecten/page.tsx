@@ -23,8 +23,10 @@ const utiliteit = projects.filter(
 // Same source data — these are shown as a separate filter view on top of
 // woning- and utiliteitsbouw, mirroring how the service is split on the
 // diensten page.
-const verbouw = projects.filter((p) =>
-  /(verbouw|renovat)/i.test(p.title),
+const verbouw = projects.filter(
+  (p) =>
+    p.category === "verbouwing" ||
+    /(verbouw|renovat|restaurat)/i.test(p.title),
 );
 // Onderhoud: no tagged projects yet — the section renders an empty-state
 // CTA card that links to contact so prospects still know this is offered.
@@ -95,15 +97,16 @@ export default function ProjectenPage() {
             <BrandMark className="h-2.5 w-3 text-foreground" />
             Portfolio
           </p>
-          <h1 className="font-display mt-6 max-w-5xl text-[clamp(2.75rem,6.5vw,6rem)] leading-[0.95] tracking-[-0.02em]">
-            Een greep uit
+          <h1 className="font-display mt-6 max-w-5xl text-[clamp(2.5rem,6vw,5.25rem)] leading-[0.98] tracking-[-0.02em]">
+            Trots op wat wij hebben
             <br />
-            <span className="text-[var(--accent)]">ons werk.</span>
+            <span className="text-[var(--accent)]">mogen realiseren.</span>
           </h1>
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-foreground/70">
-            Van luxe villa&apos;s tot bedrijfspanden en centrumplannen — elk
-            project is anders, maar de aanpak blijft hetzelfde. Vakmanschap,
-            heldere communicatie, en oog voor detail.
+            Kom hier inspiratie opdoen voor je eigen plek. Van luxe villa&apos;s
+            tot bedrijfspanden en centrumplannen: elk project is anders, maar de
+            aanpak blijft hetzelfde. Vakmanschap, heldere communicatie en oog
+            voor detail.
           </p>
           <div className="mt-10 flex flex-wrap gap-2.5">
             <a
@@ -207,8 +210,8 @@ export default function ProjectenPage() {
               </h2>
               <p className="mt-3 max-w-xl text-foreground/60">
                 {verbouw.length > 0
-                  ? `${verbouw.length} verbouw- en renovatieproject${verbouw.length === 1 ? "" : "en"} — van uitbreiding tot volledige metamorfose.`
-                  : "Van uitbreiding tot volledige metamorfose — we renoveren bestaande panden met respect voor het origineel."}
+                  ? `${verbouw.length} verbouw- en renovatieproject${verbouw.length === 1 ? "" : "en"}, van uitbreiding tot volledige metamorfose.`
+                  : "Van uitbreiding tot volledige metamorfose. We renoveren bestaande panden met respect voor het origineel."}
               </p>
             </div>
           </div>
@@ -227,8 +230,8 @@ export default function ProjectenPage() {
             <div className="mt-10 rounded-[24px] border border-foreground/10 bg-muted p-8 sm:p-12">
               <p className="max-w-2xl text-lg leading-relaxed text-foreground/70">
                 We laten binnenkort verbouw- en renovatieprojecten zien.
-                Ondertussen: bel of stuur een bericht — we kijken graag
-                mee bij uw verbouwplannen.
+                Ondertussen: bel of stuur een bericht, we kijken graag
+                mee bij je verbouwplannen.
               </p>
               <Link
                 href="/contact"
@@ -257,8 +260,8 @@ export default function ProjectenPage() {
                 Onderhoud
               </h2>
               <p className="mt-3 max-w-xl text-foreground/60">
-                Houtrot, voegwerk, schilderwerk, kleine reparaties — we
-                houden uw pand in topconditie, ook na oplevering.
+                Houtrot, voegwerk, schilderwerk, kleine reparaties: we
+                houden je pand in topconditie, ook na oplevering.
               </p>
             </div>
           </div>
@@ -278,7 +281,7 @@ export default function ProjectenPage() {
               <p className="max-w-2xl text-lg leading-relaxed text-foreground/70">
                 Onderhoud vindt meestal plaats achter de schermen en komt
                 niet altijd in het portfolio. Vraag gerust naar
-                referenties — we helpen graag met groot en klein
+                referenties, we helpen graag met groot en klein
                 onderhoud.
               </p>
               <Link
@@ -300,14 +303,14 @@ export default function ProjectenPage() {
         <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
           <div className="grid items-end gap-10 lg:grid-cols-12 lg:gap-16">
             <h2 className="font-display text-[clamp(2.25rem,5vw,4.5rem)] leading-[1.02] tracking-tight lg:col-span-8">
-              Wordt uw project de volgende?
+              Wordt jouw project de volgende?
             </h2>
             <div className="flex flex-wrap items-center gap-3 lg:col-span-4 lg:justify-end">
               <Link
                 href="/contact"
                 className="group inline-flex h-[60px] items-center gap-2 rounded-full bg-foreground pl-6 pr-2 text-base font-medium text-background transition-transform hover:-translate-y-0.5"
               >
-                <span>Start uw project</span>
+                <span>Laten we kennismaken</span>
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--accent)] text-white">
                   <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
                 </span>

@@ -58,7 +58,7 @@ export default async function ServicePage({ params }: { params: Params }) {
           </Link>
           <p className="mt-8 font-mono text-xs uppercase tracking-[0.2em] text-[var(--accent)] inline-flex items-center gap-2">
             <BrandMark className="h-2.5 w-3 text-foreground" />
-            {service.tag} — Diensten
+            {service.tag} · Diensten
           </p>
           <h1 className="font-display mt-6 max-w-5xl text-[clamp(2.75rem,6.5vw,6rem)] leading-[0.95] tracking-[-0.02em]">
             {service.title}
@@ -206,7 +206,7 @@ export default async function ServicePage({ params }: { params: Params }) {
         <div className="mx-auto max-w-[1440px]">
           <div className="relative overflow-hidden rounded-[32px] bg-foreground px-8 py-20 text-center text-white sm:rounded-[40px] sm:px-16 sm:py-28">
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-white/50">
-              Start een project
+              Laten we kennismaken
             </p>
             <h2 className="font-display mx-auto mt-6 max-w-3xl text-4xl leading-[1.02] tracking-tight sm:text-6xl">
               Aan de slag met
