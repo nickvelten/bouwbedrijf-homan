@@ -5,9 +5,10 @@ export const dynamic = "force-dynamic";
 
 // Inzendingen komen binnen op dit adres.
 const TO_EMAIL = "l.velten@bouwbedrijfhoman.nl";
-// Afzender. Vereist een in Resend geverifieerd domein. Voor een eerste test
-// kan "Website <onboarding@resend.dev>" gebruikt worden (Resend-testdomein).
-const FROM_EMAIL = process.env.CONTACT_FROM_EMAIL ?? "Website Homan <onboarding@resend.dev>";
+// Afzender op het eigen domein. Vereist dat bouwbedrijfhoman.nl als domein in
+// Resend is geverifieerd (DNS-records). Het Resend-testadres onboarding@resend.dev
+// mag alleen naar je eigen accountmail sturen en faalt dus naar andere adressen.
+const FROM_EMAIL = process.env.CONTACT_FROM_EMAIL ?? "Bouwbedrijf Homan <website@bouwbedrijfhoman.nl>";
 
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
