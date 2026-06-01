@@ -4,7 +4,7 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 // Inzendingen komen binnen op dit adres.
-const TO_EMAIL = "info@bouwbedrijfhoman.nl";
+const TO_EMAIL = "l.velten@bouwbedrijfhoman.nl";
 // Afzender. Vereist een in Resend geverifieerd domein. Voor een eerste test
 // kan "Website <onboarding@resend.dev>" gebruikt worden (Resend-testdomein).
 const FROM_EMAIL = process.env.CONTACT_FROM_EMAIL ?? "Website Homan <onboarding@resend.dev>";
