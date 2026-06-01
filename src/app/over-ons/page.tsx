@@ -10,7 +10,7 @@ const FOUNDED_YEAR = 1982;
 export const metadata: Metadata = {
   title: "Over ons",
   description:
-    "Bouwbedrijf Homan: al bijna 50 jaar uw betrouwbare aannemer in Twente. 35 vakmensen, Bouwgarant gecertificeerd, gevestigd in Enter.",
+    "Bouwbedrijf Homan: al bijna 50 jaar je betrouwbare aannemer in Twente. 35 vakmensen, Bouwgarant gecertificeerd, gevestigd in Enter.",
   alternates: { canonical: "https://www.bouwbedrijfhoman.nl/over-ons" },
 };
 
@@ -25,19 +25,19 @@ const values = [
     tag: "02",
     title: "Communicatie",
     description:
-      "Korte lijnen tussen bouwplaats en kantoor. U heeft altijd een vast aanspreekpunt en bent op de hoogte van de voortgang.",
+      "Korte lijnen tussen bouwplaats en kantoor. Je hebt altijd een vast aanspreekpunt en bent op de hoogte van de voortgang.",
   },
   {
     tag: "03",
     title: "Betrokkenheid",
     description:
-      "Elk project is uniek en verdient onze volle aandacht. Wij bouwen mee aan uw droom alsof het de onze is.",
+      "Elk project is uniek en verdient onze volle aandacht. Wij bouwen mee aan jouw droom alsof het de onze is.",
   },
   {
     tag: "04",
     title: "Betrouwbaarheid",
     description:
-      "Afspraken zijn afspraken. Met Bouwgarant certificering bieden wij u extra zekerheid.",
+      "Afspraken zijn afspraken. Met Bouwgarant certificering bieden wij je extra zekerheid.",
   },
 ];
 
@@ -84,16 +84,16 @@ export default function OverOnsPage() {
         <div className="relative z-10 mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
             <BrandMark className="h-2.5 w-3 text-foreground" />
-            Over ons — sinds {FOUNDED_YEAR}
+            Over ons · sinds {FOUNDED_YEAR}
           </p>
-          <h1 className="font-display mt-6 max-w-5xl text-[clamp(2.75rem,6.5vw,6rem)] leading-[0.9] tracking-[-0.035em]">
+          <h1 className="font-display mt-6 max-w-5xl text-[clamp(2.5rem,6vw,5.25rem)] leading-[0.95] tracking-[-0.03em]">
             Een familiebedrijf
             <br />
             met <span className="text-[var(--accent)]">handschrift.</span>
           </h1>
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-foreground/70">
             Al bijna 50 jaar bouwen wij aan dromen in Twente. Met vakmanschap,
-            betrokkenheid en een persoonlijke aanpak — van eerste schets tot
+            betrokkenheid en een persoonlijke aanpak, van eerste schets tot
             sleutel.
           </p>
         </div>
@@ -122,11 +122,11 @@ export default function OverOnsPage() {
               <p className="mt-5 text-lg leading-relaxed text-foreground/70">
                 Onze kracht zit in de combinatie van traditioneel vakmanschap en
                 moderne bouwtechnieken. Korte lijnen tussen bouwplaats en
-                kantoor houden u altijd op de hoogte.
+                kantoor houden je altijd op de hoogte.
               </p>
               <p className="mt-5 text-lg leading-relaxed text-foreground/70">
                 Vanuit kantoor én bouwplaats brengen wij, met een team van 35
-                medewerkers, samen uw wensen in vervulling. De lijnen zijn kort
+                medewerkers, samen jouw wensen in vervulling. De lijnen zijn kort
                 en we werken zo prettig mogelijk samen, tot het perfecte
                 resultaat.
               </p>
@@ -173,7 +173,7 @@ export default function OverOnsPage() {
                 Algemeen directeur Luc Velten en operationeel directeur Justin
                 Hoek sturen samen het bedrijf aan. Luc focust op ontwikkeling en
                 klantenbegeleiding in het voortraject, Justin coördineert alle
-                lopende projecten — van bouwplaats tot oplevering.
+                lopende projecten, van bouwplaats tot oplevering.
               </p>
             </div>
           </div>
@@ -194,7 +194,7 @@ export default function OverOnsPage() {
             />
           </div>
           <p className="mt-4 font-mono text-xs uppercase tracking-[0.2em] text-foreground/50">
-            Ons team — Enter, 2026
+            Ons team · Enter, 2026
           </p>
         </div>
       </section>
@@ -212,7 +212,7 @@ export default function OverOnsPage() {
                 Waar wij voor staan.
               </h2>
               <p className="mt-6 text-lg leading-relaxed text-white/70">
-                Vier waarden die de basis vormen van alles wat wij doen — op de
+                Vier waarden die de basis vormen van alles wat wij doen, op de
                 bouwplaats én daarbuiten.
               </p>
             </div>
@@ -307,7 +307,7 @@ export default function OverOnsPage() {
         <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
           <div className="grid items-end gap-10 lg:grid-cols-12 lg:gap-16">
             <h2 className="font-display text-[clamp(2.25rem,5vw,4.5rem)] leading-[0.95] tracking-[-0.03em] lg:col-span-8">
-              Wilt u <span className="text-accent">ons team</span> ontmoeten?
+              Wil je <span className="text-accent">ons team</span> ontmoeten?
             </h2>
             <div className="flex flex-wrap items-center gap-3 lg:col-span-4 lg:justify-end">
               <Link

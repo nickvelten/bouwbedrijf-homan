@@ -84,7 +84,7 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-2">
                 <Clock className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
-                <dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 font-mono text-xs">
+                <dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-sm">
                   <dt className="text-white/50">Maandag</dt>
                   <dd className="tabular-nums">08:30 – 12:30 · 13:00 – 17:00</dd>
                   <dt className="text-white/50">Dinsdag</dt>

@@ -22,7 +22,7 @@ export async function generateMetadata({
   const project = projects.find((p) => p.slug === slug);
   if (!project) return { title: "Project niet gevonden" };
 
-  const description = `${project.title} — gerealiseerd door Bouwbedrijf Homan${
+  const description = `${project.title}, gerealiseerd door Bouwbedrijf Homan${
     project.opdrachtgever ? ` in opdracht van ${project.opdrachtgever}` : ""
   }${project.architect ? `, ontworpen door ${project.architect}` : ""}.`;
 
@@ -44,6 +44,7 @@ const categoryLabel: Record<string, string> = {
   woningbouw: "Woningbouw",
   utiliteit: "Utiliteit",
   beide: "Woningbouw · Utiliteit",
+  verbouwing: "Verbouw & renovatie",
 };
 
 export default async function ProjectDetailPage({
@@ -125,7 +126,7 @@ export default async function ProjectDetailPage({
         <div className="mx-auto max-w-[1440px]">
           <div className="relative overflow-hidden rounded-[32px] bg-foreground px-8 py-16 text-white sm:rounded-[40px] sm:px-16 sm:py-24">
             <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/50">
-              Start een project
+              Laten we kennismaken
             </p>
             <h2 className="font-display mt-5 max-w-3xl text-4xl leading-[1.02] tracking-tight sm:text-5xl lg:text-6xl">
               Zin om samen iets

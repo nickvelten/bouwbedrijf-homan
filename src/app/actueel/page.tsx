@@ -70,7 +70,7 @@ export default function ActueelPage() {
           </h1>
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-foreground/70">
             Updates over opleveringen, interviews met onze vakmensen en
-            verhalen van achter de steigers. Zo blijft u op de hoogte van wat
+            verhalen van achter de steigers. Zo blijf je op de hoogte van wat
             er bij ons speelt.
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-3">

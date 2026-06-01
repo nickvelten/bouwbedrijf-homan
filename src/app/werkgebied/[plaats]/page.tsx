@@ -23,7 +23,7 @@ export async function generateMetadata({
   if (!place) return { title: "Plaats niet gevonden" };
 
   const title = `Aannemer in ${place.name} — Bouwbedrijf Homan`;
-  const description = `Bouwbedrijf Homan is uw aannemer in ${place.name}: woningbouw, utiliteitsbouw, verbouw, renovatie en onderhoud. ${placeIntro(place)}`;
+  const description = `Bouwbedrijf Homan is je aannemer in ${place.name}: woningbouw, utiliteitsbouw, verbouw, renovatie en onderhoud. ${placeIntro(place)}`;
 
   return {
     title,
@@ -65,7 +65,7 @@ export default async function PlacePage({ params }: { params: Params }) {
             <span className="text-[var(--accent)]">{place.name}.</span>
           </h1>
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-foreground/70">
-            {placeIntro(place)} Van eerste schets tot oplevering — woningbouw,
+            {placeIntro(place)} Van eerste schets tot oplevering: woningbouw,
             utiliteit, verbouw en onderhoud in {place.name} en omgeving.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
@@ -138,7 +138,7 @@ export default async function PlacePage({ params }: { params: Params }) {
             <div className="mt-10 rounded-[24px] border border-foreground/10 bg-muted p-8 sm:p-12">
               <p className="max-w-2xl text-lg leading-relaxed text-foreground/70">
                 We hebben nog geen project in {place.name} in ons online
-                portfolio staan — maar we werken hier wel degelijk. Vraag
+                portfolio staan, maar we werken hier wel degelijk. Vraag
                 gerust naar referenties in de buurt.
               </p>
               <Link
@@ -184,7 +184,7 @@ export default async function PlacePage({ params }: { params: Params }) {
         <div className="mx-auto max-w-[1440px]">
           <div className="relative overflow-hidden rounded-[32px] bg-foreground px-8 py-20 text-center text-white sm:rounded-[40px] sm:px-16 sm:py-28">
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-white/50">
-              Start een project
+              Laten we kennismaken
             </p>
             <h2 className="font-display mx-auto mt-6 max-w-3xl text-4xl leading-[1.02] tracking-tight sm:text-6xl">
               Bouwen in {place.name}?

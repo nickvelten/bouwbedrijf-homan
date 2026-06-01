@@ -18,13 +18,13 @@ const steps = [
     step: "01",
     title: "Kennismaking",
     description:
-      "Vrijblijvend gesprek waarin we uw wensen en de mogelijkheden in kaart brengen.",
+      "Vrijblijvend gesprek waarin we je wensen en de mogelijkheden in kaart brengen.",
   },
   {
     step: "02",
     title: "Ontwerp & offerte",
     description:
-      "We maken een gedetailleerd plan met een heldere prijsopgave — zonder verrassingen.",
+      "We maken een gedetailleerd plan met een heldere prijsopgave, zonder verrassingen.",
   },
   {
     step: "03",
@@ -36,7 +36,7 @@ const steps = [
     step: "04",
     title: "Oplevering",
     description:
-      "Gezamenlijke inspectie en overdracht. U geniet — wij staan achter de nazorg.",
+      "Gezamenlijke inspectie en overdracht. Jij geniet, wij staan achter de nazorg.",
   },
 ];
 
@@ -51,14 +51,14 @@ export default function DienstenPage() {
             <BrandMark className="h-2.5 w-3 text-foreground" />
             Diensten
           </p>
-          <h1 className="font-display mt-6 max-w-5xl text-[clamp(2.75rem,6.5vw,6rem)] leading-[0.95] tracking-[-0.02em]">
-            Vier disciplines,
+          <h1 className="font-display mt-6 max-w-5xl text-[clamp(2.5rem,6vw,5.25rem)] leading-[0.98] tracking-[-0.02em]">
+            Eén partner
             <br />
-            <span className="text-accent">één handtekening.</span>
+            <span className="text-accent">voor elke bouwvraag.</span>
           </h1>
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-foreground/70">
-            Van vergunning tot oplevering begeleiden we u bij elke stap. Al
-            bijna 50 jaar bieden we een compleet pakket bouwdiensten —
+            Van vergunning tot oplevering begeleiden we je bij elke stap. Al
+            bijna 50 jaar bieden we een compleet pakket bouwdiensten,
             steeds op dezelfde manier: zorgvuldig en transparant.
           </p>
         </div>
@@ -146,7 +146,7 @@ export default function DienstenPage() {
               Werkwijze
             </p>
             <h2 className="font-display mt-5 max-w-2xl text-4xl leading-[1.05] tracking-tight sm:text-5xl">
-              Helder proces — geen verrassingen onderweg.
+              Helder proces, geen verrassingen onderweg.
             </h2>
             <div className="mt-12 grid gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
               {steps.map((s) => (
@@ -173,7 +173,7 @@ export default function DienstenPage() {
         <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
           <div className="grid items-end gap-10 lg:grid-cols-12 lg:gap-16">
             <h2 className="font-display text-[clamp(2.25rem,5vw,4.5rem)] leading-[1.02] tracking-tight lg:col-span-8">
-              Benieuwd wat we voor u kunnen betekenen?
+              Benieuwd wat we voor je kunnen betekenen?
             </h2>
             <div className="flex flex-wrap items-center gap-3 lg:col-span-4 lg:justify-end">
               <Link

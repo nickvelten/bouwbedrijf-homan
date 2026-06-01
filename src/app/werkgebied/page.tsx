@@ -29,7 +29,7 @@ export default function WerkgebiedPage() {
           </h1>
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-foreground/70">
             Vanuit ons kantoor in Enter werken we binnen een straal van 50 km.
-            Kies uw plaats en bekijk welk werk we daar realiseerden.
+            Kies je plaats en bekijk welk werk we daar realiseerden.
           </p>
         </div>
       </section>
@@ -72,7 +72,7 @@ export default function WerkgebiedPage() {
         <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
           <div className="grid items-end gap-10 lg:grid-cols-12 lg:gap-16">
             <h2 className="font-display text-[clamp(2.25rem,5vw,4.5rem)] leading-[1.02] tracking-tight lg:col-span-8">
-              Staat uw plaats er niet bij?
+              Staat jouw plaats er niet bij?
             </h2>
             <div className="flex flex-wrap items-center gap-3 lg:col-span-4 lg:justify-end">
               <Link

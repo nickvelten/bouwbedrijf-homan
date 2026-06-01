@@ -16,7 +16,7 @@ const perks = [
     tag: "01",
     title: "Hecht team",
     description:
-      "Werk in een team van 35 betrokken collega's. Korte lijnen, geen onzin — gewoon vakmensen onder elkaar.",
+      "Werk in een team van 35 betrokken collega's. Korte lijnen, geen onzin, gewoon vakmensen onder elkaar.",
   },
   {
     tag: "02",
@@ -73,25 +73,9 @@ export default function WerkenBijPage() {
           </h1>
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-foreground/70">
             Word onderdeel van een hecht team vakmensen. Bij ons werk je aan
-            uitdagende projecten in Twente — van villa&apos;s tot centrumplannen — in
+            uitdagende projecten in Twente, van villa&apos;s tot centrumplannen, in
             een prettige, nuchtere werksfeer.
           </p>
-        </div>
-      </section>
-
-      {/* ACQUISITIE — compact notice, up high */}
-      <section className="px-3 pt-10 sm:px-6 sm:pt-14">
-        <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
-          <div className="flex flex-col gap-3 rounded-[20px] border-2 border-accent/40 bg-accent/[0.06] px-5 py-4 sm:flex-row sm:items-center sm:gap-5 sm:px-6 sm:py-5">
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent inline-flex shrink-0 items-center gap-2">
-              <BrandMark className="h-2.5 w-2.5" />
-              Let op
-            </p>
-            <p className="text-sm font-medium leading-snug text-foreground sm:text-base">
-              Acquisitie naar aanleiding van deze vacatures wordt niet op prijs
-              gesteld — we werven rechtstreeks, geen bureaus.
-            </p>
-          </div>
         </div>
       </section>
 
@@ -108,7 +92,7 @@ export default function WerkenBijPage() {
                 Wat je bij ons vindt.
               </h2>
               <p className="mt-6 text-lg leading-relaxed text-white/70">
-                Vier redenen om te kiezen voor Bouwbedrijf Homan — en om lang
+                Vier redenen om te kiezen voor Bouwbedrijf Homan, en om lang
                 te blijven.
               </p>
             </div>
@@ -177,6 +161,10 @@ export default function WerkenBijPage() {
                         {job.summary}
                       </p>
                     ) : null}
+                    <p className="mt-4 text-xs leading-snug text-foreground/40">
+                      Acquisitie naar aanleiding van deze vacature wordt niet op
+                      prijs gesteld. We werven rechtstreeks, geen bureaus.
+                    </p>
                   </div>
                 </div>
                 <Link
@@ -204,7 +192,7 @@ export default function WerkenBijPage() {
                 Open sollicitatie
               </p>
               <h2 className="font-display mt-5 text-[clamp(2rem,4vw,3.5rem)] leading-[1.02] tracking-tight">
-                Past niks — maar wel wat met Homan?
+                Past niks, maar wel wat met Homan?
               </h2>
             </div>
             <div className="lg:col-span-5 lg:col-start-8 lg:pt-3">
