@@ -72,7 +72,7 @@ export default async function ProjectDetailPage({
             <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
             Alle projecten
           </Link>
-          <p className="mt-8 font-mono text-xs uppercase tracking-[0.2em] text-[var(--accent)] inline-flex items-center gap-2">
+          <p className="mt-8 flex w-fit items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-[var(--accent)]">
             <BrandMark className="h-2.5 w-3 text-foreground" />
             {categoryLabel[project.category] ?? project.category}
           </p>

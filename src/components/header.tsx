@@ -35,6 +35,7 @@ export function Header() {
             sizes="(min-width: 1024px) 440px, (min-width: 768px) 380px, 320px"
             className="h-[112px] w-auto md:h-[128px] lg:h-[140px]"
             priority
+            unoptimized
           />
         </Link>
 
@@ -84,6 +85,7 @@ export function Header() {
                   width={320}
                   height={184}
                   className="h-20 w-auto"
+                  unoptimized
                 />
               </div>
               <nav className="flex flex-col gap-1" aria-label="Mobiele navigatie">
