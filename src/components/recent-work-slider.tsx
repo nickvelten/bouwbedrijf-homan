@@ -8,8 +8,8 @@ type Project = (typeof allProjects)[number];
 
 const categoryLabel: Record<Project["category"], string> = {
   woningbouw: "Woningbouw",
-  utiliteit: "Utiliteit",
-  beide: "Woningbouw · Utiliteit",
+  utiliteit: "Utiliteitsbouw",
+  beide: "Woningbouw · Utiliteitsbouw",
   verbouwing: "Verbouw & renovatie",
 };
 

@@ -58,7 +58,7 @@ export default function DienstenPage() {
           </h1>
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-foreground/70">
             Van vergunning tot oplevering begeleiden we je bij elke stap. Al
-            bijna 50 jaar bieden we een compleet pakket bouwdiensten,
+            ruim 40 jaar bieden we een compleet pakket bouwdiensten,
             steeds op dezelfde manier: zorgvuldig en transparant.
           </p>
         </div>
@@ -180,7 +180,7 @@ export default function DienstenPage() {
                 href="/contact"
                 className="group inline-flex h-[60px] items-center gap-2 rounded-full bg-foreground pl-6 pr-2 text-base font-medium text-background transition-transform hover:-translate-y-0.5"
               >
-                <span>Contact opnemen</span>
+                <span>Plan een gesprek</span>
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-white">
                   <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
                 </span>

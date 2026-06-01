@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     template: "%s | Bouwbedrijf Homan",
   },
   description:
-    "Bouwbedrijf Homan is je betrouwbare aannemer in Twente voor woningbouw, utiliteitsbouw, verbouwingen en renovaties. Al meer dan 45 jaar vakmanschap in Enter en omgeving.",
+    "Bouwbedrijf Homan is je betrouwbare aannemer in Twente voor woningbouw, utiliteitsbouw, verbouwingen en renovaties. Al ruim 40 jaar vakmanschap in Enter en omgeving.",
   keywords: [
     "aannemer twente",
     "bouwbedrijf twente",
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
     siteName: "Bouwbedrijf Homan",
     title: "Bouwbedrijf Homan | Aannemer in Twente sinds 1982",
     description:
-      "Je betrouwbare aannemer in Twente voor woningbouw, utiliteitsbouw, verbouwingen en renovaties. Al meer dan 45 jaar vakmanschap.",
+      "Je betrouwbare aannemer in Twente voor woningbouw, utiliteitsbouw, verbouwingen en renovaties. Al ruim 40 jaar vakmanschap.",
   },
   twitter: {
     card: "summary_large_image",
@@ -113,7 +113,7 @@ export default function RootLayout({
               url: "https://www.bouwbedrijfhoman.nl",
               logo: "https://www.bouwbedrijfhoman.nl/logo.png",
               description:
-                "Bouwbedrijf Homan is je betrouwbare aannemer in Twente voor woningbouw, utiliteitsbouw, verbouwingen en renovaties. Al meer dan 45 jaar vakmanschap.",
+                "Bouwbedrijf Homan is je betrouwbare aannemer in Twente voor woningbouw, utiliteitsbouw, verbouwingen en renovaties. Al ruim 40 jaar vakmanschap.",
               foundingDate: "1982",
               numberOfEmployees: {
                 "@type": "QuantitativeValue",

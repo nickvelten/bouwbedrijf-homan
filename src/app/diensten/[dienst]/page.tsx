@@ -43,8 +43,23 @@ export default async function ServicePage({ params }: { params: Params }) {
   const related = projectsForService(service.id).slice(0, 6);
   const others = services.filter((s) => s.id !== service.id);
 
+  const BASE = "https://www.bouwbedrijfhoman.nl";
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: BASE },
+      { "@type": "ListItem", position: 2, name: "Diensten", item: `${BASE}/diensten` },
+      { "@type": "ListItem", position: 3, name: service.title, item: `${BASE}/diensten/${service.id}` },
+    ],
+  };
+
   return (
     <div className="bg-background text-foreground">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+      />
       {/* HERO */}
       <section className="relative overflow-hidden px-3 pt-12 sm:px-6 sm:pt-20">
         <HeroBeeldmerk />
@@ -56,7 +71,7 @@ export default async function ServicePage({ params }: { params: Params }) {
             <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
             Alle diensten
           </Link>
-          <p className="mt-8 font-mono text-xs uppercase tracking-[0.2em] text-[var(--accent)] inline-flex items-center gap-2">
+          <p className="mt-8 flex w-fit items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-[var(--accent)]">
             <BrandMark className="h-2.5 w-3 text-foreground" />
             {service.tag} · Diensten
           </p>
@@ -206,7 +221,7 @@ export default async function ServicePage({ params }: { params: Params }) {
         <div className="mx-auto max-w-[1440px]">
           <div className="relative overflow-hidden rounded-[32px] bg-foreground px-8 py-20 text-center text-white sm:rounded-[40px] sm:px-16 sm:py-28">
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-white/50">
-              Laten we kennismaken
+              Plan een gesprek
             </p>
             <h2 className="font-display mx-auto mt-6 max-w-3xl text-4xl leading-[1.02] tracking-tight sm:text-6xl">
               Aan de slag met

@@ -82,8 +82,39 @@ export default async function ArticlePage({ params }: { params: Params }) {
     .sort((a, b) => b.date.localeCompare(a.date))
     .slice(0, 3);
 
+  const BASE = "https://www.bouwbedrijfhoman.nl";
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: article.title,
+    datePublished: article.date,
+    dateModified: article.date,
+    image: `${BASE}${article.cover}`,
+    url: `${BASE}/actueel/${article.slug}`,
+    author: { "@type": "Organization", name: "Bouwbedrijf Homan" },
+    publisher: {
+      "@type": "Organization",
+      name: "Bouwbedrijf Homan",
+      logo: { "@type": "ImageObject", url: `${BASE}/logo.png` },
+    },
+    mainEntityOfPage: `${BASE}/actueel/${article.slug}`,
+  };
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: BASE },
+      { "@type": "ListItem", position: 2, name: "Actueel", item: `${BASE}/actueel` },
+      { "@type": "ListItem", position: 3, name: article.title, item: `${BASE}/actueel/${article.slug}` },
+    ],
+  };
+
   return (
     <div className="bg-background text-foreground">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([jsonLd, breadcrumbLd]) }}
+      />
       {/* HERO */}
       <section className="px-3 pt-12 sm:px-6 sm:pt-20">
         <div className="mx-auto max-w-[880px] px-3 sm:px-6 lg:px-8">

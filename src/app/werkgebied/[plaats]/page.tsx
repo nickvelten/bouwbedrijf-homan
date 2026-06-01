@@ -55,7 +55,7 @@ export default async function PlacePage({ params }: { params: Params }) {
             <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
             Heel ons werkgebied
           </Link>
-          <p className="mt-8 font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
+          <p className="mt-8 flex w-fit items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-foreground/50">
             <BrandMark className="h-2.5 w-3 text-[var(--accent)]" />
             Werkgebied
           </p>
@@ -184,7 +184,7 @@ export default async function PlacePage({ params }: { params: Params }) {
         <div className="mx-auto max-w-[1440px]">
           <div className="relative overflow-hidden rounded-[32px] bg-foreground px-8 py-20 text-center text-white sm:rounded-[40px] sm:px-16 sm:py-28">
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-white/50">
-              Laten we kennismaken
+              Plan een gesprek
             </p>
             <h2 className="font-display mx-auto mt-6 max-w-3xl text-4xl leading-[1.02] tracking-tight sm:text-6xl">
               Bouwen in {place.name}?

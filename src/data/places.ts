@@ -16,7 +16,7 @@ const featured: Place[] = [
     name: "Enter",
     featured: true,
     intro:
-      "Enter is onze thuisbasis sinds 1982. Vanuit ons kantoor aan de rand van het dorp bouwen en verbouwen we hier al ruim veertig jaar woningen, landhuizen en bedrijfspanden.",
+      "Enter is onze thuisbasis sinds 1982. Vanuit ons kantoor aan de rand van het dorp bouwen en verbouwen we hier al ruim 40 jaar woningen, landhuizen en bedrijfspanden.",
   },
   {
     slug: "wierden",

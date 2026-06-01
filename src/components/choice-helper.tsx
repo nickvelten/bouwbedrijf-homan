@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { Home, MapPin, Users, Building2, Phone } from "lucide-react";
+import { Home, MapPin, Users, Building2, Phone, HelpCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const choices = [
@@ -35,6 +35,12 @@ const choices = [
     title: "Terugbelverzoek",
     subtitle: "Bel mij over...",
   },
+  {
+    id: "overige",
+    icon: HelpCircle,
+    title: "Overige",
+    subtitle: "Andere vraag of sollicitatie",
+  },
 ] as const;
 
 export type ChoiceId = (typeof choices)[number]["id"];
@@ -53,7 +59,7 @@ export function ChoiceCards({
   return (
     <div
       className={cn(
-        "grid gap-3 sm:grid-cols-2 lg:grid-cols-5",
+        "grid gap-3 sm:grid-cols-2 lg:grid-cols-3",
         className
       )}
     >
@@ -129,7 +135,7 @@ export function ChoiceCardsLinked({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "grid gap-3 sm:grid-cols-2 lg:grid-cols-5",
+        "grid gap-3 sm:grid-cols-2 lg:grid-cols-3",
         className
       )}
     >
