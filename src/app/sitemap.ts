@@ -14,6 +14,7 @@ const STATIC_ROUTES = [
   "/over-ons",
   "/werken-bij",
   "/contact",
+  "/privacybeleid",
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
