@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -24,6 +24,18 @@ export function ContactForm() {
   const [onderwerp, setOnderwerp] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const successRef = useRef<HTMLDivElement>(null);
+
+  // Het formulier maakt na verzenden plaats voor een veel kleiner
+  // succeskaartje; zonder correctie blijft de scrollpositie onderaan
+  // (voorbij de melding) hangen. Scroll de melding in beeld en geef
+  // focus zodat ook schermlezers hem aankondigen.
+  useEffect(() => {
+    if (status === "success") {
+      successRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+      successRef.current?.focus({ preventScroll: true });
+    }
+  }, [status]);
 
   useEffect(() => {
     const param = new URLSearchParams(window.location.search).get("onderwerp");
@@ -72,7 +84,11 @@ export function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-3xl border border-foreground/10 bg-muted p-8 sm:p-10">
+      <div
+        ref={successRef}
+        tabIndex={-1}
+        className="rounded-3xl border border-foreground/10 bg-muted p-8 outline-none sm:p-10"
+      >
         <h2 className="text-2xl font-bold">Bedankt voor je bericht!</h2>
         <p className="mt-3 text-muted-foreground">
           We hebben je bericht ontvangen en nemen zo snel mogelijk contact met je

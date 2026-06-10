@@ -179,6 +179,12 @@ export function Footer() {
               <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
                 <span aria-hidden="true">©</span>
                 <span>{new Date().getFullYear()} Bouwbedrijf Homan B.V.</span>
+                <Link
+                  href="/privacybeleid"
+                  className="transition-colors hover:text-white"
+                >
+                  Privacybeleid
+                </Link>
               </div>
             </div>
           </div>
