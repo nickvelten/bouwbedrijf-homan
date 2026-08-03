@@ -3,15 +3,18 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ArrowUpRight, ArrowLeft, Check } from "lucide-react";
-import { services, getService, projectsForService } from "@/data/services";
-import { woningtypes } from "@/data/woningtypes";
+import {
+  woningtypes,
+  getWoningtype,
+  projectsForWoningtype,
+} from "@/data/woningtypes";
 import { BrandMark } from "@/components/brand-mark";
 import { HeroBeeldmerk } from "@/components/hero-beeldmerk";
 
-type Params = Promise<{ dienst: string }>;
+type Params = Promise<{ type: string }>;
 
 export function generateStaticParams() {
-  return services.map((s) => ({ dienst: s.id }));
+  return woningtypes.map((t) => ({ type: t.slug }));
 }
 
 export async function generateMetadata({
@@ -19,30 +22,31 @@ export async function generateMetadata({
 }: {
   params: Params;
 }): Promise<Metadata> {
-  const { dienst } = await params;
-  const service = getService(dienst);
-  if (!service) return { title: "Dienst niet gevonden" };
+  const { type } = await params;
+  const woningtype = getWoningtype(type);
+  if (!woningtype) return { title: "Pagina niet gevonden" };
 
-  const title = `${service.title} in Twente — Bouwbedrijf Homan`;
-  const description = `${service.title}: ${service.description}`;
+  // Rootlayout plakt er via de title-template al "| Bouwbedrijf Homan" achter.
+  const title = `${woningtype.name} bouwen in Twente`;
+  const description = `Een ${woningtype.name.toLowerCase()} laten bouwen? ${woningtype.intro}`;
 
   return {
     title,
     description,
     alternates: {
-      canonical: `https://www.bouwbedrijfhoman.nl/diensten/${service.id}`,
+      canonical: `https://www.bouwbedrijfhoman.nl/woningbouw/${woningtype.slug}`,
     },
-    openGraph: { title, description, images: [service.image] },
+    openGraph: { title, description, images: [woningtype.image] },
   };
 }
 
-export default async function ServicePage({ params }: { params: Params }) {
-  const { dienst } = await params;
-  const service = getService(dienst);
-  if (!service) notFound();
+export default async function WoningtypePage({ params }: { params: Params }) {
+  const { type } = await params;
+  const woningtype = getWoningtype(type);
+  if (!woningtype) notFound();
 
-  const related = projectsForService(service.id).slice(0, 6);
-  const others = services.filter((s) => s.id !== service.id);
+  const related = projectsForWoningtype(woningtype);
+  const others = woningtypes.filter((t) => t.slug !== woningtype.slug);
 
   const BASE = "https://www.bouwbedrijfhoman.nl";
   const breadcrumbLd = {
@@ -51,8 +55,18 @@ export default async function ServicePage({ params }: { params: Params }) {
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: BASE },
       { "@type": "ListItem", position: 2, name: "Diensten", item: `${BASE}/diensten` },
-      { "@type": "ListItem", position: 3, name: service.title, item: `${BASE}/diensten/${service.id}` },
+      { "@type": "ListItem", position: 3, name: "Woningbouw", item: `${BASE}/diensten/woningbouw` },
+      { "@type": "ListItem", position: 4, name: woningtype.name, item: `${BASE}/woningbouw/${woningtype.slug}` },
     ],
+  };
+  const faqLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: woningtype.faq.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
   };
 
   return (
@@ -61,30 +75,53 @@ export default async function ServicePage({ params }: { params: Params }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
+      />
       {/* HERO */}
       <section className="relative overflow-hidden px-3 pt-12 sm:px-6 sm:pt-20">
         <HeroBeeldmerk />
         <div className="relative z-10 mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
           <Link
-            href="/diensten"
+            href="/diensten/woningbouw"
             className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50 transition-colors hover:text-foreground"
           >
             <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
-            Alle diensten
+            Alles over woningbouw
           </Link>
           <p className="mt-8 flex w-fit items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-[var(--accent)]">
             <BrandMark className="h-2.5 w-3 text-foreground" />
-            {service.tag} · Diensten
+            Woningbouw · Type bouw
           </p>
           <h1 className="font-display mt-6 max-w-5xl text-[clamp(2.75rem,6.5vw,6rem)] leading-[0.95] tracking-[-0.02em]">
-            {service.title}
+            {woningtype.name}
+            <br />
+            <span className="text-[var(--accent)]">laten bouwen.</span>
           </h1>
           <p className="mt-6 text-lg font-medium text-foreground/60">
-            {service.subtitle}
+            {woningtype.subtitle}
           </p>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-foreground/70">
-            {service.description}
+            {woningtype.intro}
           </p>
+          <div className="mt-10 flex flex-wrap gap-3">
+            <Link
+              href="/contact?onderwerp=nieuwbouw"
+              className="group inline-flex h-[60px] items-center gap-2 rounded-full bg-foreground pl-6 pr-2 text-base font-medium text-background transition-transform hover:-translate-y-0.5"
+            >
+              <span>Vrijblijvende offerte</span>
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--accent)] text-white">
+                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              </span>
+            </Link>
+            <a
+              href="tel:0547381035"
+              className="inline-flex h-[60px] items-center gap-2 rounded-full border border-foreground/20 px-7 text-base font-medium text-foreground transition-colors hover:bg-foreground/5"
+            >
+              Of bel 0547 38 10 35
+            </a>
+          </div>
         </div>
       </section>
 
@@ -95,8 +132,8 @@ export default async function ServicePage({ params }: { params: Params }) {
             <div className="lg:col-span-6">
               <div className="relative aspect-[16/10] overflow-hidden rounded-[28px] sm:rounded-[36px]">
                 <Image
-                  src={service.image}
-                  alt={service.title}
+                  src={woningtype.image}
+                  alt={woningtype.imageAlt}
                   fill
                   className="object-cover"
                   sizes="(min-width: 1024px) 50vw, 100vw"
@@ -108,10 +145,10 @@ export default async function ServicePage({ params }: { params: Params }) {
             <div className="lg:col-span-6 lg:pt-2">
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
                 <BrandMark className="h-2.5 w-3 text-[var(--accent)]" />
-                Wat we doen
+                Waarom Homan
               </p>
               <ul className="mt-6 grid gap-2.5 sm:grid-cols-2">
-                {service.features.map((f) => (
+                {woningtype.features.map((f) => (
                   <li key={f} className="flex items-start gap-2.5 text-sm">
                     <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent">
                       <Check className="h-3 w-3" strokeWidth={3} />
@@ -120,66 +157,28 @@ export default async function ServicePage({ params }: { params: Params }) {
                   </li>
                 ))}
               </ul>
-              <Link
-                href="/contact"
-                className="group mt-10 inline-flex items-center gap-2 rounded-full bg-foreground py-2.5 pl-6 pr-2 text-base font-medium text-background transition-transform hover:-translate-y-0.5"
-              >
-                <span>Vrijblijvende offerte</span>
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-white">
-                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                </span>
-              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* TYPE BOUW (alleen woningbouw) */}
-      {service.id === "woningbouw" && (
-        <section className="px-3 pt-24 sm:px-6 sm:pt-32">
-          <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--accent)] inline-flex items-center gap-1.5">
-              <BrandMark className="h-2.5 w-3 text-foreground" />
-              Type bouw
-            </p>
-            <h2 className="font-display mt-3 max-w-2xl text-4xl leading-tight tracking-tight sm:text-5xl">
-              Wat voor woning wil je bouwen?
-            </h2>
-            <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-              {woningtypes.map((t) => (
-                <Link
-                  key={t.slug}
-                  href={`/woningbouw/${t.slug}`}
-                  className="group relative block overflow-hidden rounded-[24px] bg-muted"
-                >
-                  <div className="relative aspect-[4/3]">
-                    <Image
-                      src={t.image}
-                      alt={t.imageAlt}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                      sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-                      quality={70}
-                    />
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0" />
-                    <div className="absolute inset-x-5 bottom-5 flex items-center justify-between gap-3">
-                      <p className="text-lg font-semibold tracking-tight text-white">
-                        {t.name}
-                      </p>
-                      <span
-                        aria-hidden="true"
-                        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-foreground transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                      >
-                        <ArrowUpRight className="h-4 w-4" />
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
+      {/* CONTENT BLOCKS */}
+      <section className="px-3 pt-16 sm:px-6 sm:pt-24">
+        <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
+          <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
+            {woningtype.body.map((block) => (
+              <div key={block.title}>
+                <h2 className="font-display text-3xl leading-tight tracking-tight sm:text-4xl">
+                  {block.title}
+                </h2>
+                <p className="mt-5 text-lg leading-relaxed text-foreground/70">
+                  {block.text}
+                </p>
+              </div>
+            ))}
           </div>
-        </section>
-      )}
+        </div>
+      </section>
 
       {/* RELATED PROJECTS */}
       {related.length > 0 && (
@@ -192,7 +191,7 @@ export default async function ServicePage({ params }: { params: Params }) {
                   Portfolio
                 </p>
                 <h2 className="font-display mt-3 text-4xl leading-tight tracking-tight sm:text-5xl">
-                  {service.title} in de praktijk
+                  Uit ons portfolio
                 </h2>
               </div>
               <Link
@@ -235,22 +234,50 @@ export default async function ServicePage({ params }: { params: Params }) {
         </section>
       )}
 
-      {/* OTHER SERVICES */}
+      {/* FAQ */}
       <section className="px-3 pt-24 sm:px-6 sm:pt-32">
         <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
             <BrandMark className="h-2.5 w-3 text-[var(--accent)]" />
-            Andere diensten
+            Veelgestelde vragen
+          </p>
+          <h2 className="font-display mt-3 max-w-2xl text-4xl leading-tight tracking-tight sm:text-5xl">
+            Alles over een {woningtype.name.toLowerCase()} bouwen
+          </h2>
+          <div className="mt-10 grid gap-4 lg:grid-cols-2">
+            {woningtype.faq.map((item) => (
+              <div
+                key={item.q}
+                className="rounded-[24px] border border-foreground/10 bg-muted p-6 sm:p-8"
+              >
+                <h3 className="text-lg font-semibold tracking-tight">
+                  {item.q}
+                </h3>
+                <p className="mt-3 leading-relaxed text-foreground/70">
+                  {item.a}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* OTHER TYPES */}
+      <section className="px-3 pt-24 sm:px-6 sm:pt-32">
+        <div className="mx-auto max-w-[1440px] px-3 sm:px-6 lg:px-8">
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50 inline-flex items-center gap-2">
+            <BrandMark className="h-2.5 w-3 text-[var(--accent)]" />
+            Ander type bouw
           </p>
           <div className="mt-6 grid gap-4 sm:grid-cols-3">
-            {others.map((s) => (
+            {others.map((t) => (
               <Link
-                key={s.id}
-                href={`/diensten/${s.id}`}
+                key={t.slug}
+                href={`/woningbouw/${t.slug}`}
                 className="group flex items-center justify-between gap-4 rounded-[24px] border border-foreground/10 bg-muted p-6 transition-colors hover:border-foreground/25 hover:bg-foreground/5"
               >
                 <span className="text-xl font-semibold tracking-tight">
-                  {s.title}
+                  {t.name}
                 </span>
                 <span
                   aria-hidden="true"
@@ -272,15 +299,13 @@ export default async function ServicePage({ params }: { params: Params }) {
               Plan een gesprek
             </p>
             <h2 className="font-display mx-auto mt-6 max-w-3xl text-4xl leading-[1.02] tracking-tight sm:text-6xl">
-              Aan de slag met
+              Een {woningtype.name.toLowerCase()}
               <br />
-              <span className="text-[var(--accent)]">
-                {service.title.toLowerCase()}?
-              </span>
+              <span className="text-[var(--accent)]">laten bouwen?</span>
             </h2>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
               <Link
-                href="/contact"
+                href="/contact?onderwerp=nieuwbouw"
                 className="group inline-flex h-[60px] items-center gap-2 rounded-full bg-white pl-6 pr-2 text-base font-medium text-foreground transition-transform hover:-translate-y-0.5"
               >
                 <span>Plan een gesprek</span>
