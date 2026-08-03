@@ -4,6 +4,16 @@ const nextConfig: NextConfig = {
   experimental: {
     inlineCss: true,
   },
+  async redirects() {
+    return [
+      // /woningbouw zelf heeft geen pagina; de typepagina's leven eronder.
+      {
+        source: "/woningbouw",
+        destination: "/diensten/woningbouw",
+        permanent: true,
+      },
+    ];
+  },
   images: {
     // Skip on-the-fly optimization in dev to avoid sharp RAM spikes on large source images
     unoptimized: process.env.NODE_ENV === "development",

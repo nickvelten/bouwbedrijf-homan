@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { projects } from "@/data/projects";
 import { places } from "@/data/places";
 import { services } from "@/data/services";
+import { woningtypes } from "@/data/woningtypes";
 import { articles } from "@/data/articles";
 
 const BASE = "https://www.bouwbedrijfhoman.nl";
@@ -34,6 +35,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  const woningtypeEntries = woningtypes.map((t) => ({
+    url: `${BASE}/woningbouw/${t.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
   const placeEntries = places.map((p) => ({
     url: `${BASE}/werkgebied/${p.slug}`,
     lastModified: now,
@@ -58,6 +66,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...staticEntries,
     ...serviceEntries,
+    ...woningtypeEntries,
     ...placeEntries,
     ...projectEntries,
     ...articleEntries,
