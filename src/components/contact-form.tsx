@@ -25,6 +25,13 @@ export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const successRef = useRef<HTMLDivElement>(null);
+  // Tijdval tegen bots: de server weigert inzendingen die onmenselijk snel
+  // na het laden van het formulier binnenkomen.
+  const startedAtRef = useRef(0);
+
+  useEffect(() => {
+    startedAtRef.current = Date.now();
+  }, []);
 
   // Het formulier maakt na verzenden plaats voor een veel kleiner
   // succeskaartje; zonder correctie blijft de scrollpositie onderaan
@@ -56,7 +63,10 @@ export function ContactForm() {
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
-    const data = Object.fromEntries(new FormData(form).entries());
+    const data = {
+      ...Object.fromEntries(new FormData(form).entries()),
+      t: startedAtRef.current,
+    };
 
     setStatus("sending");
     setErrorMessage("");
