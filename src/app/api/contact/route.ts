@@ -11,6 +11,52 @@ const TO_EMAIL = "l.velten@bouwbedrijfhoman.nl";
 const FROM_EMAIL = process.env.CONTACT_FROM_EMAIL ?? "Bouwbedrijf Homan <website@bouwbedrijfhoman.nl>";
 
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+// Minstens één letter (incl. accenten); botspam bestaat vaak uit enkel cijfers.
+const HAS_LETTER_RE = /[a-zA-ZÀ-ɏ]/;
+
+// Sneller dan dit kan geen mens het formulier invullen.
+const MIN_FILL_MS = 3_000;
+// Ouder dan dit is een verdacht (replayed) formulier.
+const MAX_FILL_MS = 24 * 60 * 60 * 1000;
+
+// Rate-limit per IP. In-memory en dus per serverless-instance; geen harde
+// garantie, maar remt herhaalde inzendingen vanaf hetzelfde adres af.
+const MAX_PER_WINDOW = 3;
+const WINDOW_MS = 60 * 60 * 1000;
+const submissionsByIp = new Map<string, number[]>();
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const recent = (submissionsByIp.get(ip) ?? []).filter(
+    (ts) => now - ts < WINDOW_MS,
+  );
+  if (recent.length >= MAX_PER_WINDOW) {
+    submissionsByIp.set(ip, recent);
+    return true;
+  }
+  recent.push(now);
+  submissionsByIp.set(ip, recent);
+  return false;
+}
+
+/**
+ * Botdetectie op patroon. Bij een match doen we alsof het gelukt is, zodat
+ * bots niets leren over de filtering (zelfde aanpak als de honeypot).
+ */
+function isSpam(payload: Record<string, unknown>, bericht: string): boolean {
+  // Bericht zonder ook maar één letter (bijv. alleen een reeks cijfers).
+  if (!HAS_LETTER_RE.test(bericht)) return true;
+
+  // Tijdval: het formulier stuurt mee wanneer het geladen is. Ontbreekt die
+  // waarde (directe API-post), of is de invultijd onmenselijk kort of juist
+  // verdacht oud, dan is het geen mens.
+  const t = Number(payload.t);
+  if (!Number.isFinite(t)) return true;
+  const elapsed = Date.now() - t;
+  if (elapsed < MIN_FILL_MS || elapsed > MAX_FILL_MS) return true;
+
+  return false;
+}
 
 function clean(value: unknown): string {
   return typeof value === "string" ? value.trim() : "";
@@ -45,6 +91,19 @@ export async function POST(request: Request) {
     return Response.json(
       { error: "Vul een geldig e-mailadres in." },
       { status: 422 },
+    );
+  }
+
+  if (isSpam(payload, bericht)) {
+    return Response.json({ ok: true });
+  }
+
+  const ip =
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "onbekend";
+  if (isRateLimited(ip)) {
+    return Response.json(
+      { error: "Te veel berichten achter elkaar. Probeer het over een uur nog eens, of bel ons gerust." },
+      { status: 429 },
     );
   }
 
