@@ -14,6 +14,7 @@ export const projects: Project[] = [
     title: "Landhuis in Enter",
     category: "woningbouw",
     opdrachtgever: "Particulier",
+    architect: "Bureau Authentiek",
     photos: [
       "/images/projecten/landhuis-enter-8/01.jpg",
       "/images/projecten/landhuis-enter-8/02.jpg",
@@ -41,6 +42,7 @@ export const projects: Project[] = [
     title: "Villa in Borculo",
     category: "woningbouw",
     opdrachtgever: "Particulier",
+    architect: "Bureau Authentiek",
     photos: [
       "/images/projecten/villa-te-borculo/01.jpg",
       "/images/projecten/villa-te-borculo/02.jpg",
@@ -57,6 +59,7 @@ export const projects: Project[] = [
     title: "Woning in Enter",
     category: "woningbouw",
     opdrachtgever: "Particulier",
+    architect: "Bouwbedrijf Homan",
     photos: [
       "/images/projecten/woning-in-enter-10/01.jpg",
       "/images/projecten/woning-in-enter-10/02.jpg",
