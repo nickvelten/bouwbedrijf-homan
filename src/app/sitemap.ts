@@ -14,6 +14,7 @@ const STATIC_ROUTES = [
   "/actueel",
   "/over-ons",
   "/werken-bij",
+  "/werken-bij/metselaar",
   "/contact",
   "/privacybeleid",
 ] as const;
