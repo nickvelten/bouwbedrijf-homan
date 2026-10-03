@@ -38,9 +38,16 @@ const perks = [
   },
 ];
 
-const vacatures = [
+const vacatures: {
+  title: string;
+  href?: string;
+  type: string;
+  period: string;
+  summary: string;
+}[] = [
   {
     title: "Metselaar",
+    href: "/werken-bij/metselaar",
     type: "Fulltime",
     period: "Doorlopend",
     summary:
@@ -168,10 +175,10 @@ export default function WerkenBijPage() {
                   </div>
                 </div>
                 <Link
-                  href="/contact"
+                  href={job.href ?? "/contact"}
                   className="group/btn inline-flex h-[60px] shrink-0 items-center gap-2 self-start rounded-full bg-foreground pl-6 pr-2 text-base font-medium text-background transition-transform hover:-translate-y-0.5 sm:self-auto"
                 >
-                  <span>Solliciteer</span>
+                  <span>{job.href ? "Bekijk vacature" : "Solliciteer"}</span>
                   <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-white">
                     <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
                   </span>
